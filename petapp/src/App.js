@@ -3,6 +3,18 @@ import './App.css';
 import firebase from './firebase.js';
 
 class App extends Component {
+
+  {/* Everything that's static in the page  
+  constructor() {
+    super();
+    this.state = {
+      {
+        
+      }
+    }
+  }
+*/}
+  
   render() {
     return (
       <div className="AppHeader">
