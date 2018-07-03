@@ -7,6 +7,7 @@ import AddPet from './Admin/AddPet'
 import PetList from './Visitor/PetList'
 import AdminLogin from './Admin/Login'
 import VisitorLogin from './Visitor/Login'
+import TestSubmit from './Test/TestSubmit'
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path='/pets' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
           <Route path='/adminLogin' component={AdminLogin} /> {/*the page an admin goes to to login*/}
           <Route path='/vistorLogin' component={VisitorLogin} />
+          <Route path='/TestSubmit' component={TestSubmit} />
         </div>
       </div>
       </BrowserRouter>
