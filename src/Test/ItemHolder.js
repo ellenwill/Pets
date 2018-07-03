@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ItemHolder=({items, done})=> {
+const ItemHolder=({items, done, action})=> {
     let lis = []
     let mark = done === false ? '\u2713' : 'x';
     for(let i in items){
