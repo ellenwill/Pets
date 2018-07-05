@@ -17,13 +17,18 @@ class PetDisplay extends Component{
       //pets: props.pets,
       pet: props.pet,
     }
-
+    //this.tools = new TestDBTools();
+    this.delete = this.delete.bind(this)
   }
 
   generalPetDispay()
   {  }
 
   componentWillMount(){
+  }
+
+  delete(){
+    new TestDBTools().deletePet(this.state.pet.id);
   }
 
   render(){
@@ -35,6 +40,7 @@ class PetDisplay extends Component{
               Age: {this.state.pet.petAge}<br/>
               Description: {this.state.pet.petDescription}<br/>
         </div>
+        <button onClick={this.delete}>Delete</button>
       </section>
   )
   }

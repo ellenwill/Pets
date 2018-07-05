@@ -46,6 +46,7 @@ class AddPet extends Component{
                   {
                     this.state.animalType === 'Dog' &&
                     <select name="petBreed" onChange={this.handleChange} >
+                    {!this.state.petBreed && <option> Select </option>}
                     <option value={'Fuzzball'}> Fuzzball </option>
                     <option value={'Roly Poly'}> Roly Poly </option>
                     <option value={'Mutt'}> Mutt </option>
@@ -54,6 +55,7 @@ class AddPet extends Component{
                   {
                     this.state.animalType === 'Cat' &&
                     <select name="petBreed" onChange={this.handleChange} >
+                    {!this.state.petBreed && <option> Select </option>}
                     <option value={'Shorty Fuzz'}> Shorty Fuzz </option>
                     <option value={'Extra Fuzzy'}> Extra Fuzzy </option>
                     <option value={'No Fuzzy'}> No Fuzzy at All </option>
@@ -62,6 +64,7 @@ class AddPet extends Component{
                   {
                     this.state.animalType === 'Other' &&
                     <select name="petBreed" onChange={this.handleChange} >
+                    {!this.state.petBreed && <option> Select </option>}
                     <option value={'Bunny'}> Bunny </option>
                     <option value={'Tuttle'}> Tuttle </option>
                     <option value={'Birb'}> Birb </option>
@@ -73,6 +76,7 @@ class AddPet extends Component{
                     this.state.animalType === 'Dog' &&
                     <label>Size: 
                     <select name="petSize" onChange={this.handleChange} >
+                    {!this.state.petSize && <option> Select </option>}
                     <option value={'Small'}> Small </option>
                     <option value={'Medium'}> Medium </option>
                     <option value={'Large'}> Large </option>
@@ -105,7 +109,8 @@ class AddPet extends Component{
       petName: '',
       petBreed: '',
       petAge: '',
-      petDescription: ''
+      petDescription: '',
+      petSize: '',
     });
     return key;
   }

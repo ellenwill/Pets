@@ -6,13 +6,15 @@ import firebase from '../firebase'
 import PetDisplay from './PetDisplay'
 import Formats from './Formats'
 
-class GetPetsArray extends Component {
+class PetArrayDisplay extends Component {
     constructor(props){
       super(props);
       this.state = {
-          pets: [],
+          pets: props.pets,
 
           //These are all arrays
+          //If you add a filter, you must also
+          //add it to the if statement below
           keyFilter: props.keyFilter,
           nameFilter: props.nameFilter,
           breedFilter: props.breedFilter,
@@ -20,15 +22,16 @@ class GetPetsArray extends Component {
           
         };
       this.petsRef = firebase.database().ref('pets');
+      this.populatePets = this.populatePets.bind(this);
     }
 
     componentDidMount() {
       this.petsRef.on('value', data=> {
         this.setState({
-          items: data.val(),
+          pets: data.val(),
         })
       })
-      this.populatePets();
+      !this.props.pets && this.populatePets();
     }
 
     componentWillMount(){
@@ -40,25 +43,27 @@ class GetPetsArray extends Component {
 
     populatePets(){
       this.petsRef.on('value', snapshot => {
-        
         let pets = snapshot.val();
-        let newState = [];
+        let newPets = [];
         for (let pet in pets) {
-          if ((!this.state.keyFilter || this.state.keyFilter.includes(pet))
+          if (
+              (!this.state.keyFilter || this.state.keyFilter.includes(pet))
               && (!this.state.nameFilter || this.state.nameFilter.includes(pets[pet].petName))
               && (!this.state.breedFilter || this.state.breedFilter.includes(pets[pet].petBreed))
-              && (!this.state.ageFilter || this.state.ageFilter.includes(pets[pet].petAge))){
-            newState.push({
-              id: pet,
-              petName: pets[pet].petName,
-              petBreed: pets[pet].petBreed,
-              petAge: pets[pet].petAge,
-              petDescription: pets[pet].petDescription,
-            });
-          }
+              && (!this.state.ageFilter || this.state.ageFilter.includes(pets[pet].petAge)))
+              
+            {
+              newPets.push({
+                id: pet,
+                petName: pets[pet].petName,
+                petBreed: pets[pet].petBreed,
+                petAge: pets[pet].petAge,
+                petDescription: pets[pet].petDescription,
+              });
+            }
         }
         this.setState({
-          pets: newState
+          pets: newPets
         });
       });
     }
@@ -81,4 +86,4 @@ class GetPetsArray extends Component {
         )
     }
   }
-  export default GetPetsArray;
+  export default PetArrayDisplay;

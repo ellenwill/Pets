@@ -18,6 +18,7 @@ class TestDBTools extends Component {
     }
 
     componentDidMount() {
+      //listeners
       this.itemsRef.on('value', data=> {
         this.setState({
           items: data.val(),
@@ -25,10 +26,9 @@ class TestDBTools extends Component {
       })
       this.petsRef.on('value', data=> {
         this.setState({
-          items: data.val(),
+          pets: data.val(),
         })
       })
-      //this.populatePets();
     }
 
     componentWillMount(){
@@ -73,29 +73,10 @@ class TestDBTools extends Component {
       })
     }
 
-    getAllPets(){
-      this.populatePets();
-      return this.state.pets;
-    }
-
-    populatePets(){
-      this.petsRef.on('value', snapshot => {
-        
-        let pets = snapshot.val();
-        let newState = [];
-        for (let pet in pets) {
-          newState.push({
-            id: pet,
-            petName: pets[pet].petName,
-            petBreed: pets[pet].petBreed,
-            petAge: pets[pet].petAge,
-            petDescription: pets[pet].petDescription,
-          });
-        }
-        this.setState({
-          pets: newState
-        });
-      });
+    deletePet = (id) => {
+      this.petsRef.update({
+        [id]: null
+      })
     }
   }
   export default TestDBTools;

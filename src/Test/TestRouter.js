@@ -8,7 +8,7 @@ import PetDisplay from './PetDisplay';
 import firebase from '../firebase'
 import AddPet from './AddPet'
 import TestDBTools from './TestDBTools'
-import GetPetsArray from './GetPetsArray'
+import PetArrayDisplay from './PetArrayDisplay'
 
 class TestRouter extends Component {
     constructor(props){
@@ -28,15 +28,15 @@ class TestRouter extends Component {
             <h2>Testing Ground</h2>
             <ul className="menu">
               <li><Link to={'/AddPet'}>Add Pet</Link></li>
-              <li><Link to={'/GetAllPets'}>Display All Pets</Link></li>
+              <li><Link to={'/PetArrayDisplay'}>Display All Pets</Link></li>
             </ul>
               <Route exact path="/AddPet"
               render={props =>
                 <AddPet/>
               }/>
-              <Route exact path="/GetAllPets"
+              <Route exact path="/PetArrayDisplay"
               render={props =>
-                <GetPetsArray/>
+                <PetArrayDisplay />
               }/>
               
           </div>
