@@ -19,7 +19,7 @@ const NavigationBar = () => {
                 <Link to ='/pets'> Pet Link </Link>
                 <Link to ='/adminLogin'> AdminLogin Link </Link>
                 <Link to ='/visitorLogin'> VisitorLogin Link </Link>
-                <Link to ='/TestSubmit'> Test Link </Link>
+                <Link to ='/TestRouter'> Test Link </Link>
                 </Typography>
             </Toolbar>
         </AppBar>

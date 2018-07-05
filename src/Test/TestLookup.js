@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import ItemHolder from './ItemHolder';
 //import PetHolder from './PetHolder';
-import PetArrayDisplay from './PetArrayDisplay';
+import PetDisplay from './PetDisplay';
 import firebase from '../firebase'
 import AddPet from './AddPet'
 
@@ -59,9 +59,9 @@ class TestSubmit extends Component {
     }
 
     componentWillUnmount(){
-      firebase.removeBinding(this.petsRef);
-      firebase.removeBinding(this.itemsRef);
-      firebase.removeBinding(this.petsRef);
+      //firebase.removeBinding(this.petsRef);
+      //firebase.removeBinding(this.itemsRef);
+      //firebase.removeBinding(this.petsRef);
     }
 
     addItem=(e)=> {
@@ -133,12 +133,11 @@ class TestSubmit extends Component {
               }/>
               <Route exact path="/DisplayPets"
               render={props =>
-                <PetArrayDisplay pets={this.state.pets}/>
+                <PetDisplay pets={this.state.pets}/>
               }/>
               
           </div>
         </BrowserRouter>
-                {console.log(this.state.pets)}
         </div>
       );
     }

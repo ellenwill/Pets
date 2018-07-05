@@ -1,3 +1,6 @@
+//Stateless file.
+//This one doesn't work properly.
+
 import React from 'react'
 
 const PetHolder=({pets, petName, petBreed, action, addItem, inputRef})=> {
