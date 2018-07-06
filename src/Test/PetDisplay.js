@@ -20,18 +20,17 @@ class PetDisplay extends Component{
       confirm: false,
       editMode: false,
     }
-    //this.tools = new TestDBTools();
     this.delete = this.delete.bind(this)
     this.requestConfirmation = this.requestConfirmation.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
     this.toggleConfirm = this.toggleConfirm.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   generalPetDispay()
   {  }
 
   componentDidMount(){
-    
   }
   componentWillMount(){
   }
@@ -41,7 +40,7 @@ class PetDisplay extends Component{
     return <label>Are you Sure?<button onClick={this.delete}> Confirm Delete </button></label>
   }
   delete(){
-    new TestDBTools().deletePet(this.state.pet)
+    new TestDBTools().deletePet(this.state.pet.petID)
     this.setState({confirm: false})
   }
 
@@ -54,10 +53,17 @@ class PetDisplay extends Component{
     else {this.setState({editMode: false})}
   }
 
+  handleChange(){
+    this.setState({editMode: false})
+  }
+
   render(){
     return (
       <section>
         <div>
+              { //For testing.
+                //this.state.pet.petID
+              }
               Name: {this.state.pet.petName}<br/>
               Breed: {this.state.pet.petBreed}<br/>
               Age: {this.state.pet.petAge}<br/>
@@ -66,11 +72,12 @@ class PetDisplay extends Component{
               this.state.pet.petSize && <div>Size: {this.state.pet.petSize}<br/></div>}
               {//Cat-specific
               this.state.pet.petHair && <div>Hair: {this.state.pet.petHair}<br/></div>}
-              <button onClick={this.toggleEdit}> Edit {this.state.petName}</button>
+
+              <button onClick={this.toggleEdit}> Edit </button>
               {!this.state.confirm ? <button onClick={this.toggleConfirm}>Delete</button> :
               this.requestConfirmation()}
-
-              {this.state.editMode && <AddPet animalType={this.state.pet.animalType} pet={this.state.pet}/>}
+              
+              {this.state.editMode && <AddPet petID={this.state.pet.petID} {... this.state.pet} onSubmit={this.handleChange}/>}
         </div>
       </section>
   )

@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import firebase from '../firebase';
 import TestDBTools from './TestDBTools'
-import PetDisplay from './PetDisplay'
-import { database } from 'firebase';
 
 class AddPet extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-      key: props.key,    //Pet already exists.
+      petID: props.petID,    //Pet already exists.
       animalType: props.animalType,
       petName: props.petName,
       petBreed: props.petBreed,
@@ -30,7 +27,23 @@ class AddPet extends Component{
   }
 
   componentDidMount(props){
-
+    //If the pet doesn't already exist, we can't have filled in its info.
+    if (!this.state.petID)
+    {
+      this.setState({
+        animalType: null,
+        petName: '',
+        petBreed: '',
+        petAge: '',
+        petDescription: '',
+  
+        //Dog-specific
+        petSize: '',
+  
+        //Cat-specific
+        petHair: '',
+      });  
+    }
   }
 
   render(){
@@ -48,16 +61,7 @@ class AddPet extends Component{
             Name: <input type="text" name="petName" placeholder="What is the pet's name?" onChange={this.handleChange} value={this.state.petName}/><br/>
             <label>Breed:
                   {
-                    this.state.animalType === 'Dog' &&
-                    this.dogBreeds()
-                  }
-                  {
-                    this.state.animalType === 'Cat' &&
-                    this.catBreeds()
-                  }
-                  {
-                    this.state.animalType === 'Other' &&
-                    this.otherBreeds()
+                    this.breedsMenu()
                   }
             </label>
                   {
@@ -73,8 +77,8 @@ class AddPet extends Component{
                   <br/>
             <input type="text" name="petAge" placeholder="What is the pet's age?" onChange={this.handleChange} value={this.state.petAge}/><br/>
             <input type="text" name="petDescription" placeholder="Enter additional details." onChange={this.handleChange} value={this.state.petDescription}/><br/>
-            {!this.state.key && <button> Add Pet </button>}
-            {this.state.key && <button> Update Pet </button>}
+            {!this.state.petID && <button> Add Pet </button>}
+            {this.state.petID && <button> Update Pet </button>}
             </div>}
            </form>
            </section>
@@ -85,7 +89,7 @@ class AddPet extends Component{
 
   petTypeMenu(){
     return <div>
-      <label>Animal Type: <select name="animalType" onChange={this.handleChange} >
+    <label>Animal Type: <select name="animalType" onChange={this.handleChange} value={this.state.animalType}>
     {!this.state.animalType && <option> Select </option>}
     <option value={'Dog'}> Dog </option>
     <option value={'Cat'}> Cat </option>
@@ -93,36 +97,36 @@ class AddPet extends Component{
     </select></label></div>
   }
 
-  dogBreeds(){
-    return <select name="petBreed" onChange={this.handleChange} >
+  breedsMenu(){
+    if (this.state.animalType === 'Dog'){
+    return <select name="petBreed" onChange={this.handleChange} value={this.state.petBreed}>
     {!this.state.petBreed && <option> Select </option>}
     <option value={'Fuzzball'}> Fuzzball </option>
     <option value={'Roly Poly'}> Roly Poly </option>
     <option value={'Mutt'}> Mutt </option>
-    </select>
-  }
+    </select>}
 
-  catBreeds(){
-    return <select name="petBreed" onChange={this.handleChange} >
+    else if (this.state.animalType === 'Cat'){
+    return <select name="petBreed" onChange={this.handleChange} value={this.state.petBreed}>
     {!this.state.petBreed && <option> Select </option>}
     <option value={'Tortie'}> Tortie </option>
     <option value={'Cowico'}> Cowico </option>
     <option value={'Siamese'}> Siamese </option>
     </select>
-  }
+    }
 
-  otherBreeds(){
-    return <select name="petBreed" onChange={this.handleChange} >
+    else if (this.state.animalType === 'Other'){
+    return <select name="petBreed" onChange={this.handleChange} value={this.state.petBreed}>
     {!this.state.petBreed && <option> Select </option>}
     <option value={'Bunny'}> Bunny </option>
     <option value={'Tuttle'}> Tuttle </option>
     <option value={'Birb'}> Birb </option>
-    </select>
-  }
+    </select>}
+    }
 
   dogSpecificTraits(){
     return <label>Size: 
-    <select name="petSize" onChange={this.handleChange} >
+    <select name="petSize" onChange={this.handleChange}  value={this.state.petSize}>
     {!this.state.petSize && <option> Select </option>}
     <option value={'Small'}> Small </option>
     <option value={'Medium'}> Medium </option>
@@ -133,7 +137,7 @@ class AddPet extends Component{
 
   catSpecificTraits(){
     return <label>Hair: 
-    <select name="petHair" onChange={this.handleChange} >
+    <select name="petHair" onChange={this.handleChange}  value={this.state.petHair}>
     {!this.state.petSize && <option> Select </option>}
     <option value={'Short'}> Short </option>
     <option value={'Medium'}> Medium </option>
@@ -144,14 +148,16 @@ class AddPet extends Component{
 
   handleChange(e) {
     e.preventDefault();
-  this.setState({
+    this.setState({
     [e.target.name]: e.target.value
     });
   }
   handleSubmit(e) {
+    //Submit the pet if it doesn't exist, otherwise update it.
+    if (!this.state.petID){var key = this.submitter.addPet(this);
     e.preventDefault();
-    var key = this.submitter.addPet(this);
     this.setState({
+      petID: null,
       //animalType: null,   //Commented out since it does dumb things to the form otherwise.
       petName: '',
       petBreed: '',
@@ -160,8 +166,12 @@ class AddPet extends Component{
 
       //Dog-specific
       petSize: '',
+      //Cat-specific
       petHair: '',
-    });
+      });
+    }
+    else {this.submitter.updatePet(this)
+    this.props.onSubmit(e.target.value)}
     return key;
   }
 }

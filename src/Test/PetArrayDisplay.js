@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase'
 import PetDisplay from './PetDisplay'
-import Formats from './Formats'
 import Loading from './Loading'
 import TestDBTools from './TestDBTools';
 
@@ -17,10 +16,13 @@ class PetArrayDisplay extends Component {
           //These are all arrays
           //If you add a filter, you must also
           //add it to the if statement below
-          keyFilter: props.keyFilter,
-          nameFilter: props.nameFilter,
-          breedFilter: props.breedFilter,
-          ageFliter: props.ageFilter,
+
+          //**Moved to input argument of populate pets */
+
+          //petIDFilters: props.petIDFilters,
+          //nameFilters: props.nameFilters,
+          //breedFilters: props.breedFilters,
+          //ageFilters: props.ageFilters,
           
           loaded: false,
         };
@@ -28,14 +30,12 @@ class PetArrayDisplay extends Component {
         this.petsRef = firebase.database().ref('pets');
         this.petsChildren = this.tools.databaseChildren('pets');
         this.setPets = this.setPets.bind(this);
-        this.populatePets = this.populatePets.bind(this);
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount() {
-      if (!this.props.pets) {this.populatePets();}
-    }
-
-    componentWillMount(){
+    componentWillMount() {
+     let newPets = this.tools.populatePets();
+     this.setPets(newPets)
     }
 
     componentWillUnmount(){
@@ -46,42 +46,8 @@ class PetArrayDisplay extends Component {
       
     }
 
-    populatePets(){
-      let newPets = [];
-      for (let i = 0; i < this.petsChildren.length; i++){
-      this.petsRef.child(this.petsChildren[i]).on('value', snapshot => {
-        let pets = snapshot.val();
-        for (let pet in pets) {
-          if (
-              (!this.state.keyFilter || this.state.keyFilter.includes(pet))
-              && (!this.state.nameFilter || this.state.nameFilter.includes(pets[pet].petName))
-              && (!this.state.breedFilter || this.state.breedFilter.includes(pets[pet].petBreed))
-              && (!this.state.ageFilter || this.state.ageFilter.includes(pets[pet].petAge))
-              //Etc.
-                )
-              
-            {
-              newPets.push({
-                id: pet,
-
-                animalType: this.petsChildren[i],
-
-                petName: pets[pet].petName,
-                petBreed: pets[pet].petBreed,
-                petAge: pets[pet].petAge,
-                petDescription: pets[pet].petDescription,
-
-                //dog-specific
-                petSize: pets[pet].petSize,
-
-                //cat-specific
-                petHair: pets[pet].petHair,
-              });
-            }
-        }
-      });
-    }
-    this.setPets(newPets)
+    handleChange(){
+      this.forceUpdate();
     }
 
     setPets(newPets){
@@ -99,8 +65,8 @@ class PetArrayDisplay extends Component {
           this.state.pets.map((pet) => {
             return (
             <div>
-                <li key={pet.id}>
-                    <PetDisplay pet={pet}/>
+                <li key={pet.petID}>
+                    <PetDisplay pet={pet} onChange={this.handleChange}/>
                 </li>
             </div>
             )

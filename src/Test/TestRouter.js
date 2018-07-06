@@ -14,7 +14,7 @@ class TestRouter extends Component {
     constructor(props){
       super(props);
       this.dbTools = new TestDBTools();
-      
+     
     }
 
     componentWillMount() {
@@ -38,7 +38,7 @@ class TestRouter extends Component {
               }/>
               <Route exact path="/PetArrayDisplay"
               render={props =>
-                <PetArrayDisplay />
+                <PetArrayDisplay/>
               }/>
               
           </div>

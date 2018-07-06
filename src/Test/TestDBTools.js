@@ -3,7 +3,6 @@
 
 import React, {Component} from 'react';
 import firebase from '../firebase'
-import AddPet from './AddPet'
 
 class TestDBTools extends Component {
     constructor(props){
@@ -16,16 +15,12 @@ class TestDBTools extends Component {
       this.itemsRef = firebase.database().ref('items');
       this.usersRef = firebase.database().ref('users');
       this.petsRef = firebase.database().ref('pets');
-      this.removedItems = firebase.database().ref('removedItems');
+      this.removedItemsRef = firebase.database().ref('removedItems');
+      this.petsChildren = this.databaseChildren('pets')
     }
 
     componentDidMount() {
       //listeners
-      this.itemsRef.on('value', data=> {
-        this.setState({
-          items: data.val(),
-        })
-      })
       this.petsRef.on('value', data=> {
         this.setState({
           pets: data.val(),
@@ -33,13 +28,64 @@ class TestDBTools extends Component {
       })
     }
 
+    /**
+     * Populates an array of pets from the database based on filtering criteria.
+     * Stores the result in this
+     * @param {*} filters , an array of strings (including petIDs)
+     */
+    populatePets(filters) {
+      let newPets = [];
+      for (let i = 0; i < this.petsChildren.length; i++){
+      this.petsRef.child(this.petsChildren[i]).on('value', snapshot => {
+        let pets = snapshot.val();
+        for (let pet in pets) {
+          if (
+                !filters || filters.includes(pet)
+                        || filters.includes(pets[pet].petName)
+                        || filters.includes(pets[pet].petBreed)
+                        || filters.includes(pets[pet].petAge)
+                        || filters.includes(pets[pet].petSize)
+                        || filters.includes(pets[pet].petHair)
+              //Etc.
+                )
+              
+            {
+              newPets.push({
+                petID: pet,
+
+                animalType: this.petsChildren[i],
+
+                petName: pets[pet].petName,
+                petBreed: pets[pet].petBreed,
+                petAge: pets[pet].petAge,
+                petDescription: pets[pet].petDescription,
+
+                //dog-specific
+                petSize: pets[pet].petSize,
+
+                //cat-specific
+                petHair: pets[pet].petHair,
+              });
+            }
+        }
+      });
+    }
+    this.setPets(newPets)
+    return newPets
+    }
+
+    setPets(newPets){
+      this.setState({
+        pets: newPets,
+      });
+    }
+
     componentWillMount(){
     }
 
     componentWillUnmount(){
-      //firebase.removeBinding(this.petsRef);
-      //firebase.removeBinding(this.itemsRef);
-      //firebase.removeBinding(this.petsRef);
+      firebase.removeBinding(this.petsRef);
+      firebase.removeBinding(this.itemsRef);
     }
 
     addItem=(e)=> {
@@ -50,32 +96,31 @@ class TestDBTools extends Component {
       })
     }
 
-    fillInfo(petToBeAdded){
+    fillInfo(pet){
       this.state.pet = {
-        animalType: petToBeAdded.state.animalType,
-        petName: petToBeAdded.state.petName,
-        petBreed: petToBeAdded.state.petBreed,
-        petAge: petToBeAdded.state.petAge,
-        petDescription: petToBeAdded.state.petDescription,
+        animalType: pet.state.animalType,
+        petName: pet.state.petName,
+        petBreed: pet.state.petBreed,
+        petAge: pet.state.petAge,
+        petDescription: pet.state.petDescription,
       }
       //Dogs
-      if (petToBeAdded.state.animalType === 'Dog') {
-          this.state.pet.petSize = petToBeAdded.state.petSize;
+      if (pet.state.animalType === 'Dog') {
+          this.state.pet.petSize = pet.state.petSize;
         }
       //Cats
-      else if (petToBeAdded.state.animalType === 'Cat') {
-        this.state.pet.petHair = petToBeAdded.state.petHair;
+      else if (pet.state.animalType === 'Cat') {
+        this.state.pet.petHair = pet.state.petHair;
       }
     }
-    addPet=(petToBeAdded)=> {
+    addPet(petToBeAdded) {
       this.fillInfo(petToBeAdded);
       return this.petsRef.child(petToBeAdded.state.animalType).push(this.state.pet);
     }
 
-    updatePet(pet)
-    {
-      this.fillInfo();
-      this.petsRef.update(this.state.pet);
+    updatePet(petToBeUpdated){
+      this.fillInfo(petToBeUpdated);
+      this.petsRef.child(petToBeUpdated.state.animalType).child(petToBeUpdated.state.petID).update(this.state.pet);
     }
 
     completeItem=(id)=>{  
@@ -93,16 +138,17 @@ class TestDBTools extends Component {
       })
     }
 
-    deletePet = (pet) => {
-      this.petsRef.update({
-        [pet.id]: null
-      })
+    deletePet (id) {
+      let children = this.databaseChildren('pets')
+      this.petsRef.child(id).remove();
+      for (let i = 0; i < children.length; i++)
+        {
+          this.petsRef.child(children[i]).child(id).remove();
+        }
     }
 
-    moveTo(id)
+    copyToRemoved(id)
     {
-      //var newRef = firebase.database().ref(this.type);
-      this.removedItems.push();
     }
     
     databaseChildren(type){
