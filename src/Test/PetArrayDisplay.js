@@ -34,8 +34,10 @@ class PetArrayDisplay extends Component {
     }
 
     componentWillMount() {
-     let newPets = this.tools.populatePets();
-     this.setPets(newPets)
+    }
+    componentDidMount(){
+      let newPets = this.tools.populatePets();
+      this.setPets(newPets)
     }
 
     componentWillUnmount(){

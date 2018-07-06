@@ -46,7 +46,7 @@ class TestDBTools extends Component {
                         || filters.includes(pets[pet].petAge)
                         || filters.includes(pets[pet].petSize)
                         || filters.includes(pets[pet].petHair)
-              //Etc.
+                        //Etc.
                 )
               
             {

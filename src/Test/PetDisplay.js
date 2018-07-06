@@ -27,10 +27,9 @@ class PetDisplay extends Component{
     this.handleChange = this.handleChange.bind(this)
   }
 
-  generalPetDispay()
-  {  }
 
   componentDidMount(){
+    this.setState({})
   }
   componentWillMount(){
   }
@@ -53,7 +52,8 @@ class PetDisplay extends Component{
     else {this.setState({editMode: false})}
   }
 
-  handleChange(){
+  handleChange(e){
+    e.preventDefault();
     this.setState({editMode: false})
   }
 
@@ -61,9 +61,9 @@ class PetDisplay extends Component{
     return (
       <section>
         <div>
-              { //For testing.
-                //this.state.pet.petID
-              }
+              { this.state &&
+              <div>
+                {this.state.pet.photoURL && <img src={this.state.pet.photoURL}/>}
               Name: {this.state.pet.petName}<br/>
               Breed: {this.state.pet.petBreed}<br/>
               Age: {this.state.pet.petAge}<br/>
@@ -78,6 +78,7 @@ class PetDisplay extends Component{
               this.requestConfirmation()}
               
               {this.state.editMode && <AddPet petID={this.state.pet.petID} {... this.state.pet} onSubmit={this.handleChange}/>}
+            </div>}
         </div>
       </section>
   )
