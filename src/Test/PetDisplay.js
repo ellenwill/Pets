@@ -7,6 +7,7 @@
 
 import React, {Component} from 'react';
 import TestDBTools from './TestDBTools';
+import AddPet from './AddPet';
 
 class PetDisplay extends Component{
 
@@ -16,19 +17,41 @@ class PetDisplay extends Component{
     this.state= {
       //pets: props.pets,
       pet: props.pet,
+      confirm: false,
+      editMode: false,
     }
     //this.tools = new TestDBTools();
     this.delete = this.delete.bind(this)
+    this.requestConfirmation = this.requestConfirmation.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
+    this.toggleConfirm = this.toggleConfirm.bind(this)
   }
 
   generalPetDispay()
   {  }
 
+  componentDidMount(){
+    
+  }
   componentWillMount(){
   }
 
+  //Deletion routine
+  requestConfirmation(){
+    return <label>Are you Sure?<button onClick={this.delete}> Confirm Delete </button></label>
+  }
   delete(){
-    new TestDBTools().deletePet(this.state.pet.id);
+    new TestDBTools().deletePet(this.state.pet)
+    this.setState({confirm: false})
+  }
+
+  //Setters, essentially.
+  toggleConfirm(){
+    this.setState({confirm: true});
+  }
+  toggleEdit(){
+    if (this.state.editMode === false) {this.setState({editMode: true})}
+    else {this.setState({editMode: false})}
   }
 
   render(){
@@ -39,8 +62,16 @@ class PetDisplay extends Component{
               Breed: {this.state.pet.petBreed}<br/>
               Age: {this.state.pet.petAge}<br/>
               Description: {this.state.pet.petDescription}<br/>
+              {//Dog-specific
+              this.state.pet.petSize && <div>Size: {this.state.pet.petSize}<br/></div>}
+              {//Cat-specific
+              this.state.pet.petHair && <div>Hair: {this.state.pet.petHair}<br/></div>}
+              <button onClick={this.toggleEdit}> Edit {this.state.petName}</button>
+              {!this.state.confirm ? <button onClick={this.toggleConfirm}>Delete</button> :
+              this.requestConfirmation()}
+
+              {this.state.editMode && <AddPet animalType={this.state.pet.animalType} pet={this.state.pet}/>}
         </div>
-        <button onClick={this.delete}>Delete</button>
       </section>
   )
   }

@@ -27,9 +27,11 @@ class TestRouter extends Component {
           <div className="wrap">
             <h2>Testing Ground</h2>
             <ul className="menu">
+              <li><Link to={'/TestRouter'}>Home</Link></li>
               <li><Link to={'/AddPet'}>Add Pet</Link></li>
               <li><Link to={'/PetArrayDisplay'}>Display All Pets</Link></li>
             </ul>
+              <Route exact path="/"/>
               <Route exact path="/AddPet"
               render={props =>
                 <AddPet/>

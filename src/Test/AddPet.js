@@ -6,21 +6,36 @@ import { database } from 'firebase';
 
 class AddPet extends Component{
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      animalType: null,
-      petName: '',
-      petBreed: '',
-      petAge: '',
-      petDescription: '',
+      key: props.key,    //Pet already exists.
+      animalType: props.animalType,
+      petName: props.petName,
+      petBreed: props.petBreed,
+      petAge: props.petAge,
+      petDescription: props.petDescription,
 
-      petSize: '',
+      //Dog-specific
+      petSize: props.petSize,
+
+      //Cat-specific
+      petHair: props.petHair,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.submitter = new TestDBTools();
+  }
+
+  componentDidMount(props){
+    for (let prop in props)
+    {
+      if (prop == null)
+      {
+        this.setState({prop: ''})
+      }
+    }
   }
 
   render(){
@@ -45,54 +60,87 @@ class AddPet extends Component{
             <label>Breed:
                   {
                     this.state.animalType === 'Dog' &&
-                    <select name="petBreed" onChange={this.handleChange} >
-                    {!this.state.petBreed && <option> Select </option>}
-                    <option value={'Fuzzball'}> Fuzzball </option>
-                    <option value={'Roly Poly'}> Roly Poly </option>
-                    <option value={'Mutt'}> Mutt </option>
-                    </select>
+                    this.dogBreeds()
                   }
                   {
                     this.state.animalType === 'Cat' &&
-                    <select name="petBreed" onChange={this.handleChange} >
-                    {!this.state.petBreed && <option> Select </option>}
-                    <option value={'Shorty Fuzz'}> Shorty Fuzz </option>
-                    <option value={'Extra Fuzzy'}> Extra Fuzzy </option>
-                    <option value={'No Fuzzy'}> No Fuzzy at All </option>
-                    </select>
+                    this.catBreeds()
                   }
                   {
                     this.state.animalType === 'Other' &&
-                    <select name="petBreed" onChange={this.handleChange} >
-                    {!this.state.petBreed && <option> Select </option>}
-                    <option value={'Bunny'}> Bunny </option>
-                    <option value={'Tuttle'}> Tuttle </option>
-                    <option value={'Birb'}> Birb </option>
-                    </select>
+                    this.otherBreeds()
                   }
             </label>
-            {
+                  {
                     //Dog-specific traits
                     this.state.animalType === 'Dog' &&
-                    <label>Size: 
-                    <select name="petSize" onChange={this.handleChange} >
-                    {!this.state.petSize && <option> Select </option>}
-                    <option value={'Small'}> Small </option>
-                    <option value={'Medium'}> Medium </option>
-                    <option value={'Large'}> Large </option>
-                    </select>
-                    </label>
+                    this.dogSpecificTraits()
+                  }
+                  {
+                    //Cat-specific traits
+                    this.state.animalType === 'Cat' &&
+                    this.catSpecificTraits()
                   }
                   <br/>
             <input type="text" name="petAge" placeholder="What is the pet's age?" onChange={this.handleChange} value={this.state.petAge}/><br/>
             <input type="text" name="petDescription" placeholder="Enter additional details." onChange={this.handleChange} value={this.state.petDescription}/><br/>
-            <button> Add Pet </button>
+            {!this.state.key && <button> Add Pet </button>}
+            {this.state.key && <button> Update Pet </button>}
             </div>}
            </form>
            </section>
          </div>
        </div>
     )
+  }
+
+  dogBreeds(){
+    return <select name="petBreed" onChange={this.handleChange} >
+    {!this.state.petBreed && <option> Select </option>}
+    <option value={'Fuzzball'}> Fuzzball </option>
+    <option value={'Roly Poly'}> Roly Poly </option>
+    <option value={'Mutt'}> Mutt </option>
+    </select>
+  }
+
+  catBreeds(){
+    return <select name="petBreed" onChange={this.handleChange} >
+    {!this.state.petBreed && <option> Select </option>}
+    <option value={'Tortie'}> Tortie </option>
+    <option value={'Cowico'}> Cowico </option>
+    <option value={'Siamese'}> Siamese </option>
+    </select>
+  }
+
+  otherBreeds(){
+    return <select name="petBreed" onChange={this.handleChange} >
+    {!this.state.petBreed && <option> Select </option>}
+    <option value={'Bunny'}> Bunny </option>
+    <option value={'Tuttle'}> Tuttle </option>
+    <option value={'Birb'}> Birb </option>
+    </select>
+  }
+
+  dogSpecificTraits(){
+    return <label>Size: 
+    <select name="petSize" onChange={this.handleChange} >
+    {!this.state.petSize && <option> Select </option>}
+    <option value={'Small'}> Small </option>
+    <option value={'Medium'}> Medium </option>
+    <option value={'Large'}> Large </option>
+    </select>
+    </label>
+  }
+
+  catSpecificTraits(){
+    return <label>Hair: 
+    <select name="petHair" onChange={this.handleChange} >
+    {!this.state.petSize && <option> Select </option>}
+    <option value={'Short'}> Short </option>
+    <option value={'Medium'}> Medium </option>
+    <option value={'Long'}> Long </option>
+    </select>
+    </label>
   }
 
   handleChange(e) {
@@ -105,12 +153,15 @@ class AddPet extends Component{
     e.preventDefault();
     var key = this.submitter.addPet(this);
     this.setState({
-      animalType: null,
+      //animalType: null,   //Commented out since it does dumb things to the form otherwise.
       petName: '',
       petBreed: '',
       petAge: '',
       petDescription: '',
+
+      //Dog-specific
       petSize: '',
+      petHair: '',
     });
     return key;
   }

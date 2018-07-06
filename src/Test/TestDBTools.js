@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import firebase from '../firebase'
-import PetDisplay from './PetDisplay'
+import AddPet from './AddPet'
 
 class TestDBTools extends Component {
     constructor(props){
@@ -11,10 +11,12 @@ class TestDBTools extends Component {
       this.state = {
           items: {},
           pets: [],
+          pet: {}
         };
       this.itemsRef = firebase.database().ref('items');
       this.usersRef = firebase.database().ref('users');
       this.petsRef = firebase.database().ref('pets');
+      this.removedItems = firebase.database().ref('removedItems');
     }
 
     componentDidMount() {
@@ -48,14 +50,32 @@ class TestDBTools extends Component {
       })
     }
 
-    addPet=(petToBeAdded)=> {
-      const pet = {
+    fillInfo(petToBeAdded){
+      this.state.pet = {
+        animalType: petToBeAdded.state.animalType,
         petName: petToBeAdded.state.petName,
         petBreed: petToBeAdded.state.petBreed,
         petAge: petToBeAdded.state.petAge,
         petDescription: petToBeAdded.state.petDescription,
       }
-      return this.petsRef.push(pet);
+      //Dogs
+      if (petToBeAdded.state.animalType === 'Dog') {
+          this.state.pet.petSize = petToBeAdded.state.petSize;
+        }
+      //Cats
+      else if (petToBeAdded.state.animalType === 'Cat') {
+        this.state.pet.petHair = petToBeAdded.state.petHair;
+      }
+    }
+    addPet=(petToBeAdded)=> {
+      this.fillInfo(petToBeAdded);
+      return this.petsRef.child(petToBeAdded.state.animalType).push(this.state.pet);
+    }
+
+    updatePet(pet)
+    {
+      this.fillInfo();
+      this.petsRef.update(this.state.pet);
     }
 
     completeItem=(id)=>{  
@@ -73,10 +93,16 @@ class TestDBTools extends Component {
       })
     }
 
-    deletePet = (id) => {
+    deletePet = (pet) => {
       this.petsRef.update({
-        [id]: null
+        [pet.id]: null
       })
+    }
+
+    moveTo(id)
+    {
+      //var newRef = firebase.database().ref(this.type);
+      this.removedItems.push();
     }
   }
   export default TestDBTools;
