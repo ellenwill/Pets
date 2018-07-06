@@ -51,6 +51,7 @@ class TestDBTools extends Component {
               
             {
               newPets.push({
+                photoURL: pets[pet].photoURL,
                 petID: pet,
 
                 animalType: this.petsChildren[i],

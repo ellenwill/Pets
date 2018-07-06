@@ -63,7 +63,7 @@ class PetDisplay extends Component{
         <div>
               { this.state &&
               <div>
-                {this.state.pet.photoURL && <img src={this.state.pet.photoURL}/>}
+              {this.state.pet.photoURL > 0 && <img src={this.state.pet.photoURL}/>}<br/>
               Name: {this.state.pet.petName}<br/>
               Breed: {this.state.pet.petBreed}<br/>
               Age: {this.state.pet.petAge}<br/>
