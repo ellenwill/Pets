@@ -104,5 +104,12 @@ class TestDBTools extends Component {
       //var newRef = firebase.database().ref(this.type);
       this.removedItems.push();
     }
+    
+    databaseChildren(type){
+      if (type === 'pets')
+      {
+        return ['Dog', 'Cat', 'Other']
+      }
+    }
   }
   export default TestDBTools;

@@ -6,6 +6,7 @@ import firebase from '../firebase'
 import PetDisplay from './PetDisplay'
 import Formats from './Formats'
 import Loading from './Loading'
+import TestDBTools from './TestDBTools';
 
 class PetArrayDisplay extends Component {
     constructor(props){
@@ -23,14 +24,15 @@ class PetArrayDisplay extends Component {
           
           loaded: false,
         };
-      this.petsRef = firebase.database().ref('pets');
-      this.petsChildren = ['Dog', 'Cat', 'Other']
-      this.setPets = this.setPets.bind(this)
-      this.populatePets = this.populatePets.bind(this);
+        this.tools = new TestDBTools();
+        this.petsRef = firebase.database().ref('pets');
+        this.petsChildren = this.tools.databaseChildren('pets');
+        this.setPets = this.setPets.bind(this);
+        this.populatePets = this.populatePets.bind(this);
     }
 
     componentDidMount() {
-      !this.props.pets && this.populatePets();
+      if (!this.props.pets) {this.populatePets();}
     }
 
     componentWillMount(){

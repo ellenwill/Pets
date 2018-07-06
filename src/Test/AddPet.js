@@ -26,16 +26,11 @@ class AddPet extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.submitter = new TestDBTools();
+    this.petTypes = this.submitter.databaseChildren('pets');
   }
 
   componentDidMount(props){
-    for (let prop in props)
-    {
-      if (prop == null)
-      {
-        this.setState({prop: ''})
-      }
-    }
+
   }
 
   render(){
@@ -47,13 +42,7 @@ class AddPet extends Component{
          </p>
          <section className='testForm'>
            <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-
-            <label>Animal Type: <select name="animalType" onChange={this.handleChange} >
-                  {!this.state.animalType && <option> Select </option>}
-                  <option value={'Dog'}> Dog </option>
-                  <option value={'Cat'}> Cat </option>
-                  <option value={'Other'}> Other </option>
-                </select></label>
+            {this.petTypeMenu()}
             {this.state.animalType &&
             <div>
             Name: <input type="text" name="petName" placeholder="What is the pet's name?" onChange={this.handleChange} value={this.state.petName}/><br/>
@@ -92,6 +81,16 @@ class AddPet extends Component{
          </div>
        </div>
     )
+  }
+
+  petTypeMenu(){
+    return <div>
+      <label>Animal Type: <select name="animalType" onChange={this.handleChange} >
+    {!this.state.animalType && <option> Select </option>}
+    <option value={'Dog'}> Dog </option>
+    <option value={'Cat'}> Cat </option>
+    <option value={'Other'}> Other </option>
+    </select></label></div>
   }
 
   dogBreeds(){
