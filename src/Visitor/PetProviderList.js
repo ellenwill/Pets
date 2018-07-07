@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import firebase from '../firebase';
-import PetCards from '../SiteParts/PetCards'
 
-class PetList extends Component{
+class PetProviderList extends Component{
 
     render(){
       return(
         <div>
-        <PetCards/>
+        petProviders
         </div>
       )
     }
 
   }
 
-  export default PetList;
+  export default PetProviderList;
