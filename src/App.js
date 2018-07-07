@@ -9,6 +9,7 @@ import PetProviderList from './Visitor/PetList'
 import AdminLogin from './Admin/Login'
 import VisitorLogin from './Visitor/Login'
 import TestRouter from './Test/TestRouter'
+import PaypalButton from './SiteParts/PaypalButton'
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path='/adminLogin' component={AdminLogin} /> {/*the page an admin goes to to login*/}
           <Route path='/vistorLogin' component={VisitorLogin} />
           <Route path='/TestRouter' component={TestRouter} />
+          <Route path = '/PaypalButton' component={PaypalButton} />
         </div>
       </div>
       </BrowserRouter>
