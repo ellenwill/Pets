@@ -3,9 +3,6 @@
 
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import ItemHolder from './ItemHolder';
-import PetDisplay from './PetDisplay';
-import firebase from '../firebase'
 import AddPet from './AddPet'
 import TestDBTools from './TestDBTools'
 import PetArrayDisplay from './PetArrayDisplay'

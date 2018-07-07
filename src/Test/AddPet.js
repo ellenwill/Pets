@@ -8,11 +8,12 @@ class AddPet extends Component{
     super(props);
     this.state = {
       petID: props.petID,    //Pet already exists.
-      animalType: props.animalType,
+      animalType: null,
       petName: props.petName,
       petBreed: props.petBreed,
       petAge: props.petAge,
       petDescription: props.petDescription,
+      photoURL: props.photoURL,
 
       //Dog-specific
       petSize: props.petSize,
@@ -22,18 +23,32 @@ class AddPet extends Component{
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.fillInfo = this.fillInfo.bind(this)
     this.submitter = new TestDBTools();
-    this.petTypes = this.submitter.databaseChildren('pets');
-    this.concat = this.concat.bind(this)
+    this.petTypes = PET_CONSTANTS.ANIMAL_TYPES;
   }
 
   componentDidMount(props){
+    
     //If the pet doesn't already exist, we can't have filled in its info.
     if (!this.state.petID)
     {
-      this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);  
+      //console.log(props.petID)
+        this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);  
     }
+    else
+    {
+      this.fillInfo(this.submitter.populatePets(this.state.petID)[0])
+    }
+  }
+
+  fillInfo(info){
+    this.setState(info)
+  }
+
+  componentWillMount(props)
+  {
+
   }
 
   render(){
@@ -49,11 +64,11 @@ class AddPet extends Component{
             {this.state.animalType &&
             <div>
             Name: <input type="text" name="petName" placeholder="What is the pet's name?" onChange={this.handleChange} value={this.state.petName}/><br/>
-            <label>Breed:
+            
                   {
                     this.breedsMenu()
                   }
-            </label>
+            
                   {
                     //Dog-specific traits
                     this.state.animalType === 'Dog' &&
@@ -67,6 +82,7 @@ class AddPet extends Component{
                   <br/>
             <input type="text" name="petAge" placeholder="What is the pet's age?" onChange={this.handleChange} value={this.state.petAge}/><br/>
             <input type="text" name="petDescription" placeholder="Enter additional details." onChange={this.handleChange} value={this.state.petDescription}/><br/>
+            <input type="text" name="photoURL" placeholder="Enter photo URL." onChange={this.handleChange} value={this.state.photoURL}/><br/>
             {!this.state.petID && <button> Add Pet </button>}
             {this.state.petID && <button> Update Pet </button>}
             </div>}
@@ -79,8 +95,8 @@ class AddPet extends Component{
 
   petTypeMenu(){
     return <div>
-    <label>Animal Type: <select name="animalType" onChange={this.handleChange} value={this.state.animalType}>
-    {!this.state.animalType && <option> Select </option>}
+    <label><select name="animalType" onChange={this.handleChange} value={this.state.animalType}>
+    {!this.state.animalType && <option> Animal Type </option>}
     { PET_CONSTANTS.ANIMAL_TYPES.map(value => <option value={value}>{value}</option>) }
     </select></label></div>
   }
@@ -95,28 +111,18 @@ class AddPet extends Component{
       i = PET_CONSTANTS.OTHER_BREEDS}
     
     return <select name="petBreed" onChange={this.handleChange} value={this.state.petBreed}>
-    {!this.state.petBreed && <option> Select </option>}
+    {!this.state.petBreed && <option> Breed </option>}
     { i.map(value => <option value={value}>{value}</option>) }
     </select>
     }
 
   dogSpecificTraits(){
     let list = PET_CONSTANTS.ANIMAL_TRAITS.DOG_SPECIFIC_TRAITS;
-    return <div>{ Object.keys(list).map((key, i) => 
-      <label>{key}:<span> </span>
-        <select name={key} onChange={this.handleChange}  value={this.state.key}>
-        {!this.state.key && <option> {key} </option>}
-        {//Object.values(PET_CONSTANTS.ANIMAL_TRAITS).map(value => <option value={value}>{value}</option>)
-        }
+    return <div><select name="petSize" onChange={this.handleChange} value={this.state.petSize}>
+        {!this.state.petSize && <option> Size </option>}
+        { list.Size.map(value => <option value={value}>{value}</option>) }
         </select>
-      </label>
-    )}</div>
-  }
-  
-  concat(obj, str){
-    let newVarName = this[obj + '.Size']
-    console.log(obj, str)
-    return newVarName
+    </div>
   }
 
   catSpecificTraits(){
@@ -137,9 +143,9 @@ class AddPet extends Component{
     });
   }
   handleSubmit(e) {
+    e.preventDefault();
     //Submit the pet if it doesn't exist, otherwise update it.
     if (!this.state.petID){var key = this.submitter.addPet(this);
-    e.preventDefault();
     this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);
     }
     else {this.submitter.updatePet(this)

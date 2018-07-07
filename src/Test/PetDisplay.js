@@ -8,6 +8,7 @@
 import React, {Component} from 'react';
 import TestDBTools from './TestDBTools';
 import AddPet from './AddPet';
+import {PET_CONSTANTS} from '../constants'
 
 class PetDisplay extends Component{
 
@@ -19,19 +20,31 @@ class PetDisplay extends Component{
       pet: props.pet,
       confirm: false,
       editMode: false,
+      deleted: false,
+      editedPet: {},
     }
     this.delete = this.delete.bind(this)
     this.requestConfirmation = this.requestConfirmation.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
     this.toggleConfirm = this.toggleConfirm.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    //this.handleChange = this.handleChange.bind(this)
   }
 
 
-  componentDidMount(){
-    this.setState({})
+  componentDidMount(props){
+    if (this.props.pet){
+      this.state.pet = this.props.pet
+      //this.setState({pet.petID: props.petID})
+      //console.log(this.state.pet.petID)
+    }
   }
-  componentWillMount(){
+
+  componentWilMount(props){
+    if (!props)
+      this.setState({pet: PET_CONSTANTS.DEFAULT_PET_STATE})
+  }
+
+  componentDidUpdate(){
   }
 
   //Deletion routine
@@ -40,31 +53,43 @@ class PetDisplay extends Component{
   }
   delete(){
     new TestDBTools().deletePet(this.state.pet.petID)
-    this.setState({confirm: false})
+    this.setState({deleted: true})
   }
 
   //Setters, essentially.
   toggleConfirm(){
     this.setState({confirm: true});
   }
+
+  //If they click "edit pet," this will display the edit form instead of the stuff pulled from the database.
+  //They can keep editing and resubmitting, and it'll keep working, but the form will be what's displayed until
+  //they refresh what pets they're viewing
   toggleEdit(){
     if (this.state.editMode === false) {this.setState({editMode: true})}
-    else {this.setState({editMode: false})}
+    //else {this.setState({editMode: false})}
   }
 
-  handleChange(e){
-    e.preventDefault();
-    this.setState({editMode: false})
+  //Don't seem to need to actually call it this.
+  //handleChange(){
+  //  this.toggleEdit()
+  //}
+
+  editForm(petID, pet){
+    return <AddPet petID={petID} pet={pet} onSubmit={this.toggleEdit}
+    />
   }
 
-  render(){
+  render(props){
     return (
       <section>
         <div>
+          {//Display only if not deleted.
+          }
+          {!this.state.deleted && <div>
               { this.state &&
               <div>
-              {this.state.pet.photoURL.length > 0 && <img src={this.state.pet.photoURL}/>}<br/>
-              Name: {this.state.pet.petName}<br/>
+              {this.state.pet.photoURL && <img src={this.state.pet.photoURL} width={200}/>}<br/>
+              {!this.state.editMode && <div> Name: {this.state.pet.petName}<br/>
               Breed: {this.state.pet.petBreed}<br/>
               Age: {this.state.pet.petAge}<br/>
               Description: {this.state.pet.petDescription}<br/>
@@ -74,11 +99,17 @@ class PetDisplay extends Component{
               this.state.pet.petHair && <div>Hair: {this.state.pet.petHair}<br/></div>}
 
               <button onClick={this.toggleEdit}> Edit </button>
+              {
+                //Display a button to delete and request confirmation when used.
+              }
               {!this.state.confirm ? <button onClick={this.toggleConfirm}>Delete</button> :
-              this.requestConfirmation()}
-              
-              {this.state.editMode && <AddPet petID={this.state.pet.petID} {... this.state.pet} onSubmit={this.handleChange}/>}
+              this.requestConfirmation()} </div>}
+              {
+                //Show the edit form (acutally the "AddPet" form, but already filled in)
+              }
+              {this.state.editMode && this.editForm(this.state.pet.petID, this.state.pet)}
             </div>}
+          </div>}
         </div>
       </section>
   )
