@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import PetDisplay from '../Test/PetDisplay';
 
 const styles = {
   card: {
@@ -34,6 +35,7 @@ function PetCards(props) {
             Doggie
           </Typography>
           <Typography component="p">
+          <PetDisplay/>
             Adopt this adorable doggie. She will give you so many good cuddles.
           </Typography>
         </CardContent>
