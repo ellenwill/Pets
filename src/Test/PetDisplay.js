@@ -8,6 +8,7 @@
 import React, {Component} from 'react';
 import TestDBTools from './TestDBTools';
 import AddPet from './AddPet';
+import {PET_CONSTANTS} from '../constants'
 
 class PetDisplay extends Component{
 
@@ -28,10 +29,17 @@ class PetDisplay extends Component{
   }
 
 
-  componentDidMount(){
-    this.setState({})
+  componentDidMount(props){
+    if (this.props.pet){
+      this.state.pet = this.props.pet
+      //this.setState({pet.petID: props.petID})
+      //console.log(this.state.pet.petID)
+    }
   }
-  componentWillMount(){
+
+  componentWilMount(props){
+    if (!props)
+      this.setState({pet: PET_CONSTANTS.DEFAULT_PET_STATE})
   }
 
   //Deletion routine
@@ -41,11 +49,13 @@ class PetDisplay extends Component{
   delete(){
     new TestDBTools().deletePet(this.state.pet.petID)
     this.setState({confirm: false})
+    this.forceUpdate()
   }
 
   //Setters, essentially.
   toggleConfirm(){
     this.setState({confirm: true});
+    console.log(this.state.pet.petID)
   }
   toggleEdit(){
     if (this.state.editMode === false) {this.setState({editMode: true})}
@@ -53,17 +63,16 @@ class PetDisplay extends Component{
   }
 
   handleChange(e){
-    e.preventDefault();
     this.setState({editMode: false})
   }
 
-  render(){
+  render(props){
     return (
       <section>
         <div>
               { this.state &&
               <div>
-              {this.state.pet.photoURL.length > 0 && <img src={this.state.pet.photoURL}/>}<br/>
+              {this.state.pet.photoURL && <img src={this.state.pet.photoURL} width={200}/>}<br/>
               Name: {this.state.pet.petName}<br/>
               Breed: {this.state.pet.petBreed}<br/>
               Age: {this.state.pet.petAge}<br/>
@@ -77,7 +86,7 @@ class PetDisplay extends Component{
               {!this.state.confirm ? <button onClick={this.toggleConfirm}>Delete</button> :
               this.requestConfirmation()}
               
-              {this.state.editMode && <AddPet petID={this.state.pet.petID} {... this.state.pet} onSubmit={this.handleChange}/>}
+              {this.state.editMode && <AddPet petID={this.state.pet.petID} pet={this.state.pet} onSubmit={this.handleChange}/>}
             </div>}
         </div>
       </section>

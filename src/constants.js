@@ -18,7 +18,7 @@ export const PET_CONSTANTS = {
     DEFAULT_PET_STATE:
     {
             photoURL: '',
-            petID: null,
+            petID: '',
             //animalType: null,   //Commented out since it does dumb things to the form otherwise.
             petName: '',
             petBreed: '',
@@ -33,7 +33,6 @@ export const PET_CONSTANTS = {
     },
     EXISTING_PET_STATE:
     {
-
     }
 
 }
