@@ -46,7 +46,7 @@ class PetArrayDisplay extends Component {
     }
 
     handleChange(){
-      //this.forceUpdate();
+      this.forceUpdate();
     }
 
     setPets(newPets){
