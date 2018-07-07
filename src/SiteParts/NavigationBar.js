@@ -7,6 +7,7 @@ import AddPet from '../Admin/AddPet'
 import PetList from '../Visitor/PetList'
 import AdminLogin from '../Admin/Login'
 import VisitorLogin from '../Visitor/Login'
+//import Donate from '../Visitor/Donate'
 
 const NavigationBar = () => {
     return(
@@ -21,6 +22,7 @@ const NavigationBar = () => {
                 <Link to ='/adminLogin'> AdminLogin Link </Link>
                 <Link to ='/visitorLogin'> VisitorLogin Link </Link>
                 <Link to ='/TestRouter'> Test Link </Link>
+                <Link to = '/PayPalButton' > PaypalButton </Link>
                 </Typography>
             </Toolbar>
         </AppBar>
