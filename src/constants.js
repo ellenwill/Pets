@@ -4,9 +4,15 @@ export const PET_CONSTANTS = {
     CAT_BREEDS: ['Tortie', 'Cowico', 'Siamese'],
     OTHER_BREEDS: ['Bunny', 'Tuttle', 'Birb'],
 
-    DOG_SPECIFIC_TRAITS: {
-        Size: ['Small', 'Medium', 'Large'],
-        Attitude: ['Friendly', 'Skittish'],
+    ANIMAL_TRAITS: {
+        DOG_SPECIFIC_TRAITS: {
+            //ALWAYS update this if a new trait is added!
+            Size: ['Small', 'Medium', 'Large'],
+            Attitude: ['Friendly', 'Skittish'],
+            },
+        CAT_SPECIFIC_TRAITS: {
+            Hair: ['Fuzzy', 'Extra Fuzzy', 'Not Fuzzy At All'],
+        }
     },
 
     DEFAULT_PET_STATE:
@@ -24,7 +30,7 @@ export const PET_CONSTANTS = {
             //Cat-specific
             petHair: '',
             
-        },
+    },
     EXISTING_PET_STATE:
     {
 

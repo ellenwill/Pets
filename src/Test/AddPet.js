@@ -25,6 +25,7 @@ class AddPet extends Component{
 
     this.submitter = new TestDBTools();
     this.petTypes = this.submitter.databaseChildren('pets');
+    this.concat = this.concat.bind(this)
   }
 
   componentDidMount(props){
@@ -100,15 +101,22 @@ class AddPet extends Component{
     }
 
   dogSpecificTraits(){
-    return <div>{ Object.keys(PET_CONSTANTS.DOG_SPECIFIC_TRAITS).map((key, i) => 
-      <label>{key}
-      <select name={key} onChange={this.handleChange}  value={this.state.key}>
-      {!this.state.key && <option> {key} </option>}
-      {Object.values(PET_CONSTANTS.DOG_SPECIFIC_TRAITS).map(value => <option value={value}>{value}</option>)
-      }
-      </select>
+    let list = PET_CONSTANTS.ANIMAL_TRAITS.DOG_SPECIFIC_TRAITS;
+    return <div>{ Object.keys(list).map((key, i) => 
+      <label>{key}:<span> </span>
+        <select name={key} onChange={this.handleChange}  value={this.state.key}>
+        {!this.state.key && <option> {key} </option>}
+        {//Object.values(PET_CONSTANTS.ANIMAL_TRAITS).map(value => <option value={value}>{value}</option>)
+        }
+        </select>
       </label>
     )}</div>
+  }
+  
+  concat(obj, str){
+    let newVarName = this[obj + '.Size']
+    console.log(obj, str)
+    return newVarName
   }
 
   catSpecificTraits(){
