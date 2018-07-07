@@ -16,7 +16,8 @@ const NavigationBar = () => {
                 <Typography variant="title" >
                 ADOPET
                 <Link to ='/addPet'> AddPet Link </Link>
-                <Link to ='/pets'> Pet Link </Link>
+                <Link to ='/pets'> Pet List </Link>
+                <Link to ='/petProviders'> Pet Providers </Link>
                 <Link to ='/adminLogin'> AdminLogin Link </Link>
                 <Link to ='/visitorLogin'> VisitorLogin Link </Link>
                 <Link to ='/TestRouter'> Test Link </Link>
