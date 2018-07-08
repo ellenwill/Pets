@@ -5,7 +5,6 @@ import scriptLoader from 'react-async-script-loader'
 import paypal from 'paypal-rest-sdk'
 
 
-
 class PayPalButton extends Component {
   constructor(props) {
     super(props)
@@ -89,7 +88,9 @@ class PayPalButton extends Component {
     }
 
 
+
     return (
+
       <div>
         {showButton && <paypal.Button.react
           env={env}
@@ -105,9 +106,6 @@ class PayPalButton extends Component {
   }
 }
 
-const selector = (appState) => ({
-  payment: appState.payment,
-})
 
 
 export default scriptLoader('https://www.paypalobjects.com/api/checkout.js')(PayPalButton);
