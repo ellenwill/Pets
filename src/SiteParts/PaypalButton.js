@@ -2,7 +2,9 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import scriptLoader from 'react-async-script-loader'
-import paypal from 'paypal-rest-sdk'
+import paypal from 'paypal-checkout'
+
+
 
 
 class PayPalButton extends Component {
@@ -22,7 +24,7 @@ class PayPalButton extends Component {
       if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
         if (isScriptLoadSucceed) {
           this.setState({ showButton: true })
-          console.log('alehop!!', window.paypal.Button.react)
+          console.log('alehop!!', paypal.Button.driver('react', { React, ReactDOM }))
         }
         else this.props.onError()
       }
@@ -87,12 +89,10 @@ class PayPalButton extends Component {
       console.log('The payment was cancelled!', data)
     }
 
-
-
+    const PayPalButton = paypal.Button.driver('react', { React, ReactDOM });
     return (
-
       <div>
-        {showButton && <paypal.Button.react
+        {showButton && <PayPalButton
           env={env}
           client={client}
           commit={commit}
@@ -105,7 +105,6 @@ class PayPalButton extends Component {
     );
   }
 }
-
 
 
 export default scriptLoader('https://www.paypalobjects.com/api/checkout.js')(PayPalButton);

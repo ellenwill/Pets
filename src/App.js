@@ -9,7 +9,6 @@ import PetProviderList from './Visitor/PetList'
 import AdminLogin from './Admin/Login'
 import VisitorLogin from './Visitor/Login'
 import TestRouter from './Test/TestRouter'
-import PaypalButton from './SiteParts/PaypalButton'
 import PaypalRender from './SiteParts/PaypalRender'
 
 class App extends Component {
