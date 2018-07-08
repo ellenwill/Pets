@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import scriptLoader from 'react-async-script-loader'
 import paypal from 'paypal-checkout'
+import {PAYPAL_ID} from '../constants'
 
 
 

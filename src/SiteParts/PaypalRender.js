@@ -1,8 +1,9 @@
 import React from 'react';
 import PaypalButton from './PaypalButton';
+import {PAYPAL_ID} from '../constants'
 
 const CLIENT = {
-  sandbox: 'xxxXXX',
+  sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
   production: 'xxxXXX',
 };
 
