@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import AddPet from '../Admin/AddPet'
 import PetList from '../Visitor/PetList'
-import AdminLogin from '../Admin/Login'
-import VisitorLogin from '../Visitor/Login'
+import LoginForm from '../Visitor/LoginForm'
+
 //import Donate from '../Visitor/Donate'
 
 const NavigationBar = () => {
@@ -19,8 +19,7 @@ const NavigationBar = () => {
                 <Link to ='/addPet'> AddPet Link </Link>
                 <Link to ='/pets'> Pet List </Link>
                 <Link to ='/petProviders'> Pet Providers </Link>
-                <Link to ='/adminLogin'> AdminLogin Link </Link>
-                <Link to ='/visitorLogin'> VisitorLogin Link </Link>
+                <Link to ='/LoginForm'> VisitorLogin Link </Link>
                 <Link to ='/TestRouter'> Test Link </Link>
                 <Link to = '/PayPalRender' > Paypal </Link>
                 </Typography>
