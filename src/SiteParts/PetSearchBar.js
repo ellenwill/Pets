@@ -43,7 +43,7 @@ import Chip from '@material-ui/core/Chip';
   const names = [
     'Dog',
     'Cat',
-    'Hamster',
+    'Other',
   ];
 
   const petBreed = [
@@ -111,7 +111,7 @@ import Chip from '@material-ui/core/Chip';
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="select-multiple-checkbox">petBreed</InputLabel>
+            <InputLabel htmlFor="select-multiple-checkbox">Breed</InputLabel>
             <Select
               multiple
               name="petBreed"
