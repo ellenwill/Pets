@@ -24,12 +24,12 @@ export const PET_CONSTANTS = {
             petBreed: '',
             petAge: '',
             petDescription: '',
-
+      
             //Dog-specific
             petSize: '',
             //Cat-specific
             petHair: '',
-
+            
     },
     EXISTING_PET_STATE:
     {
