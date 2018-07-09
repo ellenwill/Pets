@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import firebase from '../firebase'
 import PetDisplay from './PetDisplay'
 import Loading from './Loading'
-import TestDBTools from './TestDBTools';
+import DBTools from '../DBTools/DBTools';
 
 class PetArrayDisplay extends Component {
     constructor(props){
@@ -16,7 +16,7 @@ class PetArrayDisplay extends Component {
           
           loaded: false,
         };
-        this.tools = new TestDBTools();
+        this.tools = new DBTools();
         this.petsRef = firebase.database().ref('pets');
         this.setPets = this.setPets.bind(this);
         this.handleChange = this.handleChange.bind(this)

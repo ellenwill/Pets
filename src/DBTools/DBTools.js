@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import firebase from '../firebase'
 import {PET_CONSTANTS} from '../constants'
 
-class TestDBTools extends Component {
+class DBTools extends Component {
     constructor(props){
       super(props);
       this.state = {
@@ -139,4 +139,4 @@ class TestDBTools extends Component {
     }
     
   }
-  export default TestDBTools;
+  export default DBTools;

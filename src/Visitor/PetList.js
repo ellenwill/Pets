@@ -4,7 +4,7 @@ import PetSearchBar from '../SiteParts/PetSearchBar'
 import PetCards from '../SiteParts/PetCards'
 import Loading from '../Test/Loading'
 import PetArrayDisplay from '../Test/PetArrayDisplay'
-import TestDBTools from '../Test/TestDBTools'
+import DBTools from '../DBTools/DBTools'
 import {PET_CONSTANTS} from '../constants'
 
 class PetList extends Component{
@@ -20,7 +20,7 @@ class PetList extends Component{
   }
 
   componentDidMount(){
-    let petArray = new TestDBTools().populatePets()
+    let petArray = new DBTools().populatePets()
     this.setState({petArray: petArray})
   }
 

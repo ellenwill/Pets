@@ -22,7 +22,7 @@ class App extends Component {
       <NavigationBar/>
         <div> {/*these are every PAGE that goes on the site. If you want something that is on every page, add as a div around*/}
           <Route path='/Home' component={Home} />
-          <Route path='/addPet' component={AddPet} /> {/*for the admin to add new pets*/}
+          <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}
           <Route path='/PetList' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
           <Route path='/petProviders' component={PetProviderList} />
           <Route path='/LoginForm' component={LoginForm} />

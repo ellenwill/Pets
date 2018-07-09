@@ -24,7 +24,7 @@ var showDeets = false;
 
 /**
  * Props must contain a pet object. You can get an array of them
- * by calling TestDBTools().populatePets(filter)
+ * by calling DBTools().populatePets(filter)
  * where filter is a string or array of strings, and then extracting
  * the pet.
  * @param {*} props 
