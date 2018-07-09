@@ -18,8 +18,8 @@ const NavigationBar = () => {
     return(
         <div>
         <AppBar title="Pet Adoption Site" position="static">
-            <Toolbar style={{backgroundColor: "#E04950"}}>
-                <Typography variant="title" >
+            <Toolbar style={{backgroundColor: "#05349A"}}>
+                <Typography variant="title">
                 <Link to ='/Home'><img src={TransparentLogo} alt="Adopet" width="4%"/></Link>
                 ADOPET
                 <Link to ='/addPet'> AddPet Link </Link>

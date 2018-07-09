@@ -3,17 +3,37 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import PayPalRender from '../SiteParts/PaypalRender'
 import FAQ from './FAQ'
 import PetList from './PetList'
+import FindPetPaper from './HomeParts/FindPetPaper'
+import PaypalPaper from './HomeParts/PaypalPaper'
+import FAQPaper from './HomeParts/FAQPaper'
+import AboutUsPaper from './HomeParts/AboutUsPaper'
 
 
 class Home extends Component {
   render(){
     return(
       <div>
-      <Link to = '/FAQ' > Pet Care </Link>
-      <Link to = 'PetList'> Find a Pet </Link>
-      <Link to = '/PayPalRender' > Paypal </Link>
-      And a little about us section
+      
+        <div class="homeHeader">
+          <h1>ADOPET</h1>
+          <p>A site to help you find a cuddle bug.</p>
+        </div>
+
+      <div class="homeRow">
+        <div class="homeMain">
+          <FindPetPaper/>
+        </div>
+        <div class="homeSide">
+            <PaypalPaper/>
+            <FAQPaper/>
+            <AboutUsPaper/>
+        </div>
       </div>
+      <div class="homeFooter">
+        Boopyloop
+      </div>
+
+    </div>
     )
   }
 }

@@ -3,3 +3,40 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+.homeHeader {
+    padding: 10px;
+    text-align: center;
+    background: #467DF3;
+    color: white;
+}
+
+.homeRow {  /* Column container */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.homeSide {
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* Main column */
+.homeMain {
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+
+/* Footer */
+.homeFooter {
+    padding: 0px;
+    text-align: center;
+    background: #ddd;
+}

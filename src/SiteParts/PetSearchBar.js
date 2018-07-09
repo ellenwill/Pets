@@ -41,26 +41,7 @@ import {PET_CONSTANTS, ALL_BREEDS} from '../constants'
     },
   };
 
-<<<<<<< HEAD
-  const names = [
-    'Dog',
-    'Cat',
-    'Other',
-  ];
 
-  const petBreed = [
-    'Boopy',
-    'Mutt',
-    'Poopy',
-  ];
-
-  const gender = [
-    'Male',
-    'Female',
-  ];
-
-=======
->>>>>>> origin/actualCode
   const location = [
     'Poopyland',
     'Doopydoopboopland',
@@ -115,11 +96,11 @@ import {PET_CONSTANTS, ALL_BREEDS} from '../constants'
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
-<<<<<<< HEAD
-            <InputLabel htmlFor="select-multiple-checkbox">Breed</InputLabel>
-=======
+
+
+
             <InputLabel htmlFor="select-multiple-checkbox">Pet Breed</InputLabel>
->>>>>>> origin/actualCode
+
             <Select
               multiple
               name="petBreed"
