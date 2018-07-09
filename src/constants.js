@@ -4,6 +4,9 @@ export const PET_CONSTANTS = {
     CAT_BREEDS: ['Tortie', 'Cowico', 'Siamese'],
     OTHER_BREEDS: ['Bunny', 'Tuttle', 'Birb'],
 
+    //There's an ALL_BREEDS defined below -- it couldn't be defined inside this
+    //same object.
+
     ANIMAL_TRAITS: {
         DOG_SPECIFIC_TRAITS: {
             //ALWAYS update this if a new trait is added!
@@ -15,6 +18,8 @@ export const PET_CONSTANTS = {
         }
     },
 
+    GENDER: ['male', 'female', 'unknown'],
+
     DEFAULT_PET_STATE:
     {
             photoURL: '',
@@ -24,6 +29,8 @@ export const PET_CONSTANTS = {
             petBreed: '',
             petAge: '',
             petDescription: '',
+            gender: '',
+            photoURL: '',
       
             //Dog-specific
             petSize: '',
@@ -36,6 +43,9 @@ export const PET_CONSTANTS = {
     }
 
 }
+
+export const ALL_BREEDS = PET_CONSTANTS.DOG_BREEDS.concat(PET_CONSTANTS.CAT_BREEDS)
+    .concat(PET_CONSTANTS.OTHER_BREEDS)
 
 export const PAYPAL_ID ={
   sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',

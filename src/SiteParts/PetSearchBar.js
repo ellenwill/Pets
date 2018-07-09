@@ -9,6 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
+import {PET_CONSTANTS, ALL_BREEDS} from '../constants'
 
   const styles = theme => ({
     root: {
@@ -40,23 +41,6 @@ import Chip from '@material-ui/core/Chip';
     },
   };
 
-  const names = [
-    'Dog',
-    'Cat',
-    'Hamster',
-  ];
-
-  const petBreed = [
-    'Boopy',
-    'Mutt',
-    'Poopy',
-  ];
-
-  const gender = [
-    'Male',
-    'Female',
-  ];
-
   const location = [
     'Poopyland',
     'Doopydoopboopland',
@@ -66,7 +50,7 @@ import Chip from '@material-ui/core/Chip';
     state = {
       animalType: [],
       petBreed: [],
-      Gender: [],
+      gender: [],
       Location: [],
     };
 
@@ -94,7 +78,7 @@ import Chip from '@material-ui/core/Chip';
               input={<Input id="select-multiple" />}
               MenuProps={MenuProps}
             >
-              {names.map(name => (
+              {PET_CONSTANTS.ANIMAL_TYPES.map(name => (
                 <MenuItem
                   key={name}
                   value={name}
@@ -111,7 +95,7 @@ import Chip from '@material-ui/core/Chip';
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="select-multiple-checkbox">petBreed</InputLabel>
+            <InputLabel htmlFor="select-multiple-checkbox">Pet Breed</InputLabel>
             <Select
               multiple
               name="petBreed"
@@ -121,7 +105,7 @@ import Chip from '@material-ui/core/Chip';
               renderValue={selected => selected.join(', ')}
               MenuProps={MenuProps}
             >
-              {petBreed.map(name => (
+              {ALL_BREEDS.map(name => (
                 <MenuItem key={name} value={name}>
                   <Checkbox checked={this.state.petBreed.indexOf(name) > -1} />
                   <ListItemText primary={name} />
@@ -133,16 +117,16 @@ import Chip from '@material-ui/core/Chip';
             <InputLabel htmlFor="select-multiple-checkbox">Gender</InputLabel>
             <Select
               multiple
-              name="Gender"
-              value={this.state.Gender}
+              name="gender"
+              value={this.state.gender}
               onChange={this.handleChange}
               input={<Input id="select-multiple-checkbox" />}
               renderValue={selected => selected.join(', ')}
               MenuProps={MenuProps}
             >
-              {gender.map(name => (
+              {PET_CONSTANTS.GENDER.map(name => (
                 <MenuItem key={name} value={name}>
-                  <Checkbox checked={this.state.Gender.indexOf(name) > -1} />
+                  <Checkbox checked={this.state.gender.indexOf(name) > -1} />
                   <ListItemText primary={name} />
                 </MenuItem>
               ))}

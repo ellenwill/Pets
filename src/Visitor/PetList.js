@@ -39,28 +39,28 @@ class PetList extends Component{
 
           this.state.petArray.filter(pet =>
 
-            {if(this.state.filters.animalType.length > 0)
+            {if(this.state.filters.animalType && this.state.filters.animalType.length > 0)
               {
                 if(!this.state.filters.animalType.includes(pet.animalType))
                 {
                   return false;
                 }
               }
-            if(this.state.filters.petBreed.length > 0)
+            if(this.state.filters.petBreed && this.state.filters.petBreed.length > 0)
               {
                 if(!this.state.filters.petBreed.includes(pet.petBreed))
                 {
                   return false;
                 }
               }
-            if(this.state.filters.Gender.length > 0)
+            if(this.state.filters.gender && this.state.filters.gender.length > 0)
               {
-                if(!this.state.filters.Gender.includes(pet.Gender))
+                if(!this.state.filters.gender.includes(pet.gender))
                 {
                   return false;
                 }
               }
-            if(this.state.filters.Location.length > 0)
+            if(this.state.filters.Location && this.state.filters.Location.length > 0)
               {
                 if(!this.state.filters.Location.includes(pet.Location))
                 {
@@ -69,8 +69,6 @@ class PetList extends Component{
               }
               return true;
             }
-
-
           ).map(pet => <PetCards pet={pet}/>)}
 
         </div>
