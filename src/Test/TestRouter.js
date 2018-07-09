@@ -3,14 +3,13 @@
 
 import React, {Component} from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import AddPet from './AddPet'
-import TestDBTools from './TestDBTools'
+import DBTools from '../DBTools/DBTools'
 import PetArrayDisplay from './PetArrayDisplay'
 
 class TestRouter extends Component {
     constructor(props){
       super(props);
-      this.dbTools = new TestDBTools();
+      this.dbTools = new DBTools();
      
     }
 
@@ -25,14 +24,8 @@ class TestRouter extends Component {
             <h2>Testing Ground</h2>
             <ul className="menu">
               <li><Link to={'/TestRouter'}>Home</Link></li>
-              <li><Link to={'/AddPet'}>Add Pet</Link></li>
               <li><Link to={'/PetArrayDisplay'}>Display All Pets</Link></li>
             </ul>
-              <Route exact path="/"/>
-              <Route exact path="/AddPet"
-              render={props =>
-                <AddPet/>
-              }/>
               <Route exact path="/PetArrayDisplay"
               render={props =>
                 <PetArrayDisplay/>

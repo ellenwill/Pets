@@ -24,7 +24,7 @@ const NavigationBar = () => {
                 <Link to ='/addPet'> AddPet Link </Link>
                 <Link to ='/pets'> Pet List </Link>
                 <Link to ='/PetProviderList'> Pet Providers </Link>
-                <Link to ='/LoginForm'> VisitorLogin Link </Link>
+                <Link to ='/LoginForm'> Visitor Login </Link>
                 <Link to ='/TestRouter'> Test Link </Link>
                 <Link to = '/PayPalRender' > Paypal </Link>
                 </Typography>

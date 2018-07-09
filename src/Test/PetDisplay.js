@@ -6,8 +6,8 @@
 //If you feed it both, it will render both.
 
 import React, {Component} from 'react';
-import TestDBTools from './TestDBTools';
-import AddPet from './AddPet';
+import DBTools from '../DBTools/DBTools';
+import AddPet from '../Admin/AddPet';
 import {PET_CONSTANTS} from '../constants'
 
 class PetDisplay extends Component{
@@ -52,7 +52,7 @@ class PetDisplay extends Component{
     return <label>Are you Sure?<button onClick={this.delete}> Confirm Delete </button></label>
   }
   delete(){
-    new TestDBTools().deletePet(this.state.pet.petID)
+    new DBTools().deletePet(this.state.pet.petID)
     this.setState({deleted: true})
   }
 
