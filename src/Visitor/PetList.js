@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import firebase from '../firebase';
-// import PetCards from '../SiteParts/PetCards'
 import PetSearchBar from '../SiteParts/PetSearchBar'
 import PetCards from '../SiteParts/PetCards'
 import Loading from '../Test/Loading'
@@ -13,9 +12,11 @@ class PetList extends Component{
   constructor(props){
     super(props);
     this.state = {
-      filters: props.filters,
+      filters: {animalType:[],petBreed:[], Gender:[], Location:[]},
+      /* {animalType:[dog,cat,other],petBreed:[doxie, lab, corgi], Gender:[female, male], Location:[Baltimore County, Baltimore City]} */
       petArray: []
     }
+    this.handleFilterChange = this.handleFilterChange.bind(this) /* the function is now bound to component*/
   }
 
   componentDidMount(){
@@ -25,13 +26,52 @@ class PetList extends Component{
 
   componentWillUnmount(){}
 
+  handleFilterChange(newFilter){
+    console.log(newFilter)
+    this.setState({filters:newFilter})
+  }
 
     render(){
       return(
         <div>
-        <PetSearchBar/>
+        <PetSearchBar addFilter={this.handleFilterChange}/>
         {//!this.petArray ? <Loading/> && :
-          this.state.petArray.map(pet => <PetCards pet={pet}/>)}
+
+          this.state.petArray.filter(pet =>
+
+            {if(this.state.filters.animalType.length > 0)
+              {
+                if(!this.state.filters.animalType.includes(pet.animalType))
+                {
+                  return false;
+                }
+              }
+            if(this.state.filters.petBreed.length > 0)
+              {
+                if(!this.state.filters.petBreed.includes(pet.petBreed))
+                {
+                  return false;
+                }
+              }
+            if(this.state.filters.Gender.length > 0)
+              {
+                if(!this.state.filters.Gender.includes(pet.Gender))
+                {
+                  return false;
+                }
+              }
+            if(this.state.filters.Location.length > 0)
+              {
+                if(!this.state.filters.Location.includes(pet.Location))
+                {
+                  return false;
+                }
+              }
+              return true;
+            }
+
+
+          ).map(pet => <PetCards pet={pet}/>)}
 
         </div>
       )
