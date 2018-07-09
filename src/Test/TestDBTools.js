@@ -50,6 +50,7 @@ class TestDBTools extends Component {
           if (
                 !filters || filters.includes(pet)
                         || filters.includes(pets[pet].petName)
+                        || filters.includes(pets[pet].petGender)
                         || filters.includes(pets[pet].petBreed)
                         || filters.includes(pets[pet].petAge)
                         || filters.includes(pets[pet].petSize)
@@ -95,6 +96,7 @@ class TestDBTools extends Component {
     fillInfo(pet){
       this.state.pet = {
         photoURL: pet.state.photoURL,
+        gender: pet.state.gender,
         animalType: pet.state.animalType,
         petName: pet.state.petName,
         petBreed: pet.state.petBreed,
@@ -118,6 +120,7 @@ class TestDBTools extends Component {
 
     updatePet(petToBeUpdated){
       this.fillInfo(petToBeUpdated);
+      
       this.petsRef.child(petToBeUpdated.state.animalType).child(petToBeUpdated.state.petID).update(this.state.pet);
     }
 

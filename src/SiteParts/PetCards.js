@@ -35,19 +35,25 @@ function PetCards(props) {
   return (
     <div>
       <Card className={classes.card}>
-        {!props.pet.photoURL && <CardMedia
-          className={classes.media}
+      {console.log(props.pet.photoURL)}
+        {props.pet.photoURL ? props.pet.photoURL &&
+          <CardMedia className={classes.media}
+                            image={props.pet.photoURL}/>
+        : <CardMedia className={classes.media}
                             image="http://gdurl.com/27XK"  /*use gdurl.com*/
                             title="GoodGirl"
        
         /> }
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            {!props.pet.petName ? <div>Doggie</div> : <div>{props.pet.petName}</div>}
+            {!props.pet.petName ? <div>{props.animalType}</div> : <div>{props.pet.petName}</div>}
           </Typography>
           <Typography component="p">
-            Adopt this adorable {props.pet.animalType}. She will give you so many good cuddles.
-            {<PetDisplay pet={props.pet}/>}
+            <span>Adopt this adorable {props.pet.animalType}. </span>
+            {props.pet.gender === 'male' && <span>He</span>}{props.pet.gender === 'female' && <span>She</span>}
+            {(props.pet.gender != 'male' && props.pet.gender != 'female') && <span>They</span>} will give you so many good cuddles.
+            {//<PetDisplay pet={props.pet}/>
+            }
           </Typography>
         </CardContent>
         <CardActions>

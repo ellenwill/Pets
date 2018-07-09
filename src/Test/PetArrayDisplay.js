@@ -13,17 +13,6 @@ class PetArrayDisplay extends Component {
       this.state = {
           pets: props.pets,
           filters: props.filters,
-
-          //These are all arrays
-          //If you add a filter, you must also
-          //add it to the if statement below
-
-          //**Moved to input argument of populate pets */
-
-          //petIDFilters: props.petIDFilters,
-          //nameFilters: props.nameFilters,
-          //breedFilters: props.breedFilters,
-          //ageFilters: props.ageFilters,
           
           loaded: false,
         };

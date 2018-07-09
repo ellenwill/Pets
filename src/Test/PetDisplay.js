@@ -98,16 +98,22 @@ class PetDisplay extends Component{
               {//Cat-specific
               this.state.pet.petHair && <div>Hair: {this.state.pet.petHair}<br/></div>}
 
-              <button onClick={this.toggleEdit}> Edit </button>
+              {
+                //<button onClick={this.toggleEdit}> Edit </button>
+              }
               {
                 //Display a button to delete and request confirmation when used.
               }
               {!this.state.confirm ? <button onClick={this.toggleConfirm}>Delete</button> :
-              this.requestConfirmation()} </div>}
+              this.requestConfirmation()
+              } 
+              </div>}
               {
                 //Show the edit form (acutally the "AddPet" form, but already filled in)
               }
-              {this.state.editMode && this.editForm(this.state.pet.petID, this.state.pet)}
+              {
+                this.state.editMode && this.editForm(this.state.pet.petID, this.state.pet)
+              }
             </div>}
           </div>}
         </div>

@@ -12,6 +12,7 @@ class AddPet extends Component{
       petName: props.petName,
       petBreed: props.petBreed,
       petAge: props.petAge,
+      gender: props.gender,
       petDescription: props.petDescription,
       photoURL: props.photoURL,
 
@@ -64,7 +65,7 @@ class AddPet extends Component{
             {this.state.animalType &&
             <div>
             Name: <input type="text" name="petName" placeholder="What is the pet's name?" onChange={this.handleChange} value={this.state.petName}/><br/>
-            
+                  {this.genderMenu()}
                   {
                     this.breedsMenu()
                   }
@@ -84,7 +85,8 @@ class AddPet extends Component{
             <input type="text" name="petDescription" placeholder="Enter additional details." onChange={this.handleChange} value={this.state.petDescription}/><br/>
             <input type="text" name="photoURL" placeholder="Enter photo URL." onChange={this.handleChange} value={this.state.photoURL}/><br/>
             {!this.state.petID && <button> Add Pet </button>}
-            {this.state.petID && <button> Update Pet </button>}
+            {//this.state.petID && <button> Update Pet </button>
+            }
             </div>}
            </form>
            </section>
@@ -98,6 +100,14 @@ class AddPet extends Component{
     <label><select name="animalType" onChange={this.handleChange} value={this.state.animalType}>
     {!this.state.animalType && <option> Animal Type </option>}
     { PET_CONSTANTS.ANIMAL_TYPES.map(value => <option value={value}>{value}</option>) }
+    </select></label></div>
+  }
+
+  genderMenu(){
+    return <div>
+    <label><select name="gender" onChange={this.handleChange} value={this.state.gender}>
+    {!this.state.gender && <option> Gender </option>}
+    { PET_CONSTANTS.GENDER.map(value => <option value={value}>{value}</option>) }
     </select></label></div>
   }
 
@@ -150,6 +160,7 @@ class AddPet extends Component{
     }
     else {this.submitter.updatePet(this)
     this.props.onSubmit(e.target.value)}
+    //this.setState(this.state)
     return key;
   }
 }
