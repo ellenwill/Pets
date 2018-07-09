@@ -18,22 +18,25 @@ export const PET_CONSTANTS = {
     DEFAULT_PET_STATE:
     {
             photoURL: '',
-            petID: null,
+            petID: '',
             //animalType: null,   //Commented out since it does dumb things to the form otherwise.
             petName: '',
             petBreed: '',
             petAge: '',
             petDescription: '',
-      
+
             //Dog-specific
             petSize: '',
             //Cat-specific
             petHair: '',
-            
+
     },
     EXISTING_PET_STATE:
     {
-
     }
 
+}
+
+export const PAYPAL_ID ={
+  sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
 }

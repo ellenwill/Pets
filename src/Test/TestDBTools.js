@@ -3,6 +3,7 @@
 
 import React, {Component} from 'react';
 import firebase from '../firebase'
+import {PET_CONSTANTS} from '../constants'
 
 class TestDBTools extends Component {
     constructor(props){
@@ -16,7 +17,9 @@ class TestDBTools extends Component {
       this.usersRef = firebase.database().ref('users');
       this.petsRef = firebase.database().ref('pets');
       this.removedItemsRef = firebase.database().ref('removedItems');
-      this.petsChildren = this.databaseChildren('pets')
+
+      this.newPet = PET_CONSTANTS.DEFAULT_PET_STATE
+      this.fillInfo = this.fillInfo.bind(this)
     }
 
     componentDidMount() {
@@ -35,10 +38,15 @@ class TestDBTools extends Component {
      */
     populatePets(filters) {
       let newPets = [];
-      for (let i = 0; i < this.petsChildren.length; i++){
-      this.petsRef.child(this.petsChildren[i]).on('value', snapshot => {
+      for (let i = 0; i < PET_CONSTANTS.ANIMAL_TYPES.length; i++){
+        let type = PET_CONSTANTS.ANIMAL_TYPES[i]
+        this.petsRef.child(type).on('value', snapshot => {
         let pets = snapshot.val();
         for (let pet in pets) {
+
+          //"Pet" is the actual key for a pet child, e.g. LGnqMxecb_TSnm7E8wz
+          //These are properties that might appear in the database entry.
+          //These are essentially available search criteria.
           if (
                 !filters || filters.includes(pet)
                         || filters.includes(pets[pet].petName)
@@ -50,23 +58,9 @@ class TestDBTools extends Component {
                 )
               
             {
-              newPets.push({
-                photoURL: pets[pet].photoURL,
-                petID: pet,
-
-                animalType: this.petsChildren[i],
-
-                petName: pets[pet].petName,
-                petBreed: pets[pet].petBreed,
-                petAge: pets[pet].petAge,
-                petDescription: pets[pet].petDescription,
-
-                //dog-specific
-                petSize: pets[pet].petSize,
-
-                //cat-specific
-                petHair: pets[pet].petHair,
-              });
+              //console.log(pet)
+              pets[pet].petID = pet       
+              newPets.push(pets[pet]);
             }
         }
       });
@@ -97,8 +91,10 @@ class TestDBTools extends Component {
       })
     }
 
+    //This is to enforce uniformity of entries.
     fillInfo(pet){
       this.state.pet = {
+        photoURL: pet.state.photoURL,
         animalType: pet.state.animalType,
         petName: pet.state.petName,
         petBreed: pet.state.petBreed,
@@ -113,6 +109,7 @@ class TestDBTools extends Component {
       else if (pet.state.animalType === 'Cat') {
         this.state.pet.petHair = pet.state.petHair;
       }
+      this.setState({})
     }
     addPet(petToBeAdded) {
       this.fillInfo(petToBeAdded);
@@ -124,23 +121,9 @@ class TestDBTools extends Component {
       this.petsRef.child(petToBeUpdated.state.animalType).child(petToBeUpdated.state.petID).update(this.state.pet);
     }
 
-    completeItem=(id)=>{  
-      this.itemsRef.update({
-        [id]:{
-          ...this.state.items[id], 
-          completed: true      
-        }
-      })
-    }
-
-    deleteItem = (id) => {
-      this.itemsRef.update({
-        [id]: null
-      })
-    }
-
     deletePet (id) {
-      let children = this.databaseChildren('pets')
+      console.log(id)
+      let children = PET_CONSTANTS.ANIMAL_TYPES
       this.petsRef.child(id).remove();
       for (let i = 0; i < children.length; i++)
         {
@@ -152,11 +135,5 @@ class TestDBTools extends Component {
     {
     }
     
-    databaseChildren(type){
-      if (type === 'pets')
-      {
-        return ['Dog', 'Cat', 'Other']
-      }
-    }
   }
   export default TestDBTools;

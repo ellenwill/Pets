@@ -12,6 +12,7 @@ class PetArrayDisplay extends Component {
       super(props);
       this.state = {
           pets: props.pets,
+          filters: props.filters,
 
           //These are all arrays
           //If you add a filter, you must also
@@ -28,20 +29,16 @@ class PetArrayDisplay extends Component {
         };
         this.tools = new TestDBTools();
         this.petsRef = firebase.database().ref('pets');
-        this.petsChildren = this.tools.databaseChildren('pets');
         this.setPets = this.setPets.bind(this);
         this.handleChange = this.handleChange.bind(this)
     }
 
     componentWillMount() {
-    }
-    componentDidMount(){
-      let newPets = this.tools.populatePets();
+      let newPets = this.tools.populatePets(this.props.filters);
       this.setPets(newPets)
     }
 
     componentWillUnmount(){
-      //firebase.removeBinding(this.petsRef);
     }
 
     componentWillUpdate(){
@@ -67,9 +64,7 @@ class PetArrayDisplay extends Component {
           this.state.pets.map((pet) => {
             return (
             <div>
-                <li key={pet.petID}>
-                    <PetDisplay pet={pet} onChange={this.handleChange}/>
-                </li>
+                  <PetDisplay pet={pet} onChange={this.handleChange}/>
             </div>
             )
           })

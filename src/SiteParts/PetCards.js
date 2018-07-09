@@ -20,23 +20,34 @@ const styles = {
   },
 };
 
+var showDeets = false;
+
+/**
+ * Props must contain a pet object. You can get an array of them
+ * by calling TestDBTools().populatePets(filter)
+ * where filter is a string or array of strings, and then extracting
+ * the pet.
+ * @param {*} props 
+ */
 function PetCards(props) {
   const { classes } = props;
+
   return (
     <div>
       <Card className={classes.card}>
-        <CardMedia
+        {!props.pet.photoURL && <CardMedia
           className={classes.media}
-          image="http://gdurl.com/27XK"  /*use gdurl.com*/
-          title="GoodGirl"
-        />
+                            image="http://gdurl.com/27XK"  /*use gdurl.com*/
+                            title="GoodGirl"
+       
+        /> }
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            Doggie
+            {!props.pet.petName ? <div>Doggie</div> : <div>{props.pet.petName}</div>}
           </Typography>
           <Typography component="p">
-          <PetDisplay/>
-            Adopt this adorable doggie. She will give you so many good cuddles.
+            Adopt this adorable {props.pet.animalType}. She will give you so many good cuddles.
+            {<PetDisplay pet={props.pet}/>}
           </Typography>
         </CardContent>
         <CardActions>
