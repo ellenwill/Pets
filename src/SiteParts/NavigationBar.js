@@ -21,8 +21,8 @@ const NavigationBar = () => {
             <Toolbar style={{backgroundColor: "#05349A"}}>
                 <Typography variant="title">
                 <Link to ='/Home'><img src={TransparentLogo} alt="Adopet" width="8%"/></Link>
-                <Link to ='/addPet'> AddPet Link </Link>
-                <Link to ='/pets'> Pet List </Link>
+                <Link to ='/AddPet'> AddPet Link </Link>
+                <Link to ='/PetList'> Pet List </Link>
                 <Link to ='/PetProviderList'> Pet Providers </Link>
                 <Link to ='/LoginForm'> Visitor Login </Link>
                 <Link to ='/TestRouter'> Test Link </Link>
