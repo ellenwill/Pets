@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
-import firebase from '../firebase';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import PayPalRender from '../SiteParts/PaypalRender'
+import FAQ from './FAQ'
+import PetList from './PetList'
 
 
-export default class Home extends Component {
-  render () {
-    return (
+class Home extends Component {
+  render(){
+    return(
       <div>
-        Home page.
+      <Link to = '/FAQ' > Pet Care </Link>
+      <Link to = 'PetList'> Find a Pet </Link>
+      <Link to = '/PayPalRender' > Paypal </Link>
+      And a little about us section
       </div>
     )
   }
 }
+
+
+export default Home;
