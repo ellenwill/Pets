@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import firebase from '../firebase'
-import {PET_CONSTANTS} from '../constants'
+import {PET_CONSTANTS, EXISTING_PET_STATE} from '../constants'
 
 class DBTools extends Component {
     constructor(props){
@@ -19,7 +19,6 @@ class DBTools extends Component {
       this.removedItemsRef = firebase.database().ref('removedItems');
 
       this.newPet = PET_CONSTANTS.DEFAULT_PET_STATE
-      this.fillInfo = this.fillInfo.bind(this)
     }
 
     componentDidMount() {
@@ -92,36 +91,12 @@ class DBTools extends Component {
       })
     }
 
-    //This is to enforce uniformity of entries.
-    fillInfo(pet){
-      this.state.pet = {
-        photoURL: pet.state.photoURL,
-        gender: pet.state.gender,
-        animalType: pet.state.animalType,
-        petName: pet.state.petName,
-        petBreed: pet.state.petBreed,
-        petAge: pet.state.petAge,
-        petDescription: pet.state.petDescription,
-      }
-      //Dogs
-      if (pet.state.animalType === 'Dog') {
-          this.state.pet.petSize = pet.state.petSize;
-        }
-      //Cats
-      else if (pet.state.animalType === 'Cat') {
-        this.state.pet.petHair = pet.state.petHair;
-      }
-      this.setState({})
-    }
     addPet(petToBeAdded) {
-      this.fillInfo(petToBeAdded);
-      return this.petsRef.child(petToBeAdded.state.animalType).push(this.state.pet);
+      return this.petsRef.child(petToBeAdded.animalType).push(EXISTING_PET_STATE(petToBeAdded));
     }
 
     updatePet(petToBeUpdated){
-      this.fillInfo(petToBeUpdated);
-      
-      this.petsRef.child(petToBeUpdated.state.animalType).child(petToBeUpdated.state.petID).update(this.state.pet);
+      this.petsRef.child(petToBeUpdated.animalType).child(petToBeUpdated.petID).update(EXISTING_PET_STATE(petToBeUpdated));
     }
 
     deletePet (id) {

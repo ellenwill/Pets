@@ -1,27 +1,13 @@
 import React, { Component } from 'react'
 import DBTools from '../DBTools/DBTools'
-import {PET_CONSTANTS} from '../constants'
+import {PET_CONSTANTS, EXISTING_PET_STATE} from '../constants'
 
 class AddPet extends Component{
 
   constructor(props) {
     super(props);
-    this.state = {
-      petID: props.petID,    //Pet already exists.
-      animalType: null,
-      petName: props.petName,
-      petBreed: props.petBreed,
-      petAge: props.petAge,
-      gender: props.gender,
-      petDescription: props.petDescription,
-      photoURL: props.photoURL,
-
-      //Dog-specific
-      petSize: props.petSize,
-
-      //Cat-specific
-      petHair: props.petHair,
-    }
+    if (props.pet) {this.state = EXISTING_PET_STATE(props.pet)}
+    else {this.state = PET_CONSTANTS.DEFAULT_PET_STATE}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fillInfo = this.fillInfo.bind(this)
@@ -155,10 +141,10 @@ class AddPet extends Component{
   handleSubmit(e) {
     e.preventDefault();
     //Submit the pet if it doesn't exist, otherwise update it.
-    if (!this.state.petID){var key = this.submitter.addPet(this);
+    if (!this.state.petID){var key = this.submitter.addPet(this.state);
     this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);
     }
-    else {this.submitter.updatePet(this)
+    else {this.submitter.updatePet(this.state)
     this.props.onSubmit(e.target.value)}
     //this.setState(this.state)
     return key;

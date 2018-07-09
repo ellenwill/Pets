@@ -38,10 +38,33 @@ export const PET_CONSTANTS = {
             petHair: '',
             
     },
-    EXISTING_PET_STATE:
-    {
-    }
+}
 
+//This is to enforce uniformity of pets.
+export function EXISTING_PET_STATE(pet)
+{
+    console.log(pet)
+    let newPet = {}
+    if (pet.petID) {newPet.petID = pet.petID}
+    else {pet.petID = ''}
+
+    newPet.photoURL = pet.photoURL
+    newPet.gender = pet.gender
+    newPet.animalType = pet.animalType
+    newPet.petName = pet.petName
+    newPet.petBreed = pet.petBreed
+    newPet.petAge = pet.petAge
+    newPet.petDescription = pet.petDescription
+    //Dogs
+    if (pet.animalType === 'Dog') {
+        newPet.petSize = pet.petSize;
+      }
+    //Cats
+    else if (pet.animalType === 'Cat') {
+        newPet.petHair = pet.petHair;
+    }
+    console.log(newPet)
+    return newPet;
 }
 
 export const ALL_BREEDS = PET_CONSTANTS.DOG_BREEDS.concat(PET_CONSTANTS.CAT_BREEDS)

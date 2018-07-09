@@ -75,7 +75,7 @@ class PetDisplay extends Component{
   //}
 
   editForm(petID, pet){
-    return <AddPet petID={petID} pet={pet} onSubmit={this.toggleEdit}
+    return <AddPet petID={pet.petID} pet={pet} onSubmit={this.toggleEdit}
     />
   }
 
@@ -112,7 +112,7 @@ class PetDisplay extends Component{
                 //Show the edit form (acutally the "AddPet" form, but already filled in)
               }
               {
-                this.state.editMode && this.editForm(this.state.pet.petID, this.state.pet)
+                //this.state.editMode && this.editForm(this.state.pet.petID, this.state.pet)
               }
             </div>}
           </div>}
