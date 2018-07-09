@@ -12,7 +12,7 @@ class PetList extends Component{
   constructor(props){
     super(props);
     this.state = {
-      filters: {animalType:[],petBreed:[], Gender:[], Location:[]},
+      filters: {animalType:[],petBreed:[], gender:[], Location:[]},
       /* {animalType:[dog,cat,other],petBreed:[doxie, lab, corgi], Gender:[female, male], Location:[Baltimore County, Baltimore City]} */
       petArray: []
     }
