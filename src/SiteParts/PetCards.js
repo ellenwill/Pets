@@ -27,13 +27,14 @@ var showDeets = false;
  * by calling TestDBTools().populatePets(filter)
  * where filter is a string or array of strings, and then extracting
  * the pet.
- * @param {*} props 
+ * @param {*} props
  */
 function PetCards(props) {
   const { classes } = props;
 
   return (
     <div>
+    <div class="flexCard">
       <Card className={classes.card}>
       {console.log(props.pet.photoURL)}
         {props.pet.photoURL ? props.pet.photoURL &&
@@ -42,7 +43,7 @@ function PetCards(props) {
         : <CardMedia className={classes.media}
                             image="http://gdurl.com/27XK"  /*use gdurl.com*/
                             title="GoodGirl"
-       
+
         /> }
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
@@ -62,6 +63,7 @@ function PetCards(props) {
           </Button>
         </CardActions>
       </Card>
+    </div>
     </div>
   );
 }

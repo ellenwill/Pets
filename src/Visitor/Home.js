@@ -13,10 +13,10 @@ class Home extends Component {
   render(){
     return(
       <div>
-      
+
         <div class="homeHeader">
           <h1>ADOPET</h1>
-          <p>A site to help you find a cuddle bug.</p>
+          <p>A site to help you find your cuddle bug.</p>
         </div>
 
       <div class="homeRow">
@@ -25,12 +25,14 @@ class Home extends Component {
         </div>
         <div class="homeSide">
             <PaypalPaper/>
+            <br/>
             <FAQPaper/>
+            <br/>
             <AboutUsPaper/>
         </div>
       </div>
       <div class="homeFooter">
-        Boopyloop
+        Boopyloop made for COSC412 at Towson University
       </div>
 
     </div>

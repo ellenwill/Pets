@@ -8,6 +8,15 @@ body {
     box-sizing: border-box;
 }
 
+.flexCardContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+.flexCard{
+  flex: 1;
+  padding: 10px;
+}
+
 .homeHeader {
     padding: 10px;
     text-align: center;

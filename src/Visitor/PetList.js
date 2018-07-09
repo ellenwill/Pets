@@ -35,6 +35,7 @@ class PetList extends Component{
       return(
         <div>
         <PetSearchBar addFilter={this.handleFilterChange}/>
+                <div class="flexCardContainer">
         {//!this.petArray ? <Loading/> && :
 
           this.state.petArray.filter(pet =>
@@ -70,7 +71,7 @@ class PetList extends Component{
               return true;
             }
           ).map(pet => <PetCards pet={pet}/>)}
-
+          </div>
         </div>
       )
     }
