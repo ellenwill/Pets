@@ -46,13 +46,37 @@ import Chip from '@material-ui/core/Chip';
     'Hamster',
   ];
 
+  const petBreed = [
+    'Boopy',
+    'Mutt',
+    'Poopy',
+  ];
+
+  const gender = [
+    'Male',
+    'Female',
+  ];
+
+  const location = [
+    'Poopyland',
+    'Doopydoopboopland',
+  ];
+
   class PetSearchBar extends React.Component {
     state = {
-      name: [],
+      animalType: [],
+      petBreed: [],
+      Gender: [],
+      Location: [],
     };
 
     handleChange = event => {
-      this.setState({ name: event.target.value });
+      this.setState({ [event.target.name]: event.target.value },
+        () => { /*passing the new state to petlist */
+              console.log("In PetSearchBar")
+          this.props.addFilter(this.state)
+        }
+      );
     };
 
     render() {
@@ -61,10 +85,11 @@ import Chip from '@material-ui/core/Chip';
       return (
         <div className={classes.root}>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="select-multiple">Name</InputLabel>
+            <InputLabel htmlFor="select-multiple">Type</InputLabel>
             <Select
               multiple
-              value={this.state.name}
+              name="animalType"
+              value={this.state.animalType}
               onChange={this.handleChange}
               input={<Input id="select-multiple" />}
               MenuProps={MenuProps}
@@ -75,7 +100,7 @@ import Chip from '@material-ui/core/Chip';
                   value={name}
                   style={{
                     fontWeight:
-                      this.state.name.indexOf(name) === -1
+                      this.state.animalType.indexOf(name) === -1
                         ? theme.typography.fontWeightRegular
                         : theme.typography.fontWeightMedium,
                   }}
@@ -86,49 +111,58 @@ import Chip from '@material-ui/core/Chip';
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="select-multiple-checkbox">Tag</InputLabel>
+            <InputLabel htmlFor="select-multiple-checkbox">petBreed</InputLabel>
             <Select
               multiple
-              value={this.state.name}
+              name="petBreed"
+              value={this.state.petBreed}
               onChange={this.handleChange}
               input={<Input id="select-multiple-checkbox" />}
               renderValue={selected => selected.join(', ')}
               MenuProps={MenuProps}
             >
-              {names.map(name => (
+              {petBreed.map(name => (
                 <MenuItem key={name} value={name}>
-                  <Checkbox checked={this.state.name.indexOf(name) > -1} />
+                  <Checkbox checked={this.state.petBreed.indexOf(name) > -1} />
                   <ListItemText primary={name} />
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="select-multiple-chip">Chip</InputLabel>
+            <InputLabel htmlFor="select-multiple-checkbox">Gender</InputLabel>
             <Select
               multiple
-              value={this.state.name}
+              name="Gender"
+              value={this.state.Gender}
               onChange={this.handleChange}
-              input={<Input id="select-multiple-chip" />}
-              renderValue={selected => (
-                <div className={classes.chips}>
-                  {selected.map(value => <Chip key={value} label={value} className={classes.chip} />)}
-                </div>
-              )}
+              input={<Input id="select-multiple-checkbox" />}
+              renderValue={selected => selected.join(', ')}
               MenuProps={MenuProps}
             >
-              {names.map(name => (
-                <MenuItem
-                  key={name}
-                  value={name}
-                  style={{
-                    fontWeight:
-                      this.state.name.indexOf(name) === -1
-                        ? theme.typography.fontWeightRegular
-                        : theme.typography.fontWeightMedium,
-                  }}
-                >
-                  {name}
+              {gender.map(name => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox checked={this.state.Gender.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel htmlFor="select-multiple-checkbox">Location</InputLabel>
+            <Select
+              multiple
+              name="Location"
+              value={this.state.Location}
+              onChange={this.handleChange}
+              input={<Input id="select-multiple-checkbox" />}
+              renderValue={selected => selected.join(', ')}
+              MenuProps={MenuProps}
+            >
+              {location.map(name => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox checked={this.state.Location.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
                 </MenuItem>
               ))}
             </Select>
