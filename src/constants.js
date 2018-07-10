@@ -50,7 +50,6 @@ export const PET_CONSTANTS = {
 //This is to enforce uniformity of pets.
 export function EXISTING_PET_STATE(pet)
 {
-    console.log(pet)
     let newPet = {}
     if (pet.petID) {newPet.petID = pet.petID}
     else {pet.petID = ''}
@@ -77,6 +76,7 @@ export function EXISTING_PET_STATE(pet)
 }
 
 export const PET_PROVIDER = {
+    petProviderID: '',
     name: '',
     location: {
         street: '',
@@ -90,6 +90,23 @@ export const PET_PROVIDER = {
     email: '',
     hours: '',
     imageURLs: [],
+}
+
+export function EXISTING_PET_PROVIDER(petProvider) {
+    let newPetProvider = {}
+    if (petProvider.petProviderID) {newPetProvider.petProviderID = petProvider.petProviderID}
+    else {petProvider.petProvider = ''}
+
+    newPetProvider.name = petProvider.name;
+    newPetProvider.location = petProvider.location;
+    newPetProvider.websiteURL = petProvider.websiteURL;
+    newPetProvider.description = petProvider.description;
+    newPetProvider.phoneNumber = petProvider.phoneNumber;
+    newPetProvider.email = petProvider.email;
+    newPetProvider.hours = petProvider.hours;
+    newPetProvider.imageURLs = petProvider.imageURLs;
+
+    return newPetProvider;
 }
 
 export const ALL_BREEDS = PET_CONSTANTS.DOG_BREEDS.concat(PET_CONSTANTS.CAT_BREEDS)
