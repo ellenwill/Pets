@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 
-
+//ZOMG JON ADDED A COMMENT!
 
 
 class Home extends Component {
@@ -10,7 +10,7 @@ class Home extends Component {
     return(
       <div>
 
-
+        <p> Lifan added a line </p>
           <p>Admin Page.</p>
         </div>
 
