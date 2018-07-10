@@ -53,7 +53,7 @@ function PetCards(props) {
             <span>Adopt this adorable {props.pet.animalType}. </span>
             {props.pet.gender === 'male' && <span>He</span>}{props.pet.gender === 'female' && <span>She</span>}
             {(props.pet.gender != 'male' && props.pet.gender != 'female') && <span>They</span>} will give you so many good cuddles.
-            {<PetDisplay pet={props.pet}/>
+            {//<PetDisplay pet={props.pet}/>
             }
           </Typography>
         </CardContent>
