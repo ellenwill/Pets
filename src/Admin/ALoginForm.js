@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import Login from './Login'
-import Register from './Register'
+
 import Home from './Home'
 //import Dashboard from './protected/Dashboard'
 import firebase from '../firebase';
@@ -30,7 +30,7 @@ function PublicRoute ({component: Component, authed, ...rest}) {
   )
 }
 
-class LoginForm extends Component {
+class ALoginForm extends Component {
   state = {
     authed: false,
     loading: true,
@@ -75,7 +75,7 @@ class LoginForm extends Component {
                         className="navbar-brand">Logout</button>
                     : <span>
                         <Link to="/login" className="navbar-brand">Login</Link>
-                        <Link to="/register" className="navbar-brand">Register</Link>
+
                       </span>}
                 </li>
               </ul>
@@ -86,7 +86,7 @@ class LoginForm extends Component {
               <Switch>
                 <Route path='/' exact component={Home} />
                 <PublicRoute authed={this.state.authed} path='/login' component={Login} />
-                <PublicRoute authed={this.state.authed} path='/register' component={Register} />
+
                 <PrivateRoute authed={this.state.authed} path='/home' component={Home} />
 
               </Switch>
@@ -98,4 +98,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default ALoginForm

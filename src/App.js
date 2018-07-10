@@ -7,6 +7,7 @@ import AddPet from './Admin/AddPet'
 import PetList from './Visitor/PetList'
 import PetProviderList from './Visitor/PetProviderList'
 import LoginForm from './Visitor/LoginForm'
+import ALoginForm from './Admin/ALoginForm'
 import TestRouter from './Test/TestRouter'
 import PaypalRender from './SiteParts/PaypalRender'
 import Home from './Visitor/Home'
@@ -26,6 +27,7 @@ class App extends Component {
           <Route path='/PetList' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
           <Route path='/petProviders' component={PetProviderList} />
           <Route path='/LoginForm' component={LoginForm} />
+          <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PaypalRender' component={PaypalRender} />
           <Route path='/FAQ' component={FAQ}/>

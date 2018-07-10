@@ -7,6 +7,7 @@ import AddPet from '../Admin/AddPet'
 import PetList from '../Visitor/PetList'
 import PetProviderList from '../Visitor/PetProviderList'
 import LoginForm from '../Visitor/LoginForm'
+import ALoginForm from '../Admin/ALoginForm'
 import Home from '../Visitor/Home'
 import Logo from './Logo.JPG'
 import TransparentLogo from "./Logo2.PNG"
@@ -25,6 +26,7 @@ const NavigationBar = () => {
                 <Link to ='/PetList'> Pet List </Link>
                 <Link to ='/PetProviderList'> Pet Providers </Link>
                 <Link to ='/LoginForm'> Visitor Login </Link>
+                <Link to ='/ALoginForm'> Admin Login </Link>
                 <Link to ='/TestRouter'> Test Link </Link>
                 <Link to = '/PayPalRender' > Paypal </Link>
                 </Typography>
