@@ -10,7 +10,7 @@ class Home extends Component {
     return(
       <div>
 
-
+        <p> Lifan added a line </p>
           <p>Admin Page.</p>
         </div>
 
