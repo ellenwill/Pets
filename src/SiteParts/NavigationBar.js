@@ -10,7 +10,8 @@ import LoginForm from '../Visitor/LoginForm'
 import ALoginForm from '../Admin/ALoginForm'
 import Home from '../Visitor/Home'
 import Logo from './Logo.JPG'
-import TransparentLogo from "./Logo2.PNG"
+import TransparentLogo from "./Logo2.PNG";
+import * as routes from "../routes";
 
 //import Donate from '../Visitor/Donate'
 
@@ -21,14 +22,14 @@ const NavigationBar = () => {
         <AppBar title="Pet Adoption Site" position="static">
             <Toolbar style={{backgroundColor: "#05349A"}}>
                 <Typography variant="title">
-                <Link to ='/Home'><img src={TransparentLogo} alt="Adopet" width="8%"/></Link>
-                <Link to ='/AddPet'> AddPet Link </Link>
-                <Link to ='/PetList'> Pet List </Link>
-                <Link to ='/PetProviderList'> Pet Providers </Link>
-                <Link to ='/LoginForm'> Visitor Login </Link>
-                <Link to ='/ALoginForm'> Admin Login </Link>
-                <Link to ='/TestRouter'> Test Link </Link>
-                <Link to = '/PayPalRender' > Paypal </Link>
+                <Link to = {routes.HOME}><img src={TransparentLogo} alt="Adopet" width="8%"/></Link>
+                <Link to = {routes.ADD_PET}> AddPet Link </Link>
+                <Link to = {routes.PET_LIST}> Pet List </Link>
+                <Link to = {routes.PET_PROVIDERS_LIST}> Pet Providers </Link>
+                <Link to = {routes.LOGIN}> Visitor Login </Link>
+                <Link to = {routes.ADMIN_LOGIN}> Admin Login </Link>
+                <Link to = {routes.TEST}> Test Link </Link>
+                <Link to = {routes.DONUT}> Donate </Link>
                 </Typography>
             </Toolbar>
         </AppBar>

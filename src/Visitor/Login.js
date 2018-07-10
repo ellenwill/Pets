@@ -16,7 +16,6 @@ export default class Login extends Component {
       .catch((error) => {
           this.setState(setErrorMsg('Invalid username/password.'))
         })
-    console.log(a)
   }
   resetPassword = () => {
     resetPassword(this.email.value)
