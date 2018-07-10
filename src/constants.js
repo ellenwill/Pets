@@ -31,7 +31,14 @@ export const PET_CONSTANTS = {
             petDescription: '',
             gender: '',
             photoURL: '',
-      
+            petProviderID: '',
+            location: {
+                street: '',
+                city: '',
+                state: '',
+                zip: '',
+            },
+
             //Dog-specific
             petSize: '',
             //Cat-specific
@@ -55,6 +62,8 @@ export function EXISTING_PET_STATE(pet)
     newPet.petBreed = pet.petBreed
     newPet.petAge = pet.petAge
     newPet.petDescription = pet.petDescription
+    newPet.petProviderID = pet.petProviderID
+    newPet.location = pet.location
     //Dogs
     if (pet.animalType === 'Dog') {
         newPet.petSize = pet.petSize;
@@ -65,6 +74,22 @@ export function EXISTING_PET_STATE(pet)
     }
     console.log(newPet)
     return newPet;
+}
+
+export const PET_PROVIDER = {
+    name: '',
+    location: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+    },
+    websiteURL: '',
+    description: '',
+    phoneNumber: '',
+    email: '',
+    hours: '',
+    imageURLs: [],
 }
 
 export const ALL_BREEDS = PET_CONSTANTS.DOG_BREEDS.concat(PET_CONSTANTS.CAT_BREEDS)

@@ -71,7 +71,7 @@ class AddPet extends Component{
             <input type="text" name="petDescription" placeholder="Enter additional details." onChange={this.handleChange} value={this.state.petDescription}/><br/>
             <input type="text" name="photoURL" placeholder="Enter photo URL." onChange={this.handleChange} value={this.state.photoURL}/><br/>
             {!this.state.petID && <button> Add Pet </button>}
-            {//this.state.petID && <button> Update Pet </button>
+            {this.state.petID && <button> Update Pet </button>
             }
             </div>}
            </form>
