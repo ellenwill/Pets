@@ -32,12 +32,9 @@ export const PET_CONSTANTS = {
             gender: '',
             photoURL: '',
             petProviderID: '',
-            location: {
-                street: '',
-                city: '',
-                state: '',
-                zip: '',
-            },
+            
+            //Location
+            usstate: '',
 
             //Dog-specific
             petSize: '',
@@ -53,7 +50,12 @@ export function EXISTING_PET_STATE(pet)
     let newPet = {}
     if (pet.petID) {newPet.petID = pet.petID}
     else {pet.petID = ''}
+    if (pet.petProviderID) {newPet.petProviderID = pet.petProviderID}
+    else (newPet.petProviderID = '')
+    if (pet.usstate) {newPet.usstate = pet.usstate}
+    else {newPet.usstate = ''}
 
+    newPet.street = ''; newPet.city = ''; newPet.zip = '';
     newPet.photoURL = pet.photoURL
     newPet.gender = pet.gender
     newPet.animalType = pet.animalType
@@ -61,8 +63,6 @@ export function EXISTING_PET_STATE(pet)
     newPet.petBreed = pet.petBreed
     newPet.petAge = pet.petAge
     newPet.petDescription = pet.petDescription
-    newPet.petProviderID = pet.petProviderID
-    newPet.location = pet.location
     //Dogs
     if (pet.animalType === 'Dog') {
         newPet.petSize = pet.petSize;
@@ -78,18 +78,19 @@ export function EXISTING_PET_STATE(pet)
 export const PET_PROVIDER = {
     petProviderID: '',
     name: '',
-    location: {
-        street: '',
-        city: '',
-        state: null,
-        zip: '',
-    },
+    
+    //location
+    street: '',
+    city: '',
+    usstate: null,
+    zip: '',
+    
     websiteURL: '',
     description: '',
     phoneNumber: '',
     email: '',
     hours: '',
-    imageURLs: [],
+    photoURL: '',
 }
 
 export const STATES = ['Maryland']
@@ -100,15 +101,19 @@ export function EXISTING_PET_PROVIDER(petProvider) {
     let newPetProvider = {}
     if (petProvider.petProviderID) {newPetProvider.petProviderID = petProvider.petProviderID}
     else {petProvider.petProvider = ''}
+    if (petProvider.usstate) {newPetProvider.usstate = petProvider.usstate}
+    else {newPetProvider.usstate = ''}
 
     newPetProvider.name = petProvider.name;
-    newPetProvider.location = petProvider.location;
+    newPetProvider.street = petProvider.street;
+    newPetProvider.city = petProvider.city;
+    newPetProvider.zip = petProvider.zip;
     newPetProvider.websiteURL = petProvider.websiteURL;
     newPetProvider.description = petProvider.description;
     newPetProvider.phoneNumber = petProvider.phoneNumber;
     newPetProvider.email = petProvider.email;
     newPetProvider.hours = petProvider.hours;
-    newPetProvider.imageURLs = petProvider.imageURLs;
+    newPetProvider.photoURL = petProvider.photoURL;
 
     return newPetProvider;
 }
@@ -116,6 +121,8 @@ export function EXISTING_PET_PROVIDER(petProvider) {
 export const ALL_BREEDS = PET_CONSTANTS.DOG_BREEDS.concat(PET_CONSTANTS.CAT_BREEDS)
     .concat(PET_CONSTANTS.OTHER_BREEDS)
 
-export const PAYPAL_ID ={
-  sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
+export const PAYPAL_CONSTANTS ={
+    //currently the same as sandbox
+    PET_PROVIDER_1: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
+    sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
 }

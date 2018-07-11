@@ -1,6 +1,7 @@
 export const HOME = '/Home';
 
 export const ADD_PET = '/AddPet';
+export const ADD_PET_PROVIDER = '/AddPetProvider';
 
 export const PET_LIST = '/PetList';
 

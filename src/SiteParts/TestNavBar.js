@@ -20,6 +20,7 @@ const NavigationBar = () => {
             <Toolbar style={{backgroundColor: "#00000A"}}>
                 <Typography variant="title">
                 <Link to = {routes.ADD_PET}> AddPet Link </Link>
+                <Link to = {routes.ADD_PET_PROVIDER}> AddPetProvider Link </Link>
                 <Link to = {routes.PET_LIST}> Pet List </Link>
                 <Link to = {routes.PET_PROVIDERS_LIST}> Pet Providers </Link>
                 <Link to = {routes.LOGIN}> Visitor Login </Link>

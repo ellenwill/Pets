@@ -8,7 +8,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import PetDisplay from '../Test/PetDisplay';
 
 const styles = {
   card: {
@@ -20,13 +19,11 @@ const styles = {
   },
 };
 
-var showDeets = false;
-
 /**
- * Props must contain a pet object. You can get an array of them
- * by calling DBTools().populatePets(filter)
+ * Props must contain a petProvider object. You can get an array of them
+ * by calling DBTools().populatePetProviders(filter)
  * where filter is a string or array of strings, and then extracting
- * the pet.
+ * the petProvider.
  * @param {*} props
  */
 function ProviderCards(props) {
@@ -38,23 +35,21 @@ function ProviderCards(props) {
       <Card className={classes.card}>
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            {!props.pet.petName ? <div>{props.animalType}</div> : <div>{props.pet.petName}</div>}
+            {!props.petProvider.name ? <div>{props.animalType}</div> : <div>{props.petProvider.name}</div>}
           </Typography>
           <Typography component="p">
-            <span>Adopt this adorable {props.pet.animalType}. </span>
-            {props.pet.gender === 'male' && <span>He</span>}{props.pet.gender === 'female' && <span>She</span>}
-            {(props.pet.gender != 'male' && props.pet.gender != 'female') && <span>They</span>} will give you so many good cuddles.
-            {//<PetDisplay pet={props.pet}/>
-            }
+            <span>Adopt our adorable pets. We are located at {props.petProvider.street}, 
+            {props.petProvider.city}, {props.petProvider.usstate} {props.petProvider.zip}
+            </span>
           </Typography>
         </CardContent>
 
-        {console.log(props.pet.photoURL)}
-          {props.pet.photoURL ? props.pet.photoURL &&
+        {console.log(props.petProvider.photoURL)}
+          {props.petProvider.photoURL ? props.petProvider.photoURL &&
             <CardMedia className={classes.media}
-                              image={props.pet.photoURL}/>
+                              image={props.petProvider.photoURL}/>
           : <CardMedia className={classes.media}
-                              image="http://gdurl.com/27XK"  /*use gdurl.com*/
+                              image="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Trichoplax_adhaerens_photograph.png/60px-Trichoplax_adhaerens_photograph.png"  /*use gdurl.com*/
                               title="GoodGirl"
 
           /> }

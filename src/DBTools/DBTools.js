@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import firebase from '../firebase'
-import {PET_CONSTANTS, EXISTING_PET_STATE} from '../constants'
+import {PET_CONSTANTS, EXISTING_PET_STATE, EXISTING_PET_PROVIDER} from '../constants'
 
 class DBTools extends Component {
     constructor(props){
@@ -18,6 +18,7 @@ class DBTools extends Component {
       this.usersRef = firebase.database().ref('users');
       this.petsRef = firebase.database().ref('pets');
       this.removedItemsRef = firebase.database().ref('removedItems');
+      this.userRef = firebase.database().ref('users');
 
       this.newPet = PET_CONSTANTS.DEFAULT_PET_STATE
     }
@@ -63,17 +64,36 @@ class DBTools extends Component {
               pets[pet].petID = pet       
               newPets.push(pets[pet]);
             }
-        }
-      });
-    }
-    this.setPets(newPets)
-    return newPets
+          }
+        });
+      }
+      //this.setState({pets: newPets,});
+      return newPets
     }
 
-    setPets(newPets){
-      this.setState({
-        pets: newPets,
-      });
+    populatePetProviders(filters) {
+      let newPetProviders = [];
+      this.petProvidersRef.on('value', snapshot => {
+        let petProviders = snapshot.val();
+        for (let petProvider in petProviders) {
+          //"petProvider" is the actual key for a pet child, e.g. LGnqMxecb_TSnm7E8wz
+          //These are properties that might appear in the database entry.
+          //These are essentially available search criteria.
+            if (
+                !filters || filters.includes(petProvider)
+                         || filters.includes(petProviders[petProvider].name)
+                         || filters.includes(petProviders[petProvider].location.city)
+                        //Etc.
+                )
+                    
+            {
+              petProviders[petProvider].petProviderID = petProvider
+              newPetProviders.push(petProviders[petProvider]);
+            }
+          }
+        });
+      //this.setState({pets: newPetProviders,});
+      return newPetProviders
     }
 
     componentWillMount(){
@@ -111,15 +131,20 @@ class DBTools extends Component {
     }
 
     addPetProvider(petProviderToBeAdded) {
-      return this.petProvidersRef.child(petProviderToBeAdded).push(EXISTING_PET_STATE(petProviderToBeAdded));
+      console.log(petProviderToBeAdded)
+      return this.petProvidersRef.push(EXISTING_PET_PROVIDER(petProviderToBeAdded));
     }
 
     updatePetProvider(petProviderToBeUpdated){
-      this.petProvidersRef.child(petProviderToBeUpdated.animalType).child(petProviderToBeUpdated.petID).update(EXISTING_PET_STATE(petProviderToBeUpdated));
+      this.petProvidersRef.child(petProviderToBeUpdated).update(EXISTING_PET_PROVIDER(petProviderToBeUpdated));
     }
 
     deletePetProvider (id) {
       this.petProvidersRef.child(id).remove();
+    }
+
+    addUserToDatabase(user){
+
     }
 
     

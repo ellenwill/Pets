@@ -1,5 +1,4 @@
 import React from 'react'
-import firebase from '../firebase';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import PetDisplay from '../Test/PetDisplay';
+//import PetDisplay from '../Test/PetDisplay';
 
 const styles = {
   card: {
@@ -52,7 +51,7 @@ function PetCards(props) {
           <Typography component="p">
             <span>Adopt this adorable {props.pet.animalType}. </span>
             {props.pet.gender === 'male' && <span>He</span>}{props.pet.gender === 'female' && <span>She</span>}
-            {(props.pet.gender != 'male' && props.pet.gender != 'female') && <span>They</span>} will give you so many good cuddles.
+            {(props.pet.gender !== 'male' && props.pet.gender !== 'female') && <span>They</span>} will give you so many good cuddles.
             {//<PetDisplay pet={props.pet}/>
             }
           </Typography>
