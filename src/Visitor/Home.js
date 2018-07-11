@@ -13,7 +13,6 @@ class Home extends Component {
   render(){
     return(
       <div>
-
         <div class="homeHeader">
           <h1>ADOPET</h1>
           <p>A site to help you find your cuddle bug.</p>
@@ -34,7 +33,6 @@ class Home extends Component {
       <div class="homeFooter">
         Boopyloop made for COSC412 at Towson University
       </div>
-
     </div>
     )
   }
