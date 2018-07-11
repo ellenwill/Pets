@@ -3,7 +3,7 @@
 
 import React, {Component} from 'react';
 import firebase from '../firebase'
-import {PET_CONSTANTS, EXISTING_PET_STATE, EXISTING_PET_PROVIDER} from '../constants'
+import * as constants from '../constants'
 
 class DBTools extends Component {
     constructor(props){
@@ -20,7 +20,7 @@ class DBTools extends Component {
       this.removedItemsRef = firebase.database().ref('removedItems');
       this.userRef = firebase.database().ref('users');
 
-      this.newPet = PET_CONSTANTS.DEFAULT_PET_STATE
+      this.newPet = constants.PET_CONSTANTS.DEFAULT_PET_STATE
     }
 
     componentDidMount() {
@@ -39,8 +39,8 @@ class DBTools extends Component {
      */
     populatePets(filters) {
       let newPets = [];
-      for (let i = 0; i < PET_CONSTANTS.ANIMAL_TYPES.length; i++){
-        let type = PET_CONSTANTS.ANIMAL_TYPES[i]
+      for (let i = 0; i < constants.PET_CONSTANTS.ANIMAL_TYPES.length; i++){
+        let type = constants.PET_CONSTANTS.ANIMAL_TYPES[i]
         this.petsRef.child(type).on('value', snapshot => {
         let pets = snapshot.val();
         for (let pet in pets) {
@@ -113,16 +113,15 @@ class DBTools extends Component {
     }
 
     addPet(petToBeAdded) {
-      return this.petsRef.child(petToBeAdded.animalType).push(EXISTING_PET_STATE(petToBeAdded));
+      return this.petsRef.child(petToBeAdded.animalType).push(constants.EXISTING_PET_STATE(petToBeAdded));
     }
 
     updatePet(petToBeUpdated){
-      this.petsRef.child(petToBeUpdated.animalType).child(petToBeUpdated.petID).update(EXISTING_PET_STATE(petToBeUpdated));
+      this.petsRef.child(petToBeUpdated.animalType).child(petToBeUpdated.petID).update(constants.EXISTING_PET_STATE(petToBeUpdated));
     }
 
     deletePet (id) {
-      console.log(id)
-      let children = PET_CONSTANTS.ANIMAL_TYPES
+      let children = constants.PET_CONSTANTS.ANIMAL_TYPES
       this.petsRef.child(id).remove();
       for (let i = 0; i < children.length; i++)
         {
@@ -131,12 +130,11 @@ class DBTools extends Component {
     }
 
     addPetProvider(petProviderToBeAdded) {
-      console.log(petProviderToBeAdded)
-      return this.petProvidersRef.push(EXISTING_PET_PROVIDER(petProviderToBeAdded));
+      return this.petProvidersRef.push(constants.EXISTING_PET_PROVIDER(petProviderToBeAdded));
     }
 
     updatePetProvider(petProviderToBeUpdated){
-      this.petProvidersRef.child(petProviderToBeUpdated).update(EXISTING_PET_PROVIDER(petProviderToBeUpdated));
+      this.petProvidersRef.child(petProviderToBeUpdated).update(constants.EXISTING_PET_PROVIDER(petProviderToBeUpdated));
     }
 
     deletePetProvider (id) {
@@ -144,7 +142,11 @@ class DBTools extends Component {
     }
 
     addUserToDatabase(user){
+      return this.usersRef.push(constants.EXISTING_USER(user));
+    }
 
+    updateUserInDatabase(userToBeUpdated){
+      this.usersRef.child(userToBeUpdated).update(constants.EXISTING_USER(userToBeUpdated));
     }
 
     

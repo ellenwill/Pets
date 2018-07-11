@@ -126,3 +126,26 @@ export const PAYPAL_CONSTANTS ={
     PET_PROVIDER_1: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
     sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
 }
+
+export const DEFAULT_USER = {
+    databaseID: '',
+    uid: '',
+    email: '',
+    username: '',
+    photoURL: '',
+    petsOwned: [],
+    admin: false,
+    globalAdmin: false,
+}
+
+export function EXISTING_USER(user) {
+    let newUser = {};
+    if (user.databaseID){newUser.databaseID = user.databaseID} else{newUser.databaseID = ''}
+    if (user.uid){newUser.uid = user.uid} else{newUser.uid = ''}
+    if (user.email){newUser.email = user.email} else {newUser.email = ''}
+    if (user.username){newUser.usersame = user.username} else {newUser.usersame = ''}
+    if (user.photoURL){newUser.photoURL = user.photoURL} else {newUser.photoURL = ''}
+    if (user.petsOwned){newUser.petsOwned = user.petsOwned} else {newUser.petsOwned = []}
+    newUser.admin = user.admin;
+    newUser.globalAdmin = user.globalAdmin;
+}
