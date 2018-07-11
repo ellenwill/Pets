@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import scriptLoader from 'react-async-script-loader'
 import paypal from 'paypal-checkout'
-import {PAYPAL_ID} from '../constants'
+import {PAYPAL_CONSTANTS} from '../constants'
 
 
 
@@ -46,7 +46,7 @@ class PayPalButton extends Component {
 
   render() {
     const client = {
-      sandbox:    'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
+      sandbox:    PAYPAL_CONSTANTS.PET_PROVIDER1,
       production: 'xxxxxx',
     }
     const{
@@ -56,6 +56,7 @@ class PayPalButton extends Component {
       commit,
       onSuccess,
       onError,
+      amountToDonate,
     }= this.props;
 
       const {showButton} = this.state;
@@ -65,7 +66,7 @@ class PayPalButton extends Component {
       return paypal.rest.payment.create('sandbox', client,
         {
           transactions: [
-            { amount: { total: '1.00', currency: 'USD' } },
+            { amount: { total: this.props.amountToDonate, currency: 'USD' } },
           ],
         },
       )
@@ -101,6 +102,7 @@ class PayPalButton extends Component {
           onAuthorize={onAuthorize}
           onCancel={onCancel}
           onError={onError}
+          amountToDonate={amountToDonate}
         />}
       </div>
     );

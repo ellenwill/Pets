@@ -1,9 +1,10 @@
 import React from 'react';
 import PaypalButton from './PaypalButton';
-import {PAYPAL_ID} from '../constants'
+import {PAYPAL_CONSTANTS} from '../constants'
+import PetProviderDropdown from '../SiteParts/PetProviderDropdown'
 
 const CLIENT = {
-  sandbox: 'AZTgVpcOy33Gl1mv4qzOi3znpx3vLMMMo5Qad4_btMXUWJ4etnmNt-XzEYT9lriaYQhUIjK0hxyn41OQ',
+  sandbox: PAYPAL_CONSTANTS.PET_PROVIDER1,
   production: 'xxxXXX',
 };
 
@@ -12,6 +13,20 @@ const ENV = process.env.NODE_ENV === 'production'
   : 'sandbox';
 
 class PaypalRender extends React.Component {
+  constructor(props) {
+    super()
+    this.state = {
+    amountToDonate: '',
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  //need to set the ammount
+  handleChange(e) {
+  e.preventDefault();
+  this.setState({[e.target.name]: e.target.value})
+  }
+
   render() {
     const onSuccess = (payment) =>
       console.log('Successful payment!', payment);
@@ -23,6 +38,22 @@ class PaypalRender extends React.Component {
       console.log('Cancelled payment!', data);
 
     return (
+
+      <div className="AppHeader">
+         <div>
+         <p className="App-intro">
+            <h1> Donations: </h1>
+         </p>
+
+      <br/>
+      <input type="text" name='amountToDonate' placeholder="How much to donate?" onChange={this.handleChange} value={this.state.amountToDonate}/><br/>
+      <div>
+      </div>
+
+      <div>
+      <PetProviderDropdown/>
+      </div>
+
       <div>
         <PaypalButton
           client={CLIENT}
@@ -33,8 +64,13 @@ class PaypalRender extends React.Component {
           onSuccess={onSuccess}
           onError={onError}
           onCancel={onCancel}
+          amountToDonate={this.state.amountToDonate}
         />
       </div>
+      </div>
+      </div>
+
+
     );
   }
 }
