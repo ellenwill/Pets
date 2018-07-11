@@ -81,7 +81,7 @@ export const PET_PROVIDER = {
     location: {
         street: '',
         city: '',
-        state: '',
+        state: null,
         zip: '',
     },
     websiteURL: '',
@@ -91,6 +91,10 @@ export const PET_PROVIDER = {
     hours: '',
     imageURLs: [],
 }
+
+export const STATES = ['Maryland']
+
+//export const COUNTIES = ['Baltimore', 'Baltimore County']
 
 export function EXISTING_PET_PROVIDER(petProvider) {
     let newPetProvider = {}

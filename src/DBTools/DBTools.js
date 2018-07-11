@@ -14,6 +14,7 @@ class DBTools extends Component {
           pet: {}
         };
       this.itemsRef = firebase.database().ref('items');
+      this.petProvidersRef = firebase.database().ref('petProviders');
       this.usersRef = firebase.database().ref('users');
       this.petsRef = firebase.database().ref('pets');
       this.removedItemsRef = firebase.database().ref('removedItems');
@@ -108,6 +109,20 @@ class DBTools extends Component {
           this.petsRef.child(children[i]).child(id).remove();
         }
     }
+
+    addPetProvider(petProviderToBeAdded) {
+      return this.petProvidersRef.child(petProviderToBeAdded).push(EXISTING_PET_STATE(petProviderToBeAdded));
+    }
+
+    updatePetProvider(petProviderToBeUpdated){
+      this.petProvidersRef.child(petProviderToBeUpdated.animalType).child(petProviderToBeUpdated.petID).update(EXISTING_PET_STATE(petProviderToBeUpdated));
+    }
+
+    deletePetProvider (id) {
+      this.petProvidersRef.child(id).remove();
+    }
+
+    
 
     copyToRemoved(id)
     {
