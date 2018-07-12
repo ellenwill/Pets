@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import {PAYPAL_CONSTANTS} from '../constants'
 
 const styles = theme => ({
   button: {
@@ -19,13 +20,15 @@ const styles = theme => ({
 });
 
 class PetProviderDropdown extends React.Component {
-  state = {
-    age: '',
-    open: false,
-  };
+
+    state = {
+      petProvider: '',
+      open: false,
+    };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state.petProvider)
   };
 
   handleClose = () => {
@@ -47,21 +50,17 @@ class PetProviderDropdown extends React.Component {
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="demo-controlled-open-select">Provider</InputLabel>
           <Select
+            name = 'petProvider'
             open={this.state.open}
             onClose={this.handleClose}
             onOpen={this.handleOpen}
-            value={this.state.age}
+            value={this.state.petProvider}
             onChange={this.handleChange}
-            inputProps={{
-              name: 'age',
-              id: 'demo-controlled-open-select',
-            }}
+
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>PetProvider1</MenuItem>
-            <MenuItem value={20}>PetProvider2</MenuItem>
+
+            <MenuItem value={PAYPAL_CONSTANTS.PET_PROVIDER_TEST1}>PetProvider1</MenuItem>
+            <MenuItem value={PAYPAL_CONSTANTS.PET_PROVIDER_TEST2}>PetProvider2</MenuItem>
             <MenuItem value={30}>PetProvider3</MenuItem>
           </Select>
         </FormControl>

@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom'
 import scriptLoader from 'react-async-script-loader'
 import paypal from 'paypal-checkout'
 import {PAYPAL_CONSTANTS} from '../constants'
+import PetProviderDropdown from '../SiteParts/PetProviderDropdown'
+import PaypalRender from '../SiteParts/PaypalRender'
+
 
 
 
@@ -15,10 +18,6 @@ class PayPalButton extends Component {
     window.ReactDOM = ReactDOM
     this.state = {
       showButton: false,
-      client: {
-      sandbox:    PAYPAL_CONSTANTS.PET_PROVIDER_1,
-      production: 'xxxxxx',
-    }
     }
   }
 
@@ -49,7 +48,11 @@ class PayPalButton extends Component {
   }
 
   render() {
-    
+    const client = {
+
+      sandbox:    this.props.petProvider,
+      production: 'xxxxxx',
+    }
     const{
       total,
       currency,
@@ -58,13 +61,14 @@ class PayPalButton extends Component {
       onSuccess,
       onError,
       amountToDonate,
+      petProvider,
     }= this.props;
 
       const {showButton} = this.state;
 
 
     const payment = () => {
-      return paypal.rest.payment.create('sandbox', this.state.client,
+      return paypal.rest.payment.create('sandbox', client,
         {
           transactions: [
             { amount: { total: this.props.amountToDonate, currency: 'USD' } },
@@ -96,14 +100,16 @@ class PayPalButton extends Component {
     return (
       <div>
         {showButton && <PayPalButton
+          petProvider={petProvider}
           env={env}
-          client={this.state.client}
+          client={client}
           commit={commit}
           payment={payment}
           onAuthorize={onAuthorize}
           onCancel={onCancel}
           onError={onError}
           amountToDonate={amountToDonate}
+
         />}
       </div>
     );
