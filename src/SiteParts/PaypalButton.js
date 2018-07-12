@@ -15,6 +15,10 @@ class PayPalButton extends Component {
     window.ReactDOM = ReactDOM
     this.state = {
       showButton: false,
+      client: {
+      sandbox:    PAYPAL_CONSTANTS.PET_PROVIDER_1,
+      production: 'xxxxxx',
+    }
     }
   }
 
@@ -45,10 +49,7 @@ class PayPalButton extends Component {
   }
 
   render() {
-    const client = {
-      sandbox:    PAYPAL_CONSTANTS.PET_PROVIDER1,
-      production: 'xxxxxx',
-    }
+    
     const{
       total,
       currency,
@@ -63,7 +64,7 @@ class PayPalButton extends Component {
 
 
     const payment = () => {
-      return paypal.rest.payment.create('sandbox', client,
+      return paypal.rest.payment.create('sandbox', this.state.client,
         {
           transactions: [
             { amount: { total: this.props.amountToDonate, currency: 'USD' } },
@@ -96,7 +97,7 @@ class PayPalButton extends Component {
       <div>
         {showButton && <PayPalButton
           env={env}
-          client={client}
+          client={this.state.client}
           commit={commit}
           payment={payment}
           onAuthorize={onAuthorize}
