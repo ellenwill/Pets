@@ -21,19 +21,20 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const NavigationBar = () => {
     return(
-        <div style={{color:"#FFFFFF"}}>
+        <div style={{color:"#FFFFFF" }}>
         <AppBar title="Pet Adoption Site" position="static">
             <Toolbar style={{backgroundColor: "#05349A"}}>
-                <Typography variant="title">
-                <Link to = {routes.HOME}><img src={TransparentLogo} alt="Adopet" width="8%"/></Link>
-                <Link to = {routes.PET_LIST}><Button variant="contained" color="primary">Pet List</Button></Link>
-                <Link to = {routes.PET_PROVIDERS_LIST}> <Button variant="contained" color="primary">Pet Providers </Button></Link>
-                  <div class = "shiftLoginRight">
-                    <AccountCircle style={{ color: 'white' }}/>
-                    <Link to = {routes.LOGIN}> Visitor Login </Link>
-                    <Link to = {routes.ADMIN_LOGIN}> Admin Login </Link>
+                  <div style={{display: "flex", alignItems: "center"}}>
+                    <Link to = {routes.HOME}><img src={TransparentLogo} alt="Adopet" width="100px"/></Link>
+                    <Link to = {routes.PET_LIST}><Button variant="contained" color="primary">Pet List</Button></Link>
+                    <Link to = {routes.PET_PROVIDERS_LIST}> <Button variant="contained" color="primary">Pet Providers </Button></Link>
                   </div>
-                </Typography>
+                  <div style={{flex:1}}></div>
+                  <div>
+                      <AccountCircle style={{ color: 'white' }}/>
+                      <Link to = {routes.LOGIN}> Visitor Login </Link>
+                      <Link to = {routes.ADMIN_LOGIN}> Admin Login </Link>
+                  </div>
             </Toolbar>
         </AppBar>
         </div>
