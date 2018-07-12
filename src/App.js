@@ -14,6 +14,7 @@ import PaypalRender from './SiteParts/PaypalRender'
 import Home from './Visitor/Home'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
+import PetProfile from './SiteParts/PetProfile'
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PaypalRender' component={PaypalRender} />
           <Route path='/FAQ' component={FAQ}/>
+          <Route path='/pet/:petID' component={PetProfile}/>
         </div>
       </div>
       </BrowserRouter>
