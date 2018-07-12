@@ -4,7 +4,7 @@ import {PAYPAL_CONSTANTS} from '../constants'
 import PetProviderDropdown from '../SiteParts/PetProviderDropdown'
 
 const CLIENT = {
-  sandbox: PAYPAL_CONSTANTS.PET_PROVIDER1,
+  sandbox: '',
   production: 'xxxXXX',
 };
 
@@ -17,6 +17,7 @@ class PaypalRender extends React.Component {
     super()
     this.state = {
     amountToDonate: '',
+    petProvider:''
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -51,7 +52,7 @@ class PaypalRender extends React.Component {
       </div>
 
       <div>
-      <PetProviderDropdown/>
+      <PetProviderDropdown name='petProvider' onChange={this.handleChange} value={this.state.petProvider}/>
       </div>
 
       <div>
@@ -65,6 +66,7 @@ class PaypalRender extends React.Component {
           onError={onError}
           onCancel={onCancel}
           amountToDonate={this.state.amountToDonate}
+          petProvider={this.state.petProvider}
         />
       </div>
       </div>
