@@ -57,7 +57,7 @@ function ProviderCards(props) {
 
           <CardActions>
           <Button size="small" color="primary">
-            <Link to ={"/pet/" + props.petProvider.petProviderID}> View More </Link>
+            <Link to ={"/petProvider/" + props.petProvider.petProviderID}> View More </Link>
           </Button>
           </CardActions>
       </Card>
