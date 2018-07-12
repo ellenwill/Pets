@@ -41,7 +41,7 @@ class NavigationBar extends React.Component {
                         onClick={this.handleClick}
                         style={{fontSize:"18px", color:"white"}}
                       >
-                        <AccountCircle style={{ color: 'white', fontSize:"18px" }}/>   Login
+                        <AccountCircle style={{ color: 'white', fontSize:"40px" }}/>
                       </Button>
                       <Menu
                         id="simple-menu"
