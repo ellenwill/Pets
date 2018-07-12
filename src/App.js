@@ -15,6 +15,7 @@ import Home from './Visitor/Home'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
 import PetProfile from './SiteParts/PetProfile'
+import ProviderProfile from './SiteParts/ProviderProfile'
 import * as constants from "./constants"
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path = '/PaypalRender' component={PaypalRender} />
           <Route path='/FAQ' component={FAQ}/>
           <Route path='/pet/:petID' component={PetProfile}/>
+          <Route path='/petProvider/:petProviderID' component={ProviderProfile}/>
         </div>
       </div>
       </BrowserRouter>
