@@ -22,6 +22,8 @@ class App extends Component {
 
   constructor(){
     super()
+
+    //Store the user, which is updated when they login (or log out)
     this.state=({
       user: constants.GET_USER()
     })
@@ -29,6 +31,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  //The application is forced to update if someone logs in/out
   handleChange(){
     this.setState({user: constants.GET_USER()})
     this.forceUpdate()

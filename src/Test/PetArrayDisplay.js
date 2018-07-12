@@ -22,6 +22,7 @@ class PetArrayDisplay extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
+    //Lifecycle
     componentWillMount() {
       let newPets = this.tools.populatePets(this.props.filters);
       this.setPets(newPets)
@@ -34,10 +35,13 @@ class PetArrayDisplay extends Component {
       
     }
 
+    //When anything in the PetDisplay object updates, this method is called.
     handleChange(){
       this.forceUpdate();
     }
 
+    //Explicitly updates the state relating to the pets array.
+    //Not used.
     setPets(newPets){
       this.setState({
         pets: newPets,

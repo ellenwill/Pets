@@ -11,6 +11,8 @@ function setErrorMsg(error) {
 export default class Login extends Component {
   state = { loginMessage: null }
 
+  //When the user logs n, this passes the username and password to the login function of
+  //Firebase.auth()
   handleSubmit = (e) => {
     e.preventDefault()
     login(this.email.value, this.pw.value)
@@ -18,6 +20,8 @@ export default class Login extends Component {
           this.setState(setErrorMsg('Invalid username/password.'))
         })
   }
+
+  //Just what it says on the box.
   resetPassword = () => {
     resetPassword(this.email.value)
       .then(() => this.setState(setErrorMsg(`Password reset email sent to ${this.email.value}.`)))

@@ -11,6 +11,8 @@ export default class Register extends Component {
   state = { registerError: null }
   handleSubmit = (e) => {
     e.preventDefault()
+
+    //When the user logs in, their e-mail and password are sent to the auth function.
     auth(this.email.value, this.pw.value)
       .catch(e => this.setState(setErrorMsg(e)))
   }

@@ -7,6 +7,11 @@ class AddPet extends Component{
 
   constructor(props) {
     super(props);
+
+    //Check if the pets object was passed. If it was, then
+    //we're editing an existing pet and we need to populate its
+    //properties. Otherwise, we want the 
+    //default state of a pet object from the constants file.
     if (props.pet) {this.state = EXISTING_PET_STATE(props.pet)}
     else {this.state = PET_CONSTANTS.DEFAULT_PET_STATE}
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +26,6 @@ class AddPet extends Component{
     //If the pet doesn't already exist, we can't have filled in its info.
     if (!this.state.petID)
     {
-      //console.log(props.petID)
         this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);  
     }
     else
@@ -82,6 +86,7 @@ class AddPet extends Component{
     )
   }
 
+  //A menu to select the type of pet. It will auto-fill options from the array in constants.
   petTypeMenu(){
     return <div>
     <label><select name="animalType" onChange={this.handleChange} value={this.state.animalType}>
@@ -90,6 +95,7 @@ class AddPet extends Component{
     </select></label></div>
   }
 
+  //See above.
   genderMenu(){
     return <div>
     <label><select name="gender" onChange={this.handleChange} value={this.state.gender}>
@@ -98,6 +104,10 @@ class AddPet extends Component{
     </select></label></div>
   }
 
+  //Same as above, but this must be manually updated whenever a new type of animal is added.
+  //It's stupid, but react won't let you loop through nested objects, and there's no usable
+  //method to convert a variable name/reference plus string like PET_CONSTANTS + 'dog' into just a
+  //variable name.
   breedsMenu(){
     var i;
     if (this.state.animalType === 'Dog'){
@@ -113,6 +123,7 @@ class AddPet extends Component{
     </select>
     }
 
+  //Loops through the {animal type}-specific traits in constants.
   dogSpecificTraits(){
     let list = PET_CONSTANTS.ANIMAL_TRAITS.DOG_SPECIFIC_TRAITS;
     return <div><select name="petSize" onChange={this.handleChange} value={this.state.petSize}>
@@ -133,13 +144,15 @@ class AddPet extends Component{
     </label>
   }
 
+  //When something is changed in the forms, this rewrites the state of this.
   handleChange(e) {
     e.preventDefault();
     this.setState({
     [e.target.name]: e.target.value,
-    //petProviderID: constants.GET_USER().adminsFor[0] //undefined even when logged in with an admin.
     });
   }
+
+  //When the button is clicked on the form, this method is called.
   handleSubmit(e) {
     e.preventDefault();
     //Submit the pet if it doesn't exist, otherwise update it.
@@ -148,7 +161,6 @@ class AddPet extends Component{
     }
     else {this.submitter.updatePet(this.state)
     this.props.onSubmit(e.target.value)}
-    //this.setState(this.state)
     return key;
   }
 }

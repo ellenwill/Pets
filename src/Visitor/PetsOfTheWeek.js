@@ -24,6 +24,10 @@ class PetsOfTheWeek extends Component{
 
   componentWillUnmount(){}
 
+  //Populates the full pet array, then calls a Fisher-Yates shuffler on the array.
+  //The return value is an array of 3 (in this case) pet objects to be displayed.
+  //Ideally, this array should be stored in the database, and updated once a week,
+  //but I didn't know how to do that in the time remaining.
   randomPets(){
       let pets = new DBTools().populatePets()
       return this.fisherYates(pets, 3)
@@ -41,31 +45,28 @@ class PetsOfTheWeek extends Component{
         myArray[r] = t;
         console.log(myArray)
     }
-    console.log(myArray.length)
-    console.log(myArray.slice(0,nb_picks))
-    console.log(myArray)
-    return myArray.slice(0,nb_picks);
-}
 
-    render(){
-      return(
-        <div>{
-            <ul>
-            {this.petsOfTheWeek.length > 0 &&
-              this.petsOfTheWeek.map((pet) => {
-                return (
-                <div>
-                      <PetCards pet={pet}/>
-                </div>
-                )
-              })
-            
-            }
-            </ul>
+    //These three console logs are a prime example of just how terrible this language is.
+    //console.log(myArray.length)
+    //console.log(myArray.slice(0,nb_picks))
+    //console.log(myArray)
+    return myArray.slice(0,nb_picks);
+  }
+
+  render(){
+    return(
+      <div>
+          {this.petsOfTheWeek.length > 0 &&
+            this.petsOfTheWeek.map((pet) => {
+              return (
+              <div>
+                    <PetCards pet={pet}/>
+              </div>
+              )
+            })
         }</div>
       )
     }
-
   }
 
   export default PetsOfTheWeek;
