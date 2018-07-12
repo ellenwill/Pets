@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import TransparentLogo from "./Logo2.PNG";
 import * as routes from "../routes";
+import * as constants from '../constants'
 import Button from '@material-ui/core/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
@@ -24,6 +25,7 @@ class NavigationBar extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
+    const userName = constants.GET_USER().email;
     return(
         <div style={{color:"#FFFFFF" }}>
         <AppBar title="Pet Adoption Site" position="static">
@@ -41,7 +43,8 @@ class NavigationBar extends React.Component {
                         onClick={this.handleClick}
                         style={{fontSize:"18px", color:"white"}}
                       >
-                        <AccountCircle style={{ color: 'white', fontSize:"18px" }}/>   Login
+                        <AccountCircle style={{ color: 'white', fontSize:"18px" }}/>
+                        {userName > 0 ? userName : <span>Login</span>}
                       </Button>
                       <Menu
                         id="simple-menu"
