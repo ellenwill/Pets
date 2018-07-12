@@ -71,6 +71,29 @@ class DBTools extends Component {
       return newPets
     }
 
+    getPetByID(petID) {
+      let newPet = {};
+      for (let i = 0; i < constants.PET_CONSTANTS.ANIMAL_TYPES.length; i++){
+        let type = constants.PET_CONSTANTS.ANIMAL_TYPES[i]
+        this.petsRef.child(type).on('value', snapshot => {
+        let pets = snapshot.val();
+        for (let pet in pets) {
+
+          //"Pet" is the actual key for a pet child, e.g. LGnqMxecb_TSnm7E8wz
+          //These are properties that might appear in the database entry.
+          //These are essentially available search criteria.
+          if (pet == petID)
+              
+            {
+              newPet = constants.EXISTING_PET_STATE(pets[pet]);
+              //console.log(newPet)
+            }
+          }
+        });
+      }
+      return newPet
+    }
+
     populatePetProviders(filters) {
       let newPetProviders = [];
       this.petProvidersRef.on('value', snapshot => {

@@ -71,7 +71,6 @@ export function EXISTING_PET_STATE(pet)
     else if (pet.animalType === 'Cat') {
         newPet.petHair = pet.petHair;
     }
-    console.log(newPet)
     return newPet;
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { login, resetPassword } from '../helpers/auth'
+import firebase from '../firebase'
 
 function setErrorMsg(error) {
   return {
@@ -12,10 +13,11 @@ export default class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    let a = login(this.email.value, this.pw.value)
+    login(this.email.value, this.pw.value)
       .catch((error) => {
           this.setState(setErrorMsg('Invalid username/password.'))
         })
+    console.log(firebase.auth())
   }
   resetPassword = () => {
     resetPassword(this.email.value)

@@ -25,7 +25,7 @@ class AddPet extends Component{
     }
     else
     {
-      this.fillInfo(this.submitter.populatePets(this.state.petID)[0])
+      this.setState(this.submitter.getPetByID(this.state.petID))
     }
   }
 
