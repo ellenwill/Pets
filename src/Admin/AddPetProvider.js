@@ -15,12 +15,12 @@ class AddPetProvider extends Component{
   }
 
   componentDidMount(props){
-    
+
     //If the pet provider doesn't already exist, we can't have filled in its info.
     if (!this.state.petProviderID)
     {
       //console.log(props.petID)
-        this.setState(PET_PROVIDER);  
+        this.setState(PET_PROVIDER);
     }
     else
     {
@@ -47,13 +47,18 @@ class AddPetProvider extends Component{
          <section className='testForm'>
            <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
             {this.locationMenu()}
-            {this.state.usstate && 
+            {this.state.usstate &&
               <div>
               Name: <input type="text" name="name" placeholder="What is the facility's name?" onChange={this.handleChange} value={this.state.name}/><br/>
               <input type="text" name="street" placeholder="Street Address" onChange={this.handleChange} value={this.state.street}/><br/>
               <input type="text" name="city" placeholder="City" onChange={this.handleChange} value={this.state.city}/><br/>
               <input type="text" name="zip" placeholder="Zip" onChange={this.handleChange} value={this.state.zip}/><br/>
               <input type="text" name="photoURL" placeholder="Enter photo URL." onChange={this.handleChange} value={this.state.photoURL}/><br/>
+              <input type="text" name="websiteURL" placeholder="Enter website URL." onChange={this.handleChange} value={this.state.websiteURL}/><br/>
+              <input type="text" name="description" placeholder="Enter a description of your establishment." onChange={this.handleChange} value={this.state.description}/><br/>
+              <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={this.handleChange} value={this.state.phoneNumber}/><br/>
+              <input type="text" name="email" placeholder="Enter Email Address" onChange={this.handleChange} value={this.state.email}/><br/>
+              <input type="text" name="hours" placeholder="Format: Day(s):hours, Day(s):hours, .." onChange={this.handleChange} value={this.state.hours}/><br/>
               {!this.state.petProviderID && <button> Add Pet Provider </button>}
               {this.state.petProviderID && <button> Update Pet Provider</button>
             }
