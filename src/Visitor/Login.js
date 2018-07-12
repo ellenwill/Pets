@@ -17,7 +17,6 @@ export default class Login extends Component {
       .catch((error) => {
           this.setState(setErrorMsg('Invalid username/password.'))
         })
-    console.log(firebase.auth())
   }
   resetPassword = () => {
     resetPassword(this.email.value)

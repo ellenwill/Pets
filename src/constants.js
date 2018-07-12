@@ -148,3 +148,15 @@ export function EXISTING_USER(user) {
     newUser.admin = user.admin;
     newUser.globalAdmin = user.globalAdmin;
 }
+
+let CURRENT_USER = DEFAULT_USER
+
+export function SET_USER(user){
+    
+    CURRENT_USER = user;
+}
+
+export function GET_USER(){
+    return CURRENT_USER
+}
+

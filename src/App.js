@@ -15,6 +15,7 @@ import Home from './Visitor/Home'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
 import PetProfile from './SiteParts/PetProfile'
+import * as constants from "./constants"
 
 class App extends Component {
 
@@ -27,7 +28,8 @@ class App extends Component {
             <TestNavBar/>
         <div> {/*these are every PAGE that goes on the site. If you want something that is on every page, add as a div around*/}
           <Route path='/Home' component={Home} />
-          <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}
+          {constants.GET_USER().admin && <Route path='/AddPet' component={AddPet} />} {/*for the admin to add new pets*/
+          }
           <Route path='/AddPetProvider' component={AddPetProvider} /> {/*for the global admin to add new petProviders*/}
           <Route path='/PetList' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
           <Route path='/PetProviderList' component={PetProviderList} />

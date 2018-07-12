@@ -119,6 +119,22 @@ class DBTools extends Component {
       return newPetProviders
     }
 
+    getUserByID(userID) {
+      let newUser = {};
+      this.usersRef.on('value', snapshot => {
+      let users = snapshot.val();
+      for (let user in users) {
+        if (user == userID)
+              
+            {
+              newUser = constants.EXISTING_USER(users[user]);
+              //console.log(newUser)
+            }
+          }
+        });
+      return newUser
+    }
+
     componentWillMount(){
     }
 
@@ -172,7 +188,9 @@ class DBTools extends Component {
       this.usersRef.child(userToBeUpdated).update(constants.EXISTING_USER(userToBeUpdated));
     }
 
-    
+    setUser(userID){
+      constants.SET_USER(this.getUserByID(userID));
+    }
 
     copyToRemoved(id)
     {

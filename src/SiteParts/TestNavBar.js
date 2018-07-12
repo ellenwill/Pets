@@ -11,6 +11,7 @@ import ALoginForm from '../Admin/ALoginForm'
 import Home from '../Visitor/Home'
 import Logo from './Logo.JPG'
 import TransparentLogo from "./Logo2.PNG";
+import * as constants from '../constants'
 import * as routes from "../routes";
 
 const NavigationBar = () => {
@@ -19,7 +20,7 @@ const NavigationBar = () => {
         <AppBar title="Pet Adoption Site" position="static">
             <Toolbar style={{backgroundColor: "#00000A"}}>
                 <Typography variant="title">
-                <Link to = {routes.ADD_PET}> AddPet Link </Link>
+                {constants.GET_USER().admin && <Link to = {routes.ADD_PET}> AddPet Link </Link>}
                 <Link to = {routes.ADD_PET_PROVIDER}> AddPetProvider Link </Link>
                 <Link to = {routes.PET_LIST}> Pet List </Link>
                 <Link to = {routes.PET_PROVIDERS_LIST}> Pet Providers </Link>

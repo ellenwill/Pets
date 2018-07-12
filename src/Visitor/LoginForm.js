@@ -7,6 +7,7 @@ import Home from './Home'
 import firebase from '../firebase';
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../firebase';
+import * as constants from '../constants'
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
