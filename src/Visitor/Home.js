@@ -7,6 +7,8 @@ import FindPetPaper from './HomeParts/FindPetPaper'
 import PaypalPaper from './HomeParts/PaypalPaper'
 import FAQPaper from './HomeParts/FAQPaper'
 import AboutUsPaper from './HomeParts/AboutUsPaper'
+import PetsOfTheWeek from './PetsOfTheWeek'
+import DBTools from '../DBTools/DBTools';
 
 
 class Home extends Component {
@@ -20,7 +22,8 @@ class Home extends Component {
 
       <div class="homeRow">
         <div class="homeMain">
-          <FindPetPaper/>
+          <FindPetPaper/><br/>
+          <PetsOfTheWeek/>
         </div>
         <div class="homeSide">
             <PaypalPaper/>
