@@ -12,6 +12,16 @@ import DBTools from '../DBTools/DBTools';
 
 
 class Home extends Component {
+
+  constructor(){
+    super()
+    this.state = {loaded: false}
+  }
+
+  handleChange(){
+    this.setState({loaded: true})
+  }
+
   render(){
     return(
       <div>
@@ -23,7 +33,7 @@ class Home extends Component {
       <div class="homeRow">
         <div class="homeMain">
           <FindPetPaper/><br/>
-          <PetsOfTheWeek/>
+          <PetsOfTheWeek onChange={this.handleChange}/>
         </div>
         <div class="homeSide">
             <PaypalPaper/>

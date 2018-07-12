@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DBTools from '../DBTools/DBTools'
 import {PET_CONSTANTS, EXISTING_PET_STATE} from '../constants'
+import * as constants from '../constants'
 
 class AddPet extends Component{
 
@@ -135,7 +136,8 @@ class AddPet extends Component{
   handleChange(e) {
     e.preventDefault();
     this.setState({
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+    //petProviderID: constants.GET_USER().adminsFor[0] //undefined even when logged in with an admin.
     });
   }
   handleSubmit(e) {

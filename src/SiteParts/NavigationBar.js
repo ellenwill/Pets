@@ -11,9 +11,17 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 class NavigationBar extends React.Component {
-  state = {
-    anchorEl: null,
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      anchorEl: null,
+      user: {}
+    };
+  }
+
+  componentDidMount(){
+    this.setState({user: constants.GET_USER()})
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -25,7 +33,6 @@ class NavigationBar extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const userName = constants.GET_USER().email;
     return(
         <div style={{color:"#FFFFFF" }}>
         <AppBar title="Pet Adoption Site" position="static">
@@ -43,9 +50,7 @@ class NavigationBar extends React.Component {
                         onClick={this.handleClick}
                         style={{fontSize:"18px", color:"white"}}
                       >
-                        <AccountCircle style={{ color: 'white', fontSize:"18px" }}/>
-                        {userName > 0 ? userName : <span>Login</span>}
-                      </Button>
+                        <AccountCircle style={{ color: 'white', fontSize:"18px" }}/> Login </Button>
                       <Menu
                         id="simple-menu"
                         anchorEl={anchorEl}

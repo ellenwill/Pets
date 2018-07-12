@@ -20,20 +20,34 @@ import * as constants from "./constants"
 
 class App extends Component {
 
+  constructor(){
+    super()
+    this.state=({
+      user: constants.GET_USER()
+    })
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(){
+    this.setState({user: constants.GET_USER()})
+    this.forceUpdate()
+  }
+
   render() {
     return(
       <BrowserRouter>
       <div>
       {/*THIS WILL BE EVERYWHERE*/}
-      <NavigationBar/>
+        <NavigationBar user={this.user}/>
             <TestNavBar/>
         <div> {/*these are every PAGE that goes on the site. If you want something that is on every page, add as a div around*/}
           <Route path='/Home' component={Home} />
-          <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}
-          <Route path='/AddPetProvider' component={AddPetProvider} /> {/*for the global admin to add new petProviders*/}
+          {this.state.user.admin && <Route path='/AddPet' component={AddPet} />} {/*for the admin to add new pets*/}
+          {this.state.user.admin && <Route path='/AddPetProvider' component={AddPetProvider} />} {/*for the global admin to add new petProviders*/}
           <Route path='/PetList' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
           <Route path='/PetProviderList' component={PetProviderList} />
-          <Route path='/LoginForm' component={LoginForm} />
+          <Route path='/LoginForm' component={LoginForm} onChange={this.handleChange}/>
           <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PaypalRender' component={PaypalRender} />
