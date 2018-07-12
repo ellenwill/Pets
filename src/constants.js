@@ -90,6 +90,7 @@ export const PET_PROVIDER = {
     email: '',
     hours: '',
     photoURL: '',
+    admins: [],         //users who admin for this
 }
 
 export const STATES = ['Maryland']
@@ -114,6 +115,9 @@ export function EXISTING_PET_PROVIDER(petProvider) {
     newPetProvider.hours = petProvider.hours;
     newPetProvider.photoURL = petProvider.photoURL;
 
+    if (petProvider.admins) {newPetProvider.admins = petProvider.admins}
+    else {newPetProvider.usstate = []}
+
     return newPetProvider;
 }
 
@@ -132,8 +136,9 @@ export const DEFAULT_USER = {
     email: '',
     username: '',
     photoURL: '',
-    petsOwned: [],
-    admin: false,
+    petsOwned: [],  //Pets they own. This is their personal pets, not their institution's.
+    adminFor: [],   //Pet Providers they are the admin for. The PetProvider should check if this person is their admin
+    admin: false,   //Whether they are an admin
     globalAdmin: false,
 }
 
@@ -145,6 +150,7 @@ export function EXISTING_USER(user) {
     if (user.username){newUser.usersame = user.username} else {newUser.usersame = ''}
     if (user.photoURL){newUser.photoURL = user.photoURL} else {newUser.photoURL = ''}
     if (user.petsOwned){newUser.petsOwned = user.petsOwned} else {newUser.petsOwned = []}
+    if (user.adminFor){newUser.adminFor = user.adminFor} else {newUser.adminFor = []}
     newUser.admin = user.admin;
     newUser.globalAdmin = user.globalAdmin;
 }
