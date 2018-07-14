@@ -14,6 +14,8 @@ import PaypalRender from './SiteParts/PaypalRender'
 import Home from './Visitor/Home'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
+import PetDisplay from './Test/PetDisplay'
+import PetArrayDisplay from './Admin/PetArrayDisplay'
 import PetProfile from './SiteParts/PetProfile'
 import ProviderProfile from './SiteParts/ProviderProfile'
 import * as constants from "./constants"
@@ -54,6 +56,8 @@ class App extends Component {
           <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PaypalRender' component={PaypalRender} />
+          <Route path = '/PetDisplay' component={PetDisplay} />
+          <Route path = '/PetArrayDisplay' component={PetArrayDisplay} />
           <Route path='/FAQ' component={FAQ}/>
           <Route path='/pet/:petID' component={PetProfile}/>
           <Route path='/petProvider/:petProviderID' component={ProviderProfile}/>
