@@ -50,7 +50,7 @@ class PayPalButton extends Component {
   render() {
     const client = {
 
-      sandbox:    this.props.petProvider,
+      sandbox:    'AbVZZuhh21jS6GIn6_q4hwexB1JNPCNH7u7Le2o-JamBeCWZ5EYK6HsMqL5EZ3byrbal5GFvF3ElNSU9',
       production: 'xxxxxx',
     }
     const{
@@ -61,7 +61,6 @@ class PayPalButton extends Component {
       onSuccess,
       onError,
       amountToDonate,
-      petProvider,
     }= this.props;
 
       const {showButton} = this.state;
@@ -100,7 +99,7 @@ class PayPalButton extends Component {
     return (
       <div>
         {showButton && <PayPalButton
-          petProvider={petProvider}
+          
           env={env}
           client={client}
           commit={commit}
