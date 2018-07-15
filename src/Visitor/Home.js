@@ -7,8 +7,11 @@ import FindPetPaper from './HomeParts/FindPetPaper'
 import PaypalPaper from './HomeParts/PaypalPaper'
 import FAQPaper from './HomeParts/FAQPaper'
 import AboutUsPaper from './HomeParts/AboutUsPaper'
-import PetsOfTheWeek from './PetsOfTheWeek'
+import PetsOfTheWeekPaper from './HomeParts/PetsOfTheWeekPaper'
 import DBTools from '../DBTools/DBTools';
+import PetCards1 from '../SiteParts/VisualParts/PetCards1'
+import PetCards2 from '../SiteParts/VisualParts/PetCards2'
+import PetCards3 from '../SiteParts/VisualParts/PetCards3'
 
 
 class Home extends Component {
@@ -32,8 +35,11 @@ class Home extends Component {
 
       <div class="homeRow">
         <div class="homeMain">
+          <div class="flexCardContainer">
+            <PetsOfTheWeekPaper/>
+          </div>
+        <br/>
           <FindPetPaper/><br/>
-          <PetsOfTheWeek onChange={this.handleChange}/>
         </div>
         <div class="homeSide">
             <PaypalPaper/>

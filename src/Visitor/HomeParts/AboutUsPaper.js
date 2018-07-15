@@ -20,7 +20,9 @@ function AboutUsPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          About Us
+          <div style={{color:"#05349A"}}>
+            <b>About Us</b>
+          </div>
         </Typography>
         <Typography component="p">
                 This is a blurb abt what this site is

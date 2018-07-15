@@ -31,19 +31,26 @@ a {
 .homeRow {  /* Column container */
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 100px;
 }
 
 .homeSide {
     flex: 30%;
     background-color: #f1f1f1;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Main column */
 .homeMain {
-    flex: 70%;
+    flex: 60%;
     background-color: white;
     padding: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15%;
 }
 
 

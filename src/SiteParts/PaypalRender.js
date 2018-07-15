@@ -43,18 +43,21 @@ class PaypalRender extends React.Component {
       <div className="AppHeader">
          <div>
          <p className="App-intro">
-            <h1> Donations: </h1>
+         <div style={{color:"#05349A"}}>
+            <h1> Donate to one of our Pet Providers today! </h1>
+          </div>
          </p>
 
       <br/>
-      <input type="text" name='amountToDonate' placeholder="How much to donate?" onChange={this.handleChange} value={this.state.amountToDonate}/><br/>
+      <p> How much would you like to donate? </p>
+      <input type="text" name='amountToDonate' placeholder="Amount to Donate" onChange={this.handleChange} value={this.state.amountToDonate}/><br/>
       <div>
       </div>
-
+<br/>
       <div>
       <PetProviderDropdown />
       </div>
-
+<br/>
       <div>
         <PaypalButton
           client={CLIENT}
@@ -66,7 +69,6 @@ class PaypalRender extends React.Component {
           onError={onError}
           onCancel={onCancel}
           amountToDonate={this.state.amountToDonate}
-
         />
       </div>
       </div>

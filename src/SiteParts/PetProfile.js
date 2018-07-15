@@ -8,9 +8,9 @@ return(
 <div>
   <div>{props.match.params.petID}<PetDisplay pet={new DBTools().getPetByID(props.match.params.petID)}/></div>
 
-
       <div class="homeHeader">
-        <h1>{props.match.params.petName}</h1>
+        <h1>Pet Name</h1>
+        <p>{new DBTools().getPetByID(props.match.params.petID).petName}</p>
       </div>
 
     <div class="homeRow">

@@ -21,7 +21,9 @@ function PaypalPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          Donate
+        <div style={{color:"#05349A"}}>
+          <b>Donate</b>
+        </div>
         </Typography>
         <Typography component="p">
                 <Link to = 'PaypalRender'> Click here to donate </Link>

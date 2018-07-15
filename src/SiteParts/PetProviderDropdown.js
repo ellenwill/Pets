@@ -44,9 +44,9 @@ class PetProviderDropdown extends React.Component {
 
     return (
       <form autoComplete="off">
-        <Button className={classes.button} onClick={this.handleOpen}>
-          Who would you like to Donate to?
-        </Button>
+
+Who would you like to donate it to?
+<br/>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="demo-controlled-open-select">Provider</InputLabel>
           <Select

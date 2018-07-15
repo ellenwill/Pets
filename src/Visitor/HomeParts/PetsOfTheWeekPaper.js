@@ -4,7 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import FAQ from '../FAQ'
+import PetCards1 from '../../SiteParts/VisualParts/PetCards1'
+import PetCards2 from '../../SiteParts/VisualParts/PetCards2'
+import PetCards3 from '../../SiteParts/VisualParts/PetCards3'
+
 
 const styles = theme => ({
   root: {
@@ -14,27 +17,31 @@ const styles = theme => ({
   },
 });
 
-function FAQPaper(props) {
+function PetsOfTheWeekPaper(props) {
   const { classes } = props;
 
   return (
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-        <div style={{color:"#05349A"}}>
-          <b>Frequently Asked Questions</b>
-        </div>
+          <div style={{color:"#05349A"}}>
+          <b>Pets Of The Week</b>
+          </div>
         </Typography>
         <Typography component="p">
-                <Link to = 'FAQ'> Click here to learn more </Link>
+          <div class="flexCardContainer">
+            <PetCards3/>
+            <PetCards1/>
+            <PetCards2/>
+          </div>
         </Typography>
       </Paper>
     </div>
   );
 }
 
-FAQPaper.propTypes = {
+PetsOfTheWeekPaper.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FAQPaper);
+export default withStyles(styles)(PetsOfTheWeekPaper);

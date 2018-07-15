@@ -55,4 +55,3 @@ class PetProviderList extends Component{
   }
 
   export default PetProviderList;
-

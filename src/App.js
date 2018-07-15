@@ -43,7 +43,7 @@ class App extends Component {
       <div>
       {/*THIS WILL BE EVERYWHERE*/}
         <NavigationBar user={this.user}/>
-            <TestNavBar/>
+            
         <div> {/*these are every PAGE that goes on the site. If you want something that is on every page, add as a div around*/}
           <Route path='/Home' component={Home} />
           <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}

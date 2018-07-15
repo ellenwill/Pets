@@ -21,7 +21,9 @@ function FindPetPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          Find a Pet
+        <div style={{color:"#05349A"}}>
+          <b>Find Your Perfect Pet Today!</b>
+        </div>
         </Typography>
         <Typography component="p">
                 <Link to = 'PetList'> Find a Pet </Link>
