@@ -31,7 +31,12 @@ class PetProviderList extends Component{
     render(){
       return(
         <div>
+        <div style={{color:"#05349A", fontSize:"300%", paddingLeft:"33%"}}>
+          <b>Our Pet Providers</b>
+        </div>
+        <div style={{paddingLeft:"42%"}}>
         <PetProviderSearchBar addFilter={this.handleFilterChange}/>
+        </div>
         <div class="flexCardContainer">
         {//!this.petProviderArray ? <Loading/> && :
 
