@@ -14,3 +14,5 @@ export const ADMIN_LOGIN = '/ALoginForm'
 export const TEST = '/TestRouter'
 
 export const DONUT = '/PayPalRender'
+
+export const FAQ = '/FAQ'

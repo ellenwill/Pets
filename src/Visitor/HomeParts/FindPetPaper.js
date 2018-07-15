@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import PetList from '../PetList'
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
@@ -26,7 +27,7 @@ function FindPetPaper(props) {
         </div>
         </Typography>
         <Typography component="p">
-                <Link to = 'PetList'> Find a Pet </Link>
+                <Link to = 'PetList'> <Button variant="contained" color="primary">Find a Pet </Button></Link>
         </Typography>
       </Paper>
     </div>

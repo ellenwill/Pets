@@ -25,7 +25,9 @@ function AboutUsPaper(props) {
           </div>
         </Typography>
         <Typography component="p">
-                This is a blurb abt what this site is
+            ADOPET is an organization dedicated to helping animals find loving homes. <br/>
+            We team with our Pet Providers (various shelters) to present to you pets to browse.<br/>
+            Our hope is that our service can people see pets that might otherwise be overlooked, and that we can help people see all of their options and find the best pet for them.
         </Typography>
       </Paper>
     </div>

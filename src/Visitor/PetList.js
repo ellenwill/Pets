@@ -34,7 +34,12 @@ class PetList extends Component{
     render(){
       return(
         <div>
+        <div style={{color:"#05349A", fontSize:"300%", paddingLeft:"38%"}}>
+          <b>Pet Search</b>
+        </div>
+        <div style={{paddingLeft:"30%"}}>
         <PetSearchBar addFilter={this.handleFilterChange}/>
+        </div>
                 <div class="flexCardContainer">
         {//!this.petArray ? <Loading/> && :
 

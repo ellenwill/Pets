@@ -39,8 +39,18 @@ class NavigationBar extends React.Component {
             <Toolbar style={{backgroundColor: "#05349A"}}>
                   <div style={{display: "flex", alignItems: "center"}}>
                     <Link to = {routes.HOME}><img src={TransparentLogo} alt="Adopet" width="100px"/></Link>
+                    <div style={{paddingRight:"25px", paddingLeft:"25px"}}>
                     <Link to = {routes.PET_LIST}><Button variant="contained" color="primary">Pet List</Button></Link>
+                    </div>
+                    <div style={{paddingRight:"25px"}}>
                     <Link to = {routes.PET_PROVIDERS_LIST}> <Button variant="contained" color="primary">Pet Providers </Button></Link>
+                    </div>
+                    <div style={{paddingRight:"25px"}}>
+                    <Link to = {routes.FAQ}><Button variant="contained" color="primary">Pet Care</Button></Link>
+                    </div>
+                    <div style={{paddingRight:"25px"}}>
+                    <Link to = {routes.DONUT}><Button variant="contained" color="primary">Donate</Button></Link>
+                    </div>
                   </div>
                   <div style={{flex:1}}></div>
                   <div>

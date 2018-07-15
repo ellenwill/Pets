@@ -50,6 +50,7 @@ function PetCards(props) {
             {!props.pet.petName ? <div>{props.animalType}</div> : <div>{props.pet.petName}</div>}
           </Typography>
           <Typography component="p">
+            <span><p><b>Age:</b> {props.pet.petAge}   <b>Breed:</b> {props.pet.petBreed}</p></span>
             <span>Adopt this adorable {props.pet.animalType}. </span>
             {props.pet.gender === 'male' && <span>He</span>}{props.pet.gender === 'female' && <span>She</span>}
             {(props.pet.gender !== 'male' && props.pet.gender !== 'female') && <span>They</span>} will give you so many good cuddles.
