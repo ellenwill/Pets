@@ -20,26 +20,37 @@ function FAQ(props) {
 
   return (
     <div className={classes.root}>
+    <br/>
+    <div style={{color:"#05349A", fontSize:"300%", paddingLeft:"40%"}}>
+      <b>Pet Care FAQ</b>
+    </div>
+    <br/>
       <Grid container spacing={24}>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>By comming, you have expressed an interest in adopting rather than shopping, and we congratulate you.</Paper>
+        </Grid>
+
+      </Grid>
+      <Grid container spacing={24}>
+        <Grid item xs>
+          <Paper className={classes.paper}>Info</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>Info</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>Info</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={24}>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
+          <Paper className={classes.paper}>Info</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>Info</Paper>
+        </Grid>
+        <Grid item xs>
+          <Paper className={classes.paper}>Info</Paper>
         </Grid>
       </Grid>
     </div>
