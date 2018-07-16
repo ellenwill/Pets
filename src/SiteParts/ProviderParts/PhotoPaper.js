@@ -13,17 +13,17 @@ const styles = theme => ({
   },
 });
 
-function PhotoPaper(props) {
+const PhotoPaper = (props) => {
   const { classes } = props;
+  const photoURL = props.photoURL || ''
 
   return (
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          A pic
         </Typography>
         <Typography component="p">
-            <img src="http://gdurl.com/eGB9" width="300px"/>
+            <img src={photoURL} width="300px"/>
         </Typography>
       </Paper>
     </div>

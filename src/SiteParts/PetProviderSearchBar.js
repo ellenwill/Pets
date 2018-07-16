@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
-import {STATES} from '../constants'
+import {USSTATES} from '../constants'
 
   const styles = theme => ({
     root: {
@@ -41,15 +41,17 @@ import {STATES} from '../constants'
     },
   };
 
+  const location = USSTATES
+
   class PetProviderSearchBar extends React.Component {
     state = {
-      usstate: [],
+      Location: [],
     };
 
     handleChange = event => {
       this.setState({ [event.target.name]: event.target.value },
         () => { /*passing the new state to petlist */
-              console.log("In PetSearchBar")
+              //console.log("In PetProviderSearchBar")
           this.props.addFilter(this.state)
         }
       );
@@ -59,37 +61,25 @@ import {STATES} from '../constants'
       const { classes, theme } = this.props;
 
       return (
-        <div className={classes.root}>
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="select-multiple">Location</InputLabel>
+        <FormControl className={classes.formControl}>
+            <InputLabel htmlFor="select-multiple-checkbox">Location</InputLabel>
             <Select
               multiple
-              name="usstate"
-              value={this.state.usstate}
+              name="Location"
+              value={this.state.Location}
               onChange={this.handleChange}
-              input={<Input id="select-multiple" />}
+              input={<Input id="select-multiple-checkbox" />}
+              renderValue={selected => selected.join(', ')}
               MenuProps={MenuProps}
             >
-              {STATES.map(name => (
-                <MenuItem
-                  key={name}
-                  value={name}
-                  style={{
-                    fontWeight:
-                      this.state.usstate.indexOf(name) === -1
-                        ? theme.typography.fontWeightRegular
-                        : theme.typography.fontWeightMedium,
-                  }}
-                >
-                  {name}
+              {location.map(name => (
+                <MenuItem key={name} value={name}>
+                  <Checkbox checked={this.state.Location.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
-          <FormControl className={classes.formControl}>
-
-          </FormControl>
-        </div>
       );
     }
   }

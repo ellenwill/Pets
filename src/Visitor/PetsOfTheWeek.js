@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
-import firebase from '../firebase';
-import PetSearchBar from '../SiteParts/PetSearchBar'
 import PetCards from '../SiteParts/PetCards'
-import Loading from '../Test/Loading'
-import PetArrayDisplay from '../Test/PetArrayDisplay'
 import DBTools from '../DBTools/DBTools'
-import {PET_CONSTANTS} from '../constants'
-import PetCard from '../SiteParts/PetCards'
 
 class PetsOfTheWeek extends Component{
 
@@ -43,7 +37,6 @@ class PetsOfTheWeek extends Component{
         var t = myArray[i];
         myArray[i] = myArray[r];
         myArray[r] = t;
-        console.log(myArray)
     }
 
     //These three console logs are a prime example of just how terrible this language is.

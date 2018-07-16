@@ -15,6 +15,7 @@ const styles = theme => ({
 
 function WebsitePaper(props) {
   const { classes } = props;
+  const website = props.website || 'testwebsite123.com'
 
   return (
     <div>
@@ -23,7 +24,7 @@ function WebsitePaper(props) {
           Our Website
         </Typography>
         <Typography component="p">
-            testwebsite123.com
+            <a href url={}>{website}</a>
         </Typography>
       </Paper>
     </div>

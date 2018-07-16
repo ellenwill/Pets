@@ -1,5 +1,4 @@
 import React from 'react'
-import firebase from '../firebase';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -39,13 +38,11 @@ function ProviderCards(props) {
             {!props.petProvider.name ? <div>{props.animalType}</div> : <div>{props.petProvider.name}</div>}
           </Typography>
           <Typography component="p">
-            <span>Adopt our adorable pets. We are located at {props.petProvider.street},
-            {props.petProvider.city}, {props.petProvider.usstate} {props.petProvider.zip}
+            <span>Adopt our adorable pets. We are located at {props.petProvider.street}{', '}
+            {props.petProvider.city}{', '}{props.petProvider.usstate}{ ' ' }{props.petProvider.zip}
             </span>
           </Typography>
         </CardContent>
-
-        {console.log(props.petProvider.photoURL)}
           {props.petProvider.photoURL ? props.petProvider.photoURL &&
             <CardMedia className={classes.media}
                               image={props.petProvider.photoURL}/>

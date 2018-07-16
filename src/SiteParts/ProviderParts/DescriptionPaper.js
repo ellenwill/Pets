@@ -15,6 +15,7 @@ const styles = theme => ({
 
 function DescriptionPaper(props) {
   const { classes } = props;
+  const description = props.description || "This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop."
 
   return (
     <div>
@@ -23,7 +24,7 @@ function DescriptionPaper(props) {
           About Us
         </Typography>
         <Typography component="p">
-          "This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop."
+          {description}
         </Typography>
       </Paper>
     </div>

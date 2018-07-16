@@ -169,3 +169,4 @@ export function GET_USER(){
     return CURRENT_USER
 }
 
+export const USSTATES = ['Maryland']
