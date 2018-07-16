@@ -20,10 +20,13 @@ function HoursPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
+        <div style={{color:"#05349A"}}>
           Hours
+          </div>
         </Typography>
         <Typography component="p">
-          Mon-fri: this time to that time
+          Mon-Thurs: 8am-6pm <br/>
+          Fri-Sun: 8am-9pm
         </Typography>
       </Paper>
     </div>

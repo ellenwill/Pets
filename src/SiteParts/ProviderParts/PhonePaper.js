@@ -20,10 +20,12 @@ function PhonePaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
+        <div style={{color:"#05349A"}}>
           Phone Number
+        </div>
         </Typography>
         <Typography component="p">
-            "410-123-4567"
+            410-123-4567
         </Typography>
       </Paper>
     </div>

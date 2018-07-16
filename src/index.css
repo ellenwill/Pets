@@ -12,6 +12,11 @@ a {
   text-decoration: none;
 }
 
+.abox{
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 .flexCardContainer {
   display: flex;
   flex-flow: row wrap;

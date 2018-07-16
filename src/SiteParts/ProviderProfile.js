@@ -17,8 +17,8 @@ class ProviderProfile extends Component {
     return(
       <div>
         <div class="homeHeader">
-        <h1>PROVIDER NAME </h1>
-        <p>Provider Email</p>
+        <h1>PawPaws Pets</h1>
+        <b>pawpawspets.org</b>
 
         </div>
 
@@ -28,7 +28,10 @@ class ProviderProfile extends Component {
           <DescriptionPaper/>
         </div>
         <div class="homeSide">
+        <h2>Contact Us: </h2>
             <PhonePaper/>
+            <br/>
+            <EmailPaper/>
             <br/>
             <HoursPaper/>
             <br/>

@@ -12,6 +12,7 @@ import DBTools from '../DBTools/DBTools';
 import PetCards1 from '../SiteParts/VisualParts/PetCards1'
 import PetCards2 from '../SiteParts/VisualParts/PetCards2'
 import PetCards3 from '../SiteParts/VisualParts/PetCards3'
+import Donate from '../SiteParts/VisualParts/Donate'
 
 
 class Home extends Component {

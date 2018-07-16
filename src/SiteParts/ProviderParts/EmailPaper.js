@@ -20,10 +20,12 @@ function EmailPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
+        <div style={{color:"#05349A"}}>
           Email
+          </div>
         </Typography>
         <Typography component="p">
-          testemail123@test.com
+          pawpaw@pets.com
         </Typography>
       </Paper>
     </div>

@@ -17,6 +17,7 @@ import TestNavBar from './SiteParts/TestNavBar'
 import PetProfile from './SiteParts/PetProfile'
 import ProviderProfile from './SiteParts/ProviderProfile'
 import * as constants from "./constants"
+import Donate from "./SiteParts/VisualParts/Donate"
 
 class App extends Component {
 
@@ -43,7 +44,7 @@ class App extends Component {
       <div>
       {/*THIS WILL BE EVERYWHERE*/}
         <NavigationBar user={this.user}/>
-            
+
         <div> {/*these are every PAGE that goes on the site. If you want something that is on every page, add as a div around*/}
           <Route path='/Home' component={Home} />
           <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}
@@ -55,6 +56,7 @@ class App extends Component {
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PaypalRender' component={PaypalRender} />
           <Route path='/FAQ' component={FAQ}/>
+          <Route path='/Donate' component={Donate}/>
           <Route path='/pet/:petID' component={PetProfile}/>
           <Route path='/petProvider/:petProviderID' component={ProviderProfile}/>
         </div>

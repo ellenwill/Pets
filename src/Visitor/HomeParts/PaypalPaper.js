@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import PaypalRender from '../../SiteParts/PaypalRender'
+import Donate from '../../SiteParts/VisualParts/Donate'
 
 const styles = theme => ({
   root: {
@@ -26,7 +26,7 @@ function PaypalPaper(props) {
         </div>
         </Typography>
         <Typography component="p">
-                <Link to = 'PaypalRender'> Click here to donate </Link>
+                <Link to = 'Donate'> Click here to donate </Link>
         </Typography>
       </Paper>
     </div>

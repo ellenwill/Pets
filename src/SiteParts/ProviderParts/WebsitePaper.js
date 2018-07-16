@@ -20,10 +20,12 @@ function WebsitePaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
+        <div style={{color:"#05349A"}}>
           Our Website
+        </div>
         </Typography>
         <Typography component="p">
-            testwebsite123.com
+          pawpawspets.org
         </Typography>
       </Paper>
     </div>

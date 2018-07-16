@@ -19,11 +19,8 @@ function PhotoPaper(props) {
   return (
     <div>
       <Paper className={classes.root} elevation={1}>
-        <Typography variant="headline" component="h3">
-          A pic
-        </Typography>
         <Typography component="p">
-            <img src="http://gdurl.com/eGB9" width="300px"/>
+            <img src="http://gdurl.com/FSgC" width="300px"/>
         </Typography>
       </Paper>
     </div>

@@ -45,8 +45,6 @@ class PetProviderDropdown extends React.Component {
     return (
       <form autoComplete="off">
 
-Who would you like to donate it to?
-<br/>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="demo-controlled-open-select">Provider</InputLabel>
           <Select
@@ -56,9 +54,7 @@ Who would you like to donate it to?
             onOpen={this.handleOpen}
             value={this.state.petProvider}
             onChange={this.handleChange}
-
           >
-
             <MenuItem value={PAYPAL_CONSTANTS.PET_PROVIDER_TEST1}>PetProvider1</MenuItem>
             <MenuItem value={PAYPAL_CONSTANTS.PET_PROVIDER_TEST2}>PetProvider2</MenuItem>
             <MenuItem value={30}>PetProvider3</MenuItem>

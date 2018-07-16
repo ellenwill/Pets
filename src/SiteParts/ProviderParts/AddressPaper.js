@@ -20,10 +20,11 @@ function AddressPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          Adderess
+        <div style={{color:"#05349A"}}>  Address </div>
         </Typography>
         <Typography component="p">
-        1234 Test Stree, Pittsburgh PA 15213
+        1789 Pawson Street <br/>
+        Lutherville, MD 21093
         </Typography>
       </Paper>
     </div>
