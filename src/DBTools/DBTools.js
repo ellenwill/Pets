@@ -33,6 +33,12 @@ class DBTools extends Component {
       this.removedItemsRef = firebase.database().ref('removedItems');
     }
 
+    initialDBCalls(){
+      this.populatePets()
+      this.populatePetProviders()
+      this.getUserByID()
+    }
+
     componentDidMount() {
       //Listeners. For example, this one should update the pets[] object of
       //an instance of DBTools whenever the data inside database pets child changes.

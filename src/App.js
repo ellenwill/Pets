@@ -35,10 +35,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.tools = new DBTools()
-    this.tools.populatePets()
-    this.tools.populatePetProviders()
-    this.tools.getUserByID()
+    new DBTools().initialDBCalls()
   }
 
   //The application is forced to update if someone logs in/out
