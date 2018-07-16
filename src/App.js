@@ -20,6 +20,7 @@ import PetProfile from './SiteParts/PetProfile'
 import ProviderProfile from './SiteParts/ProviderProfile'
 import * as constants from "./constants"
 import DBTools from './DBTools/DBTools'
+import 'bootstrap/dist/css/bootstrap.css'
 
 class App extends Component {
 

@@ -28,7 +28,6 @@ class PetProviderDropdown extends React.Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state.petProvider)
   };
 
   handleClose = () => {
@@ -44,11 +43,8 @@ class PetProviderDropdown extends React.Component {
 
     return (
       <form autoComplete="off">
-        <Button className={classes.button} onClick={this.handleOpen}>
-          Who would you like to Donate to?
-        </Button>
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="demo-controlled-open-select">Provider</InputLabel>
+          <InputLabel htmlFor="demo-controlled-open-select">Donate to ...</InputLabel>
           <Select
             name = 'petProvider'
             open={this.state.open}

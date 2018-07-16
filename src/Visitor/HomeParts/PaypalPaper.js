@@ -18,7 +18,7 @@ function PaypalPaper(props) {
   const { classes } = props;
 
   return (
-    <div>
+    <div >
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
           Donate

@@ -40,10 +40,10 @@ class PaypalRender extends React.Component {
 
     return (
 
-      <div className="AppHeader">
+      <div class="homeMain">
          <div>
-         <p className="App-intro">
-            <h1> Donations: </h1>
+         <p>
+            <h1> Donations </h1>
          </p>
 
       <br/>

@@ -31,8 +31,14 @@ export default class Register extends Component {
       <div className="col-sm-6 col-sm-offset-3">
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
-            <TextField ref={(email) => this.email = email} label="Email"/><br/>
-            <TextField type="password" ref={(pw) => this.pw = pw} label="Password"/><br/>
+        <div className="form-group">
+            <label>Email</label>
+            <input className="form-control" ref={(email) => this.email = email} placeholder="Email"/>
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input type="password" className="form-control" placeholder="Password" ref={(pw) => this.pw = pw} />
+          </div>
           {
             this.state.registerError &&
             <div className="alert alert-danger" role="alert">
@@ -41,7 +47,7 @@ export default class Register extends Component {
               &nbsp;{this.state.registerError}
             </div>
           }
-          <Button type="submit">Register</Button>
+          <button type="submit" className="btn btn-primary">Login</button>
         </form>
       </div>
     )

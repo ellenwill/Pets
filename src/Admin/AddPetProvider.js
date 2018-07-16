@@ -39,9 +39,9 @@ class AddPetProvider extends Component{
 
   render(){
     return(
-      <div className="AppHeader">
+      <div class="homeMain">
          <div>
-         <p className="App-intro">
+         <p>
            <h1> Enter pet provider information here: </h1>
          </p>
          <section className='testForm'>
@@ -49,15 +49,15 @@ class AddPetProvider extends Component{
             {this.locationMenu()}
             {this.state.usstate &&
               <div>
-              Name: <input type="text" name="name" placeholder="What is the facility's name?" onChange={this.handleChange} value={this.state.name}/><br/>
+              <input type="text" name="name" placeholder="Facility Name" onChange={this.handleChange} value={this.state.name}/><br/>
               <input type="text" name="street" placeholder="Street Address" onChange={this.handleChange} value={this.state.street}/><br/>
               <input type="text" name="city" placeholder="City" onChange={this.handleChange} value={this.state.city}/><br/>
               <input type="text" name="zip" placeholder="Zip" onChange={this.handleChange} value={this.state.zip}/><br/>
-              <input type="text" name="photoURL" placeholder="Enter photo URL." onChange={this.handleChange} value={this.state.photoURL}/><br/>
-              <input type="text" name="websiteURL" placeholder="Enter website URL." onChange={this.handleChange} value={this.state.websiteURL}/><br/>
-              <input type="text" name="description" placeholder="Enter a description of your establishment." onChange={this.handleChange} value={this.state.description}/><br/>
+              <input type="text" name="photoURL" placeholder="Photo URL" onChange={this.handleChange} value={this.state.photoURL}/><br/>
+              <input type="text" name="websiteURL" placeholder="Website URL" onChange={this.handleChange} value={this.state.websiteURL}/><br/>
+              <input type="text" name="description" placeholder="Description of Your Facility" onChange={this.handleChange} value={this.state.description}/><br/>
               <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={this.handleChange} value={this.state.phoneNumber}/><br/>
-              <input type="text" name="email" placeholder="Enter Email Address" onChange={this.handleChange} value={this.state.email}/><br/>
+              <input type="text" name="email" placeholder="Email Address" onChange={this.handleChange} value={this.state.email}/><br/>
               <input type="text" name="hours" placeholder="Format: Day(s):hours, Day(s):hours, .." onChange={this.handleChange} value={this.state.hours}/><br/>
               {!this.state.petProviderID && <button> Add Pet Provider </button>}
               {this.state.petProviderID && <button> Update Pet Provider</button>
