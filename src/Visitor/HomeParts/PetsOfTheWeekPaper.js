@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import PetCards1 from '../../SiteParts/VisualParts/PetCards1'
 import PetCards2 from '../../SiteParts/VisualParts/PetCards2'
 import PetCards3 from '../../SiteParts/VisualParts/PetCards3'
-
+import PetsOfTheWeek from '../PetsOfTheWeek'
 
 const styles = theme => ({
   root: {
@@ -29,10 +29,10 @@ function PetsOfTheWeekPaper(props) {
           </div>
         </Typography>
         <Typography component="p">
-          <div class="flexCardContainer">
-            <PetCards3/>
+          <div>
+            {<PetsOfTheWeek/> || <div class="flexCardContainer"><PetCards3/>
             <PetCards1/>
-            <PetCards2/>
+            <PetCards2/></div>}
           </div>
         </Typography>
       </Paper>

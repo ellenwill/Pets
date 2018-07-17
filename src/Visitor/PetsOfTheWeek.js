@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import PetCards from '../SiteParts/PetCards'
 import DBTools from '../DBTools/DBTools'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 class PetsOfTheWeek extends Component{
 
@@ -48,7 +52,7 @@ class PetsOfTheWeek extends Component{
 
   render(){
     return(
-      <div>
+      <div class="flexCardContainer">
           {this.petsOfTheWeek.length > 0 &&
             this.petsOfTheWeek.map((pet) => {
               return (

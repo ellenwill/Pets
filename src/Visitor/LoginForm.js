@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
+import Homev from './Homev'
 //import Dashboard from './protected/Dashboard'
 import firebase from '../firebase';
 import { logout } from '../helpers/auth'
@@ -27,7 +28,7 @@ function PublicRoute ({component: Component, authed, ...rest}) {
       {...rest}
       render={(props) => authed === false
         ? <Component {...props} />
-        : <Redirect to='/home' />}
+        : <Redirect to='/homev' />}
     />
   )
 }
@@ -91,7 +92,7 @@ class LoginForm extends Component {
                 <Route path='/' exact component={Home} />
                 <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                 <PublicRoute authed={this.state.authed} path='/register' component={Register} />
-                <PrivateRoute authed={this.state.authed} path='/home' component={Home} />
+                <PrivateRoute authed={this.state.authed} path='/homev' component={Home} />
 
               </Switch>
             </div>

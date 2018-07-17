@@ -32,7 +32,7 @@ export const PET_CONSTANTS = {
             gender: '',
             photoURL: '',
             petProviderID: '',
-            
+
             //Location
             usstate: '',
 
@@ -40,7 +40,7 @@ export const PET_CONSTANTS = {
             petSize: '',
             //Cat-specific
             petHair: '',
-            
+
     },
 }
 
@@ -77,13 +77,13 @@ export function EXISTING_PET_STATE(pet)
 export const PET_PROVIDER = {
     petProviderID: '',
     name: '',
-    
+
     //location
     street: '',
     city: '',
     usstate: null,
     zip: '',
-    
+
     websiteURL: '',
     description: '',
     phoneNumber: '',
@@ -132,6 +132,7 @@ export const PAYPAL_CONSTANTS ={
    PET_PROVIDER_TEST1:'AbVZZuhh21jS6GIn6_q4hwexB1JNPCNH7u7Le2o-JamBeCWZ5EYK6HsMqL5EZ3byrbal5GFvF3ElNSU9',
    PET_PROVIDER_TEST2:'Afq44MVvKizGbUXmKlqDBZr5UoDzaJLRCHJFVx-PEgfLiNWzhcSs3zJ9wv8P6w8M3cd2NlWMItz6RMR0'
 }
+export const PET_PROFILE_JON = 'petProvider.LH8qEHO99Jdtp'
 
 export const DEFAULT_USER = {
     databaseID: '',
@@ -161,7 +162,7 @@ export function EXISTING_USER(user) {
 let CURRENT_USER = DEFAULT_USER
 
 export function SET_USER(user){
-    
+
     CURRENT_USER = user;
 }
 

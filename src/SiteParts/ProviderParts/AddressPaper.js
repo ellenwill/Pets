@@ -29,7 +29,6 @@ function AddressPaper(props) {
         </Typography>
         <Typography component="p">
           {address}
-
         </Typography>
       </Paper>
     </div>

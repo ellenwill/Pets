@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import Login from './Login'
 
 import Homea from './Homea'
+import Home from '../Visitor/Home'
 //import Dashboard from './protected/Dashboard'
 import firebase from '../firebase';
 import { logout } from '../helpers/auth'
