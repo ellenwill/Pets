@@ -63,6 +63,7 @@ class App extends Component {
           <Route path='/LoginForm' component={LoginForm} onChange={this.handleChange}/>
           <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
+          <Route path='/TestRouter' component={TestRouter} />  
           <Route path = '/PetDisplay' component={PetDisplay} />
           <Route path = '/PetArrayDisplay' component={PetArrayDisplay} />
           <Route path='/FAQ' component={FAQ}/>
