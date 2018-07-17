@@ -35,11 +35,11 @@ class Home extends Component {
 
       <div class="homeRow">
         <div class="homeMain">
-          <div class="flexCardContainer">
-            <PetsOfTheWeekPaper/>
-          </div>
         <br/>
           <FindPetPaper/><br/>
+          <div class="flexCardContainer">
+            <PetsOfTheWeekPaper/>
+        </div>
         </div>
         <div class="homeSide">
             <PaypalPaper/>
