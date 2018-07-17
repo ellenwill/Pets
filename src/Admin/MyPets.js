@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import PetList from '../Visitor/PetList'
 import * as constants from '../constants'
+import {PET_PROFILE_JON} from '../constants'
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
@@ -21,11 +22,12 @@ function MyPets(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          My Pets
+          View My Profile
         </Typography>
         <Typography component="p">
-                <Link to = 'PetList'> My Pets </Link>
-                
+
+                <Link to ={"/petProvider/" + PET_PROFILE_JON}> My Pets </Link>
+
         </Typography>
       </Paper>
     </div>

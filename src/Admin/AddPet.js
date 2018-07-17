@@ -10,7 +10,7 @@ class AddPet extends Component{
 
     //Check if the pets object was passed. If it was, then
     //we're editing an existing pet and we need to populate its
-    //properties. Otherwise, we want the 
+    //properties. Otherwise, we want the
     //default state of a pet object from the constants file.
     if (props.pet) {this.state = EXISTING_PET_STATE(props.pet)}
     else {this.state = PET_CONSTANTS.DEFAULT_PET_STATE}
@@ -22,11 +22,11 @@ class AddPet extends Component{
   }
 
   componentDidMount(props){
-    
+
     //If the pet doesn't already exist, we can't have filled in its info.
     if (!this.state.petID)
     {
-        this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);  
+        this.setState(PET_CONSTANTS.DEFAULT_PET_STATE);
     }
     else
     {
@@ -60,7 +60,7 @@ class AddPet extends Component{
                   {
                     this.breedsMenu()
                   }
-            
+
                   {
                     //Dog-specific traits
                     this.state.animalType === 'Dog' &&
@@ -116,7 +116,7 @@ class AddPet extends Component{
       i = PET_CONSTANTS.CAT_BREEDS}
     else if (this.state.animalType === 'Other'){
       i = PET_CONSTANTS.OTHER_BREEDS}
-    
+
     return <select name="petBreed" onChange={this.handleChange} value={this.state.petBreed}>
     {!this.state.petBreed && <option> Breed </option>}
     { i.map(value => <option value={value}>{value}</option>) }
@@ -134,7 +134,7 @@ class AddPet extends Component{
   }
 
   catSpecificTraits(){
-    return <label>Hair: 
+    return <label>Hair:
     <select name="petHair" onChange={this.handleChange}  value={this.state.petHair}>
     {!this.state.petSize && <option> Select </option>}
     <option value={'Short'}> Short </option>
