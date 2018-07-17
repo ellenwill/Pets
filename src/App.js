@@ -10,7 +10,6 @@ import PetProviderList from './Visitor/PetProviderList'
 import LoginForm from './Visitor/LoginForm'
 import ALoginForm from './Admin/ALoginForm'
 import TestRouter from './Test/TestRouter'
-import PaypalRender from './SiteParts/PaypalRender'
 import Home from './Visitor/Home'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
@@ -64,7 +63,6 @@ class App extends Component {
           <Route path='/LoginForm' component={LoginForm} onChange={this.handleChange}/>
           <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
-          <Route path = '/PaypalRender' component={PaypalRender} />
           <Route path = '/PetDisplay' component={PetDisplay} />
           <Route path = '/PetArrayDisplay' component={PetArrayDisplay} />
           <Route path='/FAQ' component={FAQ}/>

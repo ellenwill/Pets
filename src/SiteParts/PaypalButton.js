@@ -5,7 +5,6 @@ import scriptLoader from 'react-async-script-loader'
 import paypal from 'paypal-checkout'
 import {PAYPAL_CONSTANTS} from '../constants'
 import PetProviderDropdown from '../SiteParts/PetProviderDropdown'
-import PaypalRender from '../SiteParts/PaypalRender'
 
 
 
