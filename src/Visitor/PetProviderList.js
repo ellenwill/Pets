@@ -55,7 +55,8 @@ class PetProviderList extends Component{
               return true;
             }
           ).map(petProvider => <ProviderCards petProvider={petProvider}/>)}
-          </div>
+          </div>}
+        </div>
         </div>
       )
     }
