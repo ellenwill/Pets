@@ -21,7 +21,7 @@ function EmailPaper(props) {
   return (
     <div>
       <Paper className={classes.root} elevation={1}>
-<<<<<<< HEAD
+
         <Typography variant="headline" component="h3">
         <div style={{color:"#05349A"}}>
           Email
@@ -29,13 +29,12 @@ function EmailPaper(props) {
         </Typography>
         <Typography component="p">
           pawpaw@pets.com
-=======
+
         <Typography variant="" component="h3">
           {/*Email Us*/}
         </Typography>
         <Typography component="p">
         <a href={"mailto:" + email} class="email"><Button size="large" color="primary">{email}</Button></a>
->>>>>>> refs/remotes/origin/actualCode
         </Typography>
       </Paper>
     </div>

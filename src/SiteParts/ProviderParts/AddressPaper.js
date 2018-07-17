@@ -21,18 +21,18 @@ function AddressPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-<<<<<<< HEAD
+
         <div style={{color:"#05349A"}}>  Address </div>
         </Typography>
         <Typography component="p">
         1789 Pawson Street <br/>
         Lutherville, MD 21093
-=======
+
           Address
         </Typography>
         <Typography component="p">
           {address}
->>>>>>> refs/remotes/origin/actualCode
+
         </Typography>
       </Paper>
     </div>
