@@ -36,6 +36,7 @@ function EmailPaper(props) {
         <Typography component="p">
         <a href={"mailto:" + email} class="email"><Button size="large" color="primary">{email}</Button></a>
         </Typography>
+        </Typography>
       </Paper>
     </div>
   );
