@@ -15,7 +15,7 @@ const styles = theme => ({
 
 function DescriptionPaper(props) {
   const { classes } = props;
-  const description = props.description || "This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop.   This a doop a boop a doop a poop a moop a doop."
+  const description = props.description
 
   return (
     <div>

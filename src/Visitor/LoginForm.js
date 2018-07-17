@@ -8,6 +8,7 @@ import firebase from '../firebase';
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../firebase';
 import * as constants from '../constants'
+import Button from '@material-ui/core/Button';
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -75,8 +76,10 @@ class LoginForm extends Component {
                         }}
                         className="navbar-brand">Logout</button>
                     : <span>
-                        <Link to="/login" className="navbar-brand">Login</Link>
-                        <Link to="/register" className="navbar-brand">Register</Link>
+                      <div style={{color:"#FFFFFF" }}>
+                        <Button variant="contained" color="primary"><Link to="/login" className="navbar-brand">Login</Link></Button>
+                        <Button variant="contained" color="primary"><Link to="/register" className="navbar-brand">Register</Link></Button>
+                      </div>
                       </span>}
                 </li>
               </ul>

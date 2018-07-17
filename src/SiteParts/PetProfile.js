@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ProviderCards from './ProviderCards'
+import Paper from '@material-ui/core/Paper';
 
 const PetProfile = (props) => {
   const tools = new DBTools();
@@ -18,26 +19,27 @@ return(
   </div>
 
       <div class="homeHeader">
-        <h1>Pet Name</h1>
-        <p>{new DBTools().getPetByID(props.match.params.petID).petName}</p>
+        <h1><p>{new DBTools().getPetByID(props.match.params.petID).petName}</p></h1>
       </div>
 
     <div class="homeRow">
       <div class="homeMain">
-        <center><Typography variant="display3" gutterBottom>{pet.petName}</Typography><br/>
+        <center>
         <img src={pet.photoURL} width={500}/></center><br/>
-        <center>{pet.petDescription}</center><br/>
+        <b><center>{pet.petDescription}</center></b><br/>
       </div>
       <div class="homeSide">
-          Age: {pet.petAge}
+      <Paper>
+          <b><div style={{color:"#05349A"}}>Age: {pet.petAge} </div></b>
           <br/>
-          Breed: {pet.petBreed}
+          <b><div style={{color:"#05349A"}}>Breed: {pet.petBreed} </div></b>
           <br/>
-          etc.
+          <b><div style={{color:"#05349A"}}>Gender: {pet.gender} </div></b>
+      </Paper>
           <br/>
-          <a href={mailto} class="email"><Button size="large" color="primary">Adopt Me from the {petProvider.name}!</Button></a><br/>
-          <ProviderCards petProvider={petProvider}/>
-          
+          <center><a href={mailto} class="email"><Button size="large" color="primary">Adopt Me from the {petProvider.name}!</Button></a></center><br/>
+          <center><ProviderCards petProvider={petProvider}/></center>
+
       </div>
     </div>
 </div>

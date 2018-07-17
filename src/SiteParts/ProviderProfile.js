@@ -22,12 +22,7 @@ const ProviderProfile = (props) => {
     return(
       <div>
         <div class="homeHeader">
-
-        <h1>PawPaws Pets</h1>
-        <b>pawpawspets.org</b>
-
         <h1>{provider.name}</h1>
-        <p><EmailPaper email={provider.email}/></p>
 
         </div>
 
@@ -39,12 +34,11 @@ const ProviderProfile = (props) => {
         <div class="homeSide">
 
         <h2>Contact Us: </h2>
-            <PhonePaper/>
-            <br/>
-            <EmailPaper/>
+
+              <p><EmailPaper email={provider.email}/></p>
             <br/>
             <HoursPaper/>
-
+            <br/>
             <PhonePaper phoneNumber={provider.phoneNumber}/>
             <br/>
             <HoursPaper hours={provider.hours}/>
@@ -53,8 +47,10 @@ const ProviderProfile = (props) => {
             <AddressPaper address={address}/>
         </div>
       </div>
+    <div class="flexCard">
       Our Pets
       {ourPets.map(pet => <PetCards pet={pet}/>)}
+    </div>
     </div>
     )
   }

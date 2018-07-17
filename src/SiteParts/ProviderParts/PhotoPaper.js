@@ -19,7 +19,7 @@ const PhotoPaper = (props) => {
 
   return (
     <div>
-      <Paper className={classes.root} elevation={1}>            <img src="http://gdurl.com/FSgC" width="300px"/>
+      <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
         </Typography>
         <Typography component="p">
