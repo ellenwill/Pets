@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import Login from './Login'
 
-import Home from './Home'
+import Homea from './Homea'
 //import Dashboard from './protected/Dashboard'
 import firebase from '../firebase';
 import { logout } from '../helpers/auth'
@@ -25,7 +25,7 @@ function PublicRoute ({component: Component, authed, ...rest}) {
       {...rest}
       render={(props) => authed === false
         ? <Component {...props} />
-        : <Redirect to='/home' />}
+        : <Redirect to='/homea' />}
     />
   )
 }
@@ -84,10 +84,10 @@ class ALoginForm extends Component {
           <div className="container">
             <div className="row">
               <Switch>
-                <Route path='/' exact component={Home} />
+                <Route path='/' exact component={Homea} />
                 <PublicRoute authed={this.state.authed} path='/login' component={Login} />
 
-                <PrivateRoute authed={this.state.authed} path='/home' component={Home} />
+                <PrivateRoute authed={this.state.authed} path='/homea' component={Homea} />
 
               </Switch>
             </div>

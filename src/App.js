@@ -11,6 +11,8 @@ import LoginForm from './Visitor/LoginForm'
 import ALoginForm from './Admin/ALoginForm'
 import TestRouter from './Test/TestRouter'
 import Home from './Visitor/Home'
+import Homea from './Admin/Homea'
+
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
 import PetDisplay from './Test/PetDisplay'
@@ -56,6 +58,8 @@ class App extends Component {
 
         <div> {/*these are every PAGE that goes on the site. If you want something that is on every page, add as a div around*/}
           <Route path='/Home' component={Home} />
+          <Route path='/Homea' component={Homea} />
+
           <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}
           <Route path='/AddPetProvider' component={AddPetProvider} /> {/*for the global admin to add new petProviders*/}
           <Route path='/PetList' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
@@ -63,7 +67,7 @@ class App extends Component {
           <Route path='/LoginForm' component={LoginForm} onChange={this.handleChange}/>
           <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
-          <Route path='/TestRouter' component={TestRouter} />  
+          <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PetDisplay' component={PetDisplay} />
           <Route path = '/PetArrayDisplay' component={PetArrayDisplay} />
           <Route path='/FAQ' component={FAQ}/>

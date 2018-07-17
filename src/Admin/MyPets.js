@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import PetList from '../Visitor/PetList'
-
+import * as constants from '../constants'
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
@@ -25,6 +25,7 @@ function MyPets(props) {
         </Typography>
         <Typography component="p">
                 <Link to = 'PetList'> My Pets </Link>
+                
         </Typography>
       </Paper>
     </div>
