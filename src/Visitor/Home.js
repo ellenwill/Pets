@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Link } from 'react-ro
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import FAQ from './FAQ'
 import PetList from './PetList'
 import FindPetPaper from './HomeParts/FindPetPaper'
