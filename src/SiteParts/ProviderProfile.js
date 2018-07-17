@@ -37,8 +37,6 @@ const ProviderProfile = (props) => {
 
               <p><EmailPaper email={provider.email}/></p>
             <br/>
-            <HoursPaper/>
-            <br/>
             <PhonePaper phoneNumber={provider.phoneNumber}/>
             <br/>
             <HoursPaper hours={provider.hours}/>

@@ -15,7 +15,7 @@ const styles = theme => ({
 
 function DescriptionPaper(props) {
   const { classes } = props;
-  const description = props.description
+  const description = props.description || ' PawPaws pets is a family run animal shelter for all pets with paws. We take great care of our animals and try to find each one a nice home. All pets are de-wormed, micro-chipped, and updated on their shots, so they are all good and ready to go for you to take home and love!'
 
   return (
     <div>

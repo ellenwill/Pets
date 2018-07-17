@@ -16,7 +16,7 @@ const styles = theme => ({
 
 function EmailPaper(props) {
   const { classes } = props;
-  const email = props.email || ''
+  const email = props.email || 'pawpaw@pets.com'
 
   return (
     <div>
@@ -28,8 +28,6 @@ function EmailPaper(props) {
           </div>
         </Typography>
         <Typography component="p">
-          pawpaw@pets.com
-
         <Typography variant="" component="h3">
           {/*Email Us*/}
         </Typography>
