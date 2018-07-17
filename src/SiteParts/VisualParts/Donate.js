@@ -59,8 +59,8 @@ class Donate extends React.Component {
       <div className="AppHeader">
          <div>
          <p className="App-intro">
-         <div style={{color:"#05349A", fontSize:"200%", paddingLeft:"21%", align:"center"}}>
-           <b>Donate to one of our Pet Providers today!</b> <br/>
+         <div style={{color:"#05349A", fontSize:"200%"}}><center>
+           <b>Donate to one of our Pet Providers today!</b></center> <br/>
          </div>
          </p>
 
@@ -68,20 +68,20 @@ class Donate extends React.Component {
       <div style={{paddingLeft:'20%', paddingRight:'20%'}}>
       <Paper>
       <br/>
-      <div style={{paddingLeft:'30%'}}>
-      <p><b> How much would you like to donate? </b></p>
-<div style={{paddingLeft:'11%', paddingRight:'8%'}}>
+      <div>
+      <center><p><b> How much would you like to donate? </b></p> </center>
+<div><center>
       <input type="text" name='amountToDonate' placeholder="Amount to Donate" onChange={this.handleChange} value={this.state.amountToDonate}/><br/>
-</div>
+</center></div>
       <div>
       </div>
 <br/>
       <div>
-      <b> Who would you like to donate it to? </b>
-      <div style={{paddingLeft:'13%', paddingRight:'11%'}}><PetProviderDropdown /></div>
+      <center><b> Who would you like to donate it to? </b></center>
+      <div style={{paddingLeft:'13%', paddingRight:'11%'}}><center><PetProviderDropdown /></center></div>
       </div>
 <br/>
-      <div style={{paddingLeft:'12%', paddingRight:'9%'}}>
+      <div><center>
         <PaypalButton
           client={CLIENT}
           env={ENV}
@@ -93,6 +93,7 @@ class Donate extends React.Component {
           onCancel={onCancel}
           amountToDonate={this.state.amountToDonate}
         />
+        </center>
         </div>
         </div>
         <br/>

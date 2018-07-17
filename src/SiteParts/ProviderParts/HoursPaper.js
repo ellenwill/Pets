@@ -18,8 +18,6 @@ function HoursPaper(props) {
 
   const hours = props.hours ||  "Mon-Thurs: 8am-6pm Fri-Sun: 8am-9pm"
 
-  const hours = props.hours || 'Mon-Thurs: 8am-6pm Fri-Sun: 8am-9pm'
-
 
   return (
     <div>

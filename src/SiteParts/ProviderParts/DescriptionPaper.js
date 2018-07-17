@@ -21,10 +21,10 @@ function DescriptionPaper(props) {
     <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-        <div style={{color:"#05349A"}}>  About Us </div>
+        <div style={{color:"#05349A"}}><center> About Us </center></div>
         </Typography>
         <Typography component="p">
-         {description}
+         <center>{description}</center>
 
         </Typography>
       </Paper>

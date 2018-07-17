@@ -17,7 +17,7 @@ class PetList extends Component{
 
   componentDidMount(props){
     //let petArray = new DBTools().populatePets()
-    
+
     //this.setState({petArray: petArray})
   }
 
@@ -30,10 +30,10 @@ class PetList extends Component{
     render(){
       return(
         <div>
-        <div style={{color:"#05349A", fontSize:"300%", paddingLeft:"38%"}}>
+        <div style={{color:"#05349A", fontSize:"300%"}}> <center>
           <b>Pet Search</b>
-        </div>
-        <div style={{paddingLeft:"30%"}}>
+        </center></div>
+        <div style={{paddingLeft:"36%"}}>
         <PetSearchBar addFilter={this.handleFilterChange}/>
         </div>
                 <div class="flexCardContainer">

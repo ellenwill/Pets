@@ -28,17 +28,14 @@ const ProviderProfile = (props) => {
 
       <div class="homeRow">
         <div class="homeMain">
-          <PhotoPaper photoURL={provider.photoURL}/>
+          <center><PhotoPaper photoURL={provider.photoURL}/> </center>
           <DescriptionPaper description={provider.description}/>
         </div>
         <div class="homeSide">
 
         <h2>Contact Us: </h2>
 
-
-              <p><EmailPaper email={provider.email}/></p>
-
-            <p><EmailPaper email={provider.email}/></p>
+            <EmailPaper email={provider.email}/>
 
             <br/>
             <PhonePaper phoneNumber={provider.phoneNumber}/>
@@ -48,6 +45,10 @@ const ProviderProfile = (props) => {
             <br/>
             <AddressPaper address={address}/>
         </div>
+        <div style={{color:"#05349A", fontSize:"300%"}}>
+        <center>  <b>Our Available Pets</b> </center>
+        </div>
+        <br/>
         <div class="flexCardContainer">
         {ourPets.map(pet => <PetCards pet={pet}/>)}
         </div>
