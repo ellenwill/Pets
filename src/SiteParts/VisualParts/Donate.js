@@ -28,7 +28,7 @@ const ENV = process.env.NODE_ENV === 'production'
   ? 'production'
   : 'sandbox';
 
-class PaypalRender extends React.Component {
+class Donate extends React.Component {
   constructor(props) {
     super()
     this.state = {
@@ -106,4 +106,4 @@ class PaypalRender extends React.Component {
   }
 }
 
-export default PaypalRender;
+export default Donate;

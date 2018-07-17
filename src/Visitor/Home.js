@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import PayPalRender from '../SiteParts/PaypalRender'
 import FAQ from './FAQ'
 import PetList from './PetList'
 import FindPetPaper from './HomeParts/FindPetPaper'
