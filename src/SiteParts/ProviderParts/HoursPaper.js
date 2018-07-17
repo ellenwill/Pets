@@ -26,12 +26,9 @@ function HoursPaper(props) {
           </div>
         </Typography>
         <Typography component="p">
-<<<<<<< HEAD
           Mon-Thurs: 8am-6pm <br/>
           Fri-Sun: 8am-9pm
-=======
           {hours}
->>>>>>> refs/remotes/origin/actualCode
         </Typography>
       </Paper>
     </div>

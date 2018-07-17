@@ -36,14 +36,13 @@ class PetProviderList extends Component{
         </div>
         <div style={{paddingLeft:"42%"}}>
         <PetProviderSearchBar addFilter={this.handleFilterChange}/>
-<<<<<<< HEAD
         </div>
         <div class="flexCardContainer">
         {//!this.petProviderArray ? <Loading/> && :
-=======
+
                 <div class="flexCardContainer">
         {//!this.petArray ? <Loading/> :
->>>>>>> refs/remotes/origin/actualCode
+
 
           this.state.petProviderArray.filter(petProvider =>
             {if(this.state.filters.Location && this.state.filters.Location.length > 0)
