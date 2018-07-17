@@ -26,11 +26,7 @@ function WebsitePaper(props) {
         </div>
         </Typography>
         <Typography component="p">
-<<<<<<< HEAD
-          pawpawspets.org
-=======
             <a href url={}>{website}</a>
->>>>>>> refs/remotes/origin/actualCode
         </Typography>
       </Paper>
     </div>

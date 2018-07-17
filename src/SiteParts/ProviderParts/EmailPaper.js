@@ -28,7 +28,6 @@ function EmailPaper(props) {
           </div>
         </Typography>
         <Typography component="p">
-          pawpaw@pets.com
 
         <Typography variant="" component="h3">
           {/*Email Us*/}

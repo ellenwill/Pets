@@ -15,7 +15,7 @@ const styles = theme => ({
 
 function HoursPaper(props) {
   const { classes } = props;
-  const hours = props.hours || ''
+  const hours = props.hours || 'Mon-Thurs: 8am-6pm Fri-Sun: 8am-9pm'
 
   return (
     <div>
@@ -26,8 +26,6 @@ function HoursPaper(props) {
           </div>
         </Typography>
         <Typography component="p">
-          Mon-Thurs: 8am-6pm <br/>
-          Fri-Sun: 8am-9pm
           {hours}
         </Typography>
       </Paper>

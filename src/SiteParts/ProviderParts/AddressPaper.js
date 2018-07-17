@@ -25,12 +25,6 @@ function AddressPaper(props) {
         <div style={{color:"#05349A"}}>  Address </div>
         </Typography>
         <Typography component="p">
-        1789 Pawson Street <br/>
-        Lutherville, MD 21093
-
-          Address
-        </Typography>
-        <Typography component="p">
           {address}
 
         </Typography>

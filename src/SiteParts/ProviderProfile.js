@@ -35,9 +35,7 @@ const ProviderProfile = (props) => {
 
         <h2>Contact Us: </h2>
 
-              <p><EmailPaper email={provider.email}/></p>
-            <br/>
-            <HoursPaper/>
+            <p><EmailPaper email={provider.email}/></p>
             <br/>
             <PhonePaper phoneNumber={provider.phoneNumber}/>
             <br/>
@@ -46,11 +44,10 @@ const ProviderProfile = (props) => {
             <br/>
             <AddressPaper address={address}/>
         </div>
+        <div class="flexCardContainer">
+        {ourPets.map(pet => <PetCards pet={pet}/>)}
+        </div>
       </div>
-    <div class="flexCard">
-      Our Pets
-      {ourPets.map(pet => <PetCards pet={pet}/>)}
-    </div>
     </div>
     )
   }
