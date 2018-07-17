@@ -26,7 +26,7 @@ function MyPets(props) {
         </Typography>
         <Typography component="p">
 
-                <Link to ={"/SiteParts/VisualParts/PetCards1"}> My Pets </Link>
+                <Link to ='/SiteParts/VisualParts/PetCards1'> My Pets </Link>
 
         </Typography>
       </Paper>

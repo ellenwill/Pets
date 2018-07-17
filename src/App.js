@@ -15,7 +15,6 @@ import Homea from './Admin/Homea'
 import Homev from './Visitor/Homev'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
-import PetCards1 from './SiteParts/VisualParts/PetCards1'
 import PetDisplay from './Test/PetDisplay'
 import PetArrayDisplay from './Admin/PetArrayDisplay'
 import PetProfile from './SiteParts/PetProfile'
@@ -61,6 +60,7 @@ class App extends Component {
           <Route path='/Home' component={Home} />
           <Route path='/Homea' component={Homea} />
           <Route path='/Homev' component={Homev} />
+
           <Route path='/AddPet' component={AddPet} /> {/*for the admin to add new pets*/}
           <Route path='/AddPetProvider' component={AddPetProvider} /> {/*for the global admin to add new petProviders*/}
           <Route path='/PetList' component={PetList} /> {/*the pets that the visitor sees after selecting what kind of pet/ search*/}
@@ -70,7 +70,6 @@ class App extends Component {
           <Route path='/TestRouter' component={TestRouter} />
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PetDisplay' component={PetDisplay} />
-                    <Route path = '/PetCards1' component={PetCards1} />
           <Route path = '/PetArrayDisplay' component={PetArrayDisplay} />
           <Route path='/FAQ' component={FAQ}/>
           <Route path='/Donate' component={Donate}/>

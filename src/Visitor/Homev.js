@@ -2,7 +2,7 @@ import DBTools from '../DBTools/DBTools';
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import PetList from './PetList'
-import VisitorMyPets from './VisitorMyPets'
+import MyPetsVisitors from '../Visitor/MyPetsVisitors'
 import AddPetsPaper from '../Admin/AddPetsPaper'
 
 
@@ -23,18 +23,24 @@ class Homev extends Component {
       <div>
         <div class="homeHeader">
           <h1>ADOPET</h1>
-          <p>Welcome Pet Owner.</p>
+          <p>Visitor</p>
 
         </div>
 
       <div class="homeRow">
-      <VisitorMyPets/>
+      <MyPetsVisitors/>
       <br/>
         <div class="homeMain">
         <br/>
 
         </div>
+        <div class="homeSide">
 
+        
+        <br/>
+
+
+        </div>
       </div>
       <div class="homeFooter">
         Boopyloop made for COSC412 at Towson University
