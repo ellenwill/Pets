@@ -42,15 +42,15 @@ class PaypalRender extends React.Component {
 
       <div class="homeMain">
          <div>
-<<<<<<< HEAD
+
          <p className="App-intro">
          <div style={{color:"#05349A"}}>
             <h1> Donate to one of our Pet Providers today! </h1>
           </div>
-=======
+
          <p>
             <h1> Donations </h1>
->>>>>>> refs/remotes/origin/actualCode
+
          </p>
 
       <br/>

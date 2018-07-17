@@ -43,10 +43,7 @@ class PetProviderDropdown extends React.Component {
 
     return (
       <form autoComplete="off">
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/actualCode
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="demo-controlled-open-select">Donate to ...</InputLabel>
           <Select

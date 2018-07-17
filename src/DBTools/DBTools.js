@@ -67,12 +67,12 @@ class DBTools extends Component {
                 )
 
             {
-<<<<<<< HEAD
+
               //console.log(pet)
               pets[pet].petID = pet
-=======
-              pets[pet].petID = pet       
->>>>>>> refs/remotes/origin/actualCode
+
+              pets[pet].petID = pet
+
               newPets.push(pets[pet]);
             }
           }
@@ -129,8 +129,7 @@ class DBTools extends Component {
       return newPetProviders
     }
 
-<<<<<<< HEAD
-=======
+
     //Returns a pet provider given their ID.
     getPetProviderByID(petProviderID) {
       let newPetProvider = {};
@@ -147,7 +146,7 @@ class DBTools extends Component {
     }
 
     //Returns a user given their userID.
->>>>>>> refs/remotes/origin/actualCode
+
     getUserByID(userID) {
       let newUser = {};
       this.usersRef.on('value', snapshot => {

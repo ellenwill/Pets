@@ -18,17 +18,16 @@ const ProviderProfile = (props) => {
   const provider = tools.getPetProviderByID(props.match.params.petProviderID)
   const ourPets = tools.populatePets(props.match.params.petProviderID)
   const address = provider.street + ", " + provider.city + ", " + provider.usstate + " " + provider.zip
-  
+
     return(
       <div>
         <div class="homeHeader">
-<<<<<<< HEAD
+
         <h1>PawPaws Pets</h1>
         <b>pawpawspets.org</b>
-=======
+
         <h1>{provider.name}</h1>
         <p><EmailPaper email={provider.email}/></p>
->>>>>>> refs/remotes/origin/actualCode
 
         </div>
 
@@ -38,18 +37,18 @@ const ProviderProfile = (props) => {
           <DescriptionPaper description={provider.description}/>
         </div>
         <div class="homeSide">
-<<<<<<< HEAD
+
         <h2>Contact Us: </h2>
             <PhonePaper/>
             <br/>
             <EmailPaper/>
             <br/>
             <HoursPaper/>
-=======
+
             <PhonePaper phoneNumber={provider.phoneNumber}/>
             <br/>
             <HoursPaper hours={provider.hours}/>
->>>>>>> refs/remotes/origin/actualCode
+
             <br/>
             <AddressPaper address={address}/>
         </div>

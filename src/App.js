@@ -19,12 +19,12 @@ import PetArrayDisplay from './Admin/PetArrayDisplay'
 import PetProfile from './SiteParts/PetProfile'
 import ProviderProfile from './SiteParts/ProviderProfile'
 import * as constants from "./constants"
-<<<<<<< HEAD
+
 import Donate from "./SiteParts/VisualParts/Donate"
-=======
+
 import DBTools from './DBTools/DBTools'
 import 'bootstrap/dist/css/bootstrap.css'
->>>>>>> refs/remotes/origin/actualCode
+
 
 class App extends Component {
 
