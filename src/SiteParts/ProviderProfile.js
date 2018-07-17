@@ -11,6 +11,7 @@ import PhotoPaper from './ProviderParts/PhotoPaper'
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PetCards from './PetCards'
+import Paper from '@material-ui/core/Paper';
 
 const ProviderProfile = (props) => {
 
@@ -45,13 +46,13 @@ const ProviderProfile = (props) => {
             <br/>
             <AddressPaper address={address}/>
         </div>
-        <div style={{color:"#05349A", fontSize:"300%"}}>
-        <center>  <b>Our Available Pets</b> </center>
+        <div style={{color:"#05349A", fontSize:"200%"}}>
+        <span><center> <Paper> <b>Our Available Pets</b> </Paper></center></span>
         </div>
         <br/>
-        <div class="flexCardContainer">
+        <span><div class="flexCardContainer">
         {ourPets.map(pet => <PetCards pet={pet}/>)}
-        </div>
+        </div></span>
       </div>
     </div>
     )
