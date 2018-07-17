@@ -23,6 +23,12 @@ class DBTools extends Component {
       this.newPet = constants.PET_CONSTANTS.DEFAULT_PET_STATE
     }
 
+    initialDBCalls(){
+      this.populatePets()
+      this.populatePetProviders()
+      this.getUserByID()
+    }
+
     componentDidMount() {
       //listeners
       this.petsRef.on('value', data=> {
@@ -56,12 +62,17 @@ class DBTools extends Component {
                         || filters.includes(pets[pet].petAge)
                         || filters.includes(pets[pet].petSize)
                         || filters.includes(pets[pet].petHair)
+                        || filters.includes(pets[pet].petProviderID)
                         //Etc.
                 )
 
             {
+<<<<<<< HEAD
               //console.log(pet)
               pets[pet].petID = pet
+=======
+              pets[pet].petID = pet       
+>>>>>>> refs/remotes/origin/actualCode
               newPets.push(pets[pet]);
             }
           }
@@ -86,7 +97,6 @@ class DBTools extends Component {
 
             {
               newPet = constants.EXISTING_PET_STATE(pets[pet]);
-              //console.log(newPet)
             }
           }
         });
@@ -119,6 +129,25 @@ class DBTools extends Component {
       return newPetProviders
     }
 
+<<<<<<< HEAD
+=======
+    //Returns a pet provider given their ID.
+    getPetProviderByID(petProviderID) {
+      let newPetProvider = {};
+      this.petProvidersRef.on('value', snapshot => {
+      let providers = snapshot.val();
+      for (let provider in providers) {
+        if (provider == petProviderID)
+            {
+              newPetProvider = constants.EXISTING_PET_PROVIDER(providers[provider]);
+            }
+          }
+        });
+      return newPetProvider
+    }
+
+    //Returns a user given their userID.
+>>>>>>> refs/remotes/origin/actualCode
     getUserByID(userID) {
       let newUser = {};
       this.usersRef.on('value', snapshot => {
@@ -128,7 +157,6 @@ class DBTools extends Component {
 
             {
               newUser = constants.EXISTING_USER(users[user]);
-              //console.log(newUser)
             }
           }
         });

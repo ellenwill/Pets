@@ -15,6 +15,7 @@ const styles = theme => ({
 
 function PhonePaper(props) {
   const { classes } = props;
+  const phoneNumber = props.phoneNumber || ''
 
   return (
     <div>
@@ -25,7 +26,11 @@ function PhonePaper(props) {
         </div>
         </Typography>
         <Typography component="p">
+<<<<<<< HEAD
             410-123-4567
+=======
+            {phoneNumber}
+>>>>>>> refs/remotes/origin/actualCode
         </Typography>
       </Paper>
     </div>

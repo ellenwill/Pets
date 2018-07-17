@@ -36,7 +36,6 @@ function PetCards(props) {
     <div>
     <div class="flexCard">
       <Card className={classes.card}>
-      {console.log(props.pet.photoURL)}
         {props.pet.photoURL ? props.pet.photoURL &&
           <CardMedia className={classes.media}
                             image={props.pet.photoURL}/>
@@ -50,8 +49,12 @@ function PetCards(props) {
             {!props.pet.petName ? <div>{props.animalType}</div> : <div>{props.pet.petName}</div>}
           </Typography>
           <Typography component="p">
+<<<<<<< HEAD
             <span><p><b>Age:</b> {props.pet.petAge}   <b>Breed:</b> {props.pet.petBreed}</p></span>
             <span>Adopt this adorable {props.pet.animalType}. </span>
+=======
+            <span>Adopt this adorable {props.pet.petBreed}. </span>
+>>>>>>> refs/remotes/origin/actualCode
             {props.pet.gender === 'male' && <span>He</span>}{props.pet.gender === 'female' && <span>She</span>}
             {(props.pet.gender !== 'male' && props.pet.gender !== 'female') && <span>They</span>} will give you so many good cuddles.
             {//<PetDisplay pet={props.pet}/>

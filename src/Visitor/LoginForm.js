@@ -57,7 +57,7 @@ class LoginForm extends Component {
   render() {
     return this.state.loading === true ? <h1>Loading</h1> : (
       <BrowserRouter>
-        <div>
+        <div  class="homeMain">
           <nav className="navbar navbar-default navbar-static-top">
             <div className="container">
               <div className="navbar-header">

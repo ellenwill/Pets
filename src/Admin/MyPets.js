@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import Donate from '../../SiteParts/VisualParts/Donate'
+import PetList from '../Visitor/PetList'
 
 const styles = theme => ({
   root: {
@@ -14,27 +14,25 @@ const styles = theme => ({
   },
 });
 
-function PaypalPaper(props) {
+function MyPets(props) {
   const { classes } = props;
 
   return (
-    <div >
+    <div>
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-        <div style={{color:"#05349A"}}>
-          <b>Donate</b>
-        </div>
+          My Pets
         </Typography>
         <Typography component="p">
-                <Link to = 'Donate'> Click here to donate </Link>
+                <Link to = 'PetList'> My Pets </Link>
         </Typography>
       </Paper>
     </div>
   );
 }
 
-PaypalPaper.propTypes = {
+MyPets.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PaypalPaper);
+export default withStyles(styles)(MyPets);

@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
-import {PET_CONSTANTS, ALL_BREEDS} from '../constants'
+import {PET_CONSTANTS, ALL_BREEDS, USSTATES} from '../constants'
 
   const styles = theme => ({
     root: {
@@ -42,10 +42,7 @@ import {PET_CONSTANTS, ALL_BREEDS} from '../constants'
   };
 
 
-  const location = [
-    'Poopyland',
-    'Doopydoopboopland',
-  ];
+  const location = USSTATES
 
   class PetSearchBar extends React.Component {
     state = {

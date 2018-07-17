@@ -45,9 +45,9 @@ class AddPet extends Component{
 
   render(){
     return(
-      <div className="AppHeader">
+      <div  class="homeMain">
          <div>
-         <p className="App-intro">
+         <p>
            <h1> Enter pet information here: </h1>
          </p>
          <section className='testForm'>
@@ -55,7 +55,7 @@ class AddPet extends Component{
             {this.petTypeMenu()}
             {this.state.animalType &&
             <div>
-            Name: <input type="text" name="petName" placeholder="What is the pet's name?" onChange={this.handleChange} value={this.state.petName}/><br/>
+            <input type="text" name="petName" placeholder="Pet's Name" onChange={this.handleChange} value={this.state.petName}/><br/>
                   {this.genderMenu()}
                   {
                     this.breedsMenu()
@@ -72,9 +72,9 @@ class AddPet extends Component{
                     this.catSpecificTraits()
                   }
                   <br/>
-            <input type="text" name="petAge" placeholder="What is the pet's age?" onChange={this.handleChange} value={this.state.petAge}/><br/>
-            <input type="text" name="petDescription" placeholder="Enter additional details." onChange={this.handleChange} value={this.state.petDescription}/><br/>
-            <input type="text" name="photoURL" placeholder="Enter photo URL." onChange={this.handleChange} value={this.state.photoURL}/><br/>
+            <input type="text" name="petAge" placeholder="Pet's Age" onChange={this.handleChange} value={this.state.petAge}/><br/>
+            <input type="text" name="petDescription" placeholder="Additional Details" onChange={this.handleChange} value={this.state.petDescription}/><br/>
+            <input type="text" name="photoURL" placeholder="Photo URL" onChange={this.handleChange} value={this.state.photoURL}/><br/>
             {!this.state.petID && <button> Add Pet </button>}
             {this.state.petID && <button> Update Pet </button>
             }

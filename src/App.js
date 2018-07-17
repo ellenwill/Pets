@@ -14,10 +14,17 @@ import PaypalRender from './SiteParts/PaypalRender'
 import Home from './Visitor/Home'
 import FAQ from './Visitor/FAQ'
 import TestNavBar from './SiteParts/TestNavBar'
+import PetDisplay from './Test/PetDisplay'
+import PetArrayDisplay from './Admin/PetArrayDisplay'
 import PetProfile from './SiteParts/PetProfile'
 import ProviderProfile from './SiteParts/ProviderProfile'
 import * as constants from "./constants"
+<<<<<<< HEAD
 import Donate from "./SiteParts/VisualParts/Donate"
+=======
+import DBTools from './DBTools/DBTools'
+import 'bootstrap/dist/css/bootstrap.css'
+>>>>>>> refs/remotes/origin/actualCode
 
 class App extends Component {
 
@@ -26,10 +33,13 @@ class App extends Component {
 
     //Store the user, which is updated when they login (or log out)
     this.state=({
-      user: constants.GET_USER()
+      user: constants.GET_USER() || {}
     })
-
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentWillMount(){
+    new DBTools().initialDBCalls()
   }
 
   //The application is forced to update if someone logs in/out
@@ -55,6 +65,8 @@ class App extends Component {
           <Route path ='/ALoginForm' component={ALoginForm}/>
           <Route path='/TestRouter' component={TestRouter} />
           <Route path = '/PaypalRender' component={PaypalRender} />
+          <Route path = '/PetDisplay' component={PetDisplay} />
+          <Route path = '/PetArrayDisplay' component={PetArrayDisplay} />
           <Route path='/FAQ' component={FAQ}/>
           <Route path='/Donate' component={Donate}/>
           <Route path='/pet/:petID' component={PetProfile}/>

@@ -4,6 +4,7 @@ import ProviderCards from '../SiteParts/ProviderCards'
 import PetProviderSearchBar from '../SiteParts/PetProviderSearchBar'
 import DBTools from '../DBTools/DBTools'
 import {STATES} from '../constants'
+import Loading from '../Test/Loading'
 
 class PetProviderList extends Component{
 
@@ -24,7 +25,6 @@ class PetProviderList extends Component{
   componentWillUnmount(){}
 
   handleFilterChange(newFilter){
-    console.log(newFilter)
     this.setState({filters:newFilter})
   }
 
@@ -36,15 +36,19 @@ class PetProviderList extends Component{
         </div>
         <div style={{paddingLeft:"42%"}}>
         <PetProviderSearchBar addFilter={this.handleFilterChange}/>
+<<<<<<< HEAD
         </div>
         <div class="flexCardContainer">
         {//!this.petProviderArray ? <Loading/> && :
+=======
+                <div class="flexCardContainer">
+        {//!this.petArray ? <Loading/> :
+>>>>>>> refs/remotes/origin/actualCode
 
           this.state.petProviderArray.filter(petProvider =>
-
-            {if(this.state.filters.usstate && this.state.filters.usstate > 0)
+            {if(this.state.filters.Location && this.state.filters.Location.length > 0)
               {
-                if(!this.state.filters.usstate.includes(petProvider.usstate))
+                if(!this.state.filters.Location.includes(petProvider.usstate))
                 {
                   return false;
                 }

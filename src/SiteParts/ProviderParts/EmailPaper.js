@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 const styles = theme => ({
@@ -15,10 +16,12 @@ const styles = theme => ({
 
 function EmailPaper(props) {
   const { classes } = props;
+  const email = props.email || ''
 
   return (
     <div>
       <Paper className={classes.root} elevation={1}>
+<<<<<<< HEAD
         <Typography variant="headline" component="h3">
         <div style={{color:"#05349A"}}>
           Email
@@ -26,6 +29,13 @@ function EmailPaper(props) {
         </Typography>
         <Typography component="p">
           pawpaw@pets.com
+=======
+        <Typography variant="" component="h3">
+          {/*Email Us*/}
+        </Typography>
+        <Typography component="p">
+        <a href={"mailto:" + email} class="email"><Button size="large" color="primary">{email}</Button></a>
+>>>>>>> refs/remotes/origin/actualCode
         </Typography>
       </Paper>
     </div>

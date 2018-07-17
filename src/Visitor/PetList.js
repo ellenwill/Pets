@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import firebase from '../firebase';
 import PetSearchBar from '../SiteParts/PetSearchBar'
 import PetCards from '../SiteParts/PetCards'
-import Loading from '../Test/Loading'
-import PetArrayDisplay from '../Test/PetArrayDisplay'
 import DBTools from '../DBTools/DBTools'
-import {PET_CONSTANTS} from '../constants'
 
 class PetList extends Component{
 
@@ -14,20 +10,20 @@ class PetList extends Component{
     this.state = {
       filters: {animalType:[],petBreed:[], gender:[], Location:[]},
       /* {animalType:[dog,cat,other],petBreed:[doxie, lab, corgi], Gender:[female, male], Location:[Baltimore County, Baltimore City]} */
-      petArray: []
+      petArray: props.petArray || new DBTools().populatePets()
     }
     this.handleFilterChange = this.handleFilterChange.bind(this) /* the function is now bound to component*/
   }
 
-  componentDidMount(){
-    let petArray = new DBTools().populatePets()
-    this.setState({petArray: petArray})
+  componentDidMount(props){
+    //let petArray = new DBTools().populatePets()
+    
+    //this.setState({petArray: petArray})
   }
 
   componentWillUnmount(){}
 
   handleFilterChange(newFilter){
-    console.log(newFilter)
     this.setState({filters:newFilter})
   }
 
@@ -41,7 +37,7 @@ class PetList extends Component{
         <PetSearchBar addFilter={this.handleFilterChange}/>
         </div>
                 <div class="flexCardContainer">
-        {//!this.petArray ? <Loading/> && :
+        {//!this.petArray ? <Loading/> :
 
           this.state.petArray.filter(pet =>
 
@@ -68,7 +64,7 @@ class PetList extends Component{
               }
             if(this.state.filters.Location && this.state.filters.Location.length > 0)
               {
-                if(!this.state.filters.Location.includes(pet.Location))
+                if(!this.state.filters.Location.includes(pet.usstate))
                 {
                   return false;
                 }
